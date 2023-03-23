@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Google.Protobuf;
 using MySql.Data.MySqlClient;
 
 namespace TestingTDP
@@ -15,6 +16,7 @@ namespace TestingTDP
     public partial class Form2 : Form
     {
         string Tipo;
+        String Cargo;
         public Form2()
         {
             InitializeComponent();
@@ -189,6 +191,96 @@ namespace TestingTDP
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
             Tipo = "Otro";
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            panel4.BringToFront();
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+
+
+            try
+            {
+                connection.Open();
+                MySqlCommand comando = new MySqlCommand();
+                comando.Connection = connection;
+                comando.CommandText = ("select Nombre,Cargo,Cedula from usuario;");
+
+                MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                adaptar.SelectCommand = comando;
+                DataTable tabla = new DataTable();
+                adaptar.Fill(tabla);
+                DtUser.DataSource = tabla;
+
+            }
+            catch (Exception b)
+            {
+
+                MessageBox.Show(b.Message + b.StackTrace);
+            }
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+            {
+                MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+                string nombre = TextName.Text;
+                string passwd = TextPass.Text;
+                string c1 = textCedula.Text;
+                int Cedula;
+                Cedula = int.Parse(c1);
+
+
+                connection.Open();
+                var checkInfo = new MySqlCommand($"SELECT Cedula FROM usuario WHERE Cedula =\"{Cedula}\"", connection);
+                var reader = checkInfo.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
+                {
+                    reader.Close();
+                    MessageBox.Show("El Usuario ya existe", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    reader.Close();
+                    var registerQuery = new MySqlCommand($"INSERT INTO usuario (Nombre, Cargo, Contraseña, Cedula) VALUES (\"{nombre}\",\"{Cargo}\",\"{passwd}\",\"{Cedula}\")", connection);
+                    registerQuery.ExecuteNonQuery();
+                    MessageBox.Show("Usuario registrado correctamente", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+            }
+        }
+
+        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        {
+            Cargo = "Panadero";
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            Cargo = "Caja";
+        }
+
+        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        {
+            Cargo = "Encargado_Inventario";
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

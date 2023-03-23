@@ -28,13 +28,13 @@ namespace TestingTDP
             MySqlConnection connection = new MySqlConnection(MainFunc.connString);
             connection.Open();
             informacion.correoLogin = textBox1.Text;
-            var correo_form = textBox1.Text;
+            var NombreUsuario_form = textBox1.Text;
             var passwd_form = textBox2.Text;
-            var loginQuery = new MySqlCommand($"SELECT id FROM usuario WHERE Administrador=\"{correo_form}\" AND Contraseña=\"{passwd_form}\"", connection);
+            var loginQuery = new MySqlCommand($"SELECT Cargo FROM usuario WHERE Nombre=\"{NombreUsuario_form}\" AND Contraseña=\"{passwd_form}\"", connection);
             var reader = loginQuery.ExecuteReader();
             reader.Read();
 
-            if ((reader.HasRows && reader["id"].ToString() == "1"))
+            if ((reader.HasRows && reader["Cargo"].ToString() == "Administrador"))
             {
                 Form2 paneladmin = new Form2();
                 this.Hide();

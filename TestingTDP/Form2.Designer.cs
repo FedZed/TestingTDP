@@ -31,6 +31,7 @@
             panel2 = new Panel();
             p3 = new Panel();
             panel1 = new Panel();
+            button6 = new Button();
             c2 = new Button();
             C1 = new Button();
             p4 = new Panel();
@@ -45,7 +46,9 @@
             Precio = new TextBox();
             button3 = new Button();
             panel3 = new Panel();
+            label7 = new Label();
             groupBox1 = new GroupBox();
+            label6 = new Label();
             checkBox3 = new CheckBox();
             checkBox1 = new CheckBox();
             checkBox2 = new CheckBox();
@@ -55,13 +58,27 @@
             label2 = new Label();
             label1 = new Label();
             Cantidad = new TextBox();
-            label6 = new Label();
-            label7 = new Label();
+            panel4 = new Panel();
+            label10 = new Label();
+            textCedula = new TextBox();
+            DtUser = new DataGridView();
+            label9 = new Label();
+            label8 = new Label();
+            button7 = new Button();
+            groupBox2 = new GroupBox();
+            checkBox5 = new CheckBox();
+            checkBox6 = new CheckBox();
+            checkBox4 = new CheckBox();
+            TextPass = new TextBox();
+            TextName = new TextBox();
             panel1.SuspendLayout();
             p4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dt1).BeginInit();
             panel3.SuspendLayout();
             groupBox1.SuspendLayout();
+            panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DtUser).BeginInit();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // panel2
@@ -84,12 +101,24 @@
             // panel1
             // 
             panel1.BackColor = Color.DarkSlateGray;
+            panel1.Controls.Add(button6);
             panel1.Controls.Add(c2);
             panel1.Controls.Add(C1);
             panel1.Location = new Point(0, -35);
             panel1.Name = "panel1";
             panel1.Size = new Size(120, 543);
             panel1.TabIndex = 7;
+            // 
+            // button6
+            // 
+            button6.FlatStyle = FlatStyle.Popup;
+            button6.Location = new Point(-1, 161);
+            button6.Name = "button6";
+            button6.Size = new Size(115, 28);
+            button6.TabIndex = 2;
+            button6.Text = "button1";
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
             // 
             // c2
             // 
@@ -236,6 +265,15 @@
             panel3.Size = new Size(226, 456);
             panel3.TabIndex = 9;
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(-3, 139);
+            label7.Name = "label7";
+            label7.Size = new Size(91, 15);
+            label7.TabIndex = 18;
+            label7.Text = "                            ";
+            // 
             // groupBox1
             // 
             groupBox1.Controls.Add(label6);
@@ -247,6 +285,15 @@
             groupBox1.Size = new Size(146, 30);
             groupBox1.TabIndex = 16;
             groupBox1.TabStop = false;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(99, 17);
+            label6.Name = "label6";
+            label6.Size = new Size(91, 15);
+            label6.TabIndex = 17;
+            label6.Text = "                            ";
             // 
             // checkBox3
             // 
@@ -333,29 +380,144 @@
             Cantidad.Size = new Size(100, 23);
             Cantidad.TabIndex = 8;
             // 
-            // label6
+            // panel4
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(99, 17);
-            label6.Name = "label6";
-            label6.Size = new Size(91, 15);
-            label6.TabIndex = 17;
-            label6.Text = "                            ";
+            panel4.BackColor = Color.AliceBlue;
+            panel4.Controls.Add(label10);
+            panel4.Controls.Add(textCedula);
+            panel4.Controls.Add(DtUser);
+            panel4.Controls.Add(label9);
+            panel4.Controls.Add(label8);
+            panel4.Controls.Add(button7);
+            panel4.Controls.Add(groupBox2);
+            panel4.Controls.Add(TextPass);
+            panel4.Controls.Add(TextName);
+            panel4.Location = new Point(121, 54);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(769, 451);
+            panel4.TabIndex = 10;
+            panel4.Paint += panel4_Paint;
             // 
-            // label7
+            // label10
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(-3, 139);
-            label7.Name = "label7";
-            label7.Size = new Size(91, 15);
-            label7.TabIndex = 18;
-            label7.Text = "                            ";
+            label10.AutoSize = true;
+            label10.Location = new Point(61, 201);
+            label10.Name = "label10";
+            label10.Size = new Size(47, 15);
+            label10.TabIndex = 8;
+            label10.Text = "Cedula:";
+            // 
+            // textCedula
+            // 
+            textCedula.Location = new Point(86, 219);
+            textCedula.Name = "textCedula";
+            textCedula.Size = new Size(100, 23);
+            textCedula.TabIndex = 7;
+            // 
+            // DtUser
+            // 
+            DtUser.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DtUser.Location = new Point(329, 123);
+            DtUser.Name = "DtUser";
+            DtUser.RowTemplate.Height = 25;
+            DtUser.Size = new Size(399, 215);
+            DtUser.TabIndex = 6;
+            DtUser.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(61, 105);
+            label9.Name = "label9";
+            label9.Size = new Size(50, 15);
+            label9.TabIndex = 5;
+            label9.Text = "Usuario:";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(61, 151);
+            label8.Name = "label8";
+            label8.Size = new Size(70, 15);
+            label8.TabIndex = 4;
+            label8.Text = "Contraseña:";
+            label8.Click += label8_Click;
+            // 
+            // button7
+            // 
+            button7.Location = new Point(91, 344);
+            button7.Name = "button7";
+            button7.Size = new Size(75, 23);
+            button7.TabIndex = 3;
+            button7.Text = "Registrar";
+            button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(checkBox5);
+            groupBox2.Controls.Add(checkBox6);
+            groupBox2.Controls.Add(checkBox4);
+            groupBox2.Location = new Point(53, 260);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(147, 78);
+            groupBox2.TabIndex = 2;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Cargo:";
+            // 
+            // checkBox5
+            // 
+            checkBox5.AutoSize = true;
+            checkBox5.Location = new Point(5, 52);
+            checkBox5.Name = "checkBox5";
+            checkBox5.Size = new Size(138, 19);
+            checkBox5.TabIndex = 4;
+            checkBox5.Text = "Control de Inventario";
+            checkBox5.UseVisualStyleBackColor = true;
+            checkBox5.CheckedChanged += checkBox5_CheckedChanged;
+            // 
+            // checkBox6
+            // 
+            checkBox6.AutoSize = true;
+            checkBox6.Location = new Point(6, 16);
+            checkBox6.Name = "checkBox6";
+            checkBox6.Size = new Size(76, 19);
+            checkBox6.TabIndex = 5;
+            checkBox6.Text = "Panadero";
+            checkBox6.UseVisualStyleBackColor = true;
+            checkBox6.CheckedChanged += checkBox6_CheckedChanged;
+            // 
+            // checkBox4
+            // 
+            checkBox4.AutoSize = true;
+            checkBox4.Location = new Point(6, 34);
+            checkBox4.Name = "checkBox4";
+            checkBox4.Size = new Size(49, 19);
+            checkBox4.TabIndex = 3;
+            checkBox4.Text = "Caja";
+            checkBox4.UseVisualStyleBackColor = true;
+            checkBox4.CheckedChanged += checkBox4_CheckedChanged;
+            // 
+            // TextPass
+            // 
+            TextPass.Location = new Point(86, 166);
+            TextPass.Name = "TextPass";
+            TextPass.Size = new Size(100, 23);
+            TextPass.TabIndex = 1;
+            // 
+            // TextName
+            // 
+            TextName.Location = new Point(86, 123);
+            TextName.Name = "TextName";
+            TextName.Size = new Size(100, 23);
+            TextName.TabIndex = 0;
             // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(888, 499);
+            ClientSize = new Size(1247, 645);
+            Controls.Add(panel4);
             Controls.Add(panel3);
             Controls.Add(p3);
             Controls.Add(p4);
@@ -372,6 +534,11 @@
             panel3.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)DtUser).EndInit();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -406,5 +573,19 @@
         private CheckBox checkBox3;
         private Label label7;
         private Label label6;
+        private Button button6;
+        private Panel panel4;
+        private GroupBox groupBox2;
+        private CheckBox checkBox5;
+        private CheckBox checkBox6;
+        private CheckBox checkBox4;
+        private TextBox TextPass;
+        private TextBox TextName;
+        private Label label9;
+        private Label label8;
+        private Button button7;
+        private DataGridView DtUser;
+        private Label label10;
+        private TextBox textCedula;
     }
 }
