@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Google.Protobuf;
 using MySql.Data.MySqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TestingTDP
 {
@@ -16,6 +17,7 @@ namespace TestingTDP
     public partial class Form2 : Form
     {
         string Tipo;
+        string Tipo1;
         String Cargo;
         public Form2()
         {
@@ -102,6 +104,7 @@ namespace TestingTDP
 
         private void button2_Click(object sender, EventArgs e)
         {
+            p4.BringToFront();
             panel3.BringToFront();
 
         }
@@ -111,45 +114,64 @@ namespace TestingTDP
             MySqlConnection connection = new MySqlConnection(MainFunc.connString);
             string nombre = Nombre.Text;
             string id_producto = Id_producto.Text;
-
             string precio = Precio.Text;
             string cantidad = Cantidad.Text;
+            string IdD = txtidd.Text;
+
 
 
 
             connection.Open();
+
             var checkInfo = new MySqlCommand($"SELECT id_producto FROM producto WHERE id_producto =\"{id_producto}\"", connection);
             var reade = checkInfo.ExecuteReader();
             reade.Read();
+
             if (reade.HasRows)
             {
                 reade.Close();
                 MessageBox.Show("El Producto ya existe", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             }
             else
             {
                 reade.Close();
-
-                var registerQuery = new MySqlCommand($"INSERT INTO producto (Nombre, id_producto , tipo , precio , cantidad) VALUES (\"{nombre}\", \"{id_producto}\", \"{Tipo}\", \"{precio}\", \"{cantidad}\")", connection);
-                registerQuery.ExecuteNonQuery();
-                MessageBox.Show("El Producto se a registrado correctamente", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
+                var checkInfo1 = new MySqlCommand($"Select Rut From distribuidor where Rut=\"{IdD}\"", connection);
+                var Reader = checkInfo1.ExecuteReader();
+                Reader.Read();
+                if (Reader.HasRows)
+                {
+                    Reader.Close();
+                    var registerQuery = new MySqlCommand($"INSERT INTO producto (Nombre, id_producto , tipo , precio , cantidad , Id_Distribuidores) VALUES (\"{nombre}\", \"{id_producto}\", \"{Tipo}\", \"{precio}\", \"{cantidad}\", \"{IdD}\")", connection);
+                    registerQuery.ExecuteNonQuery();
+                    MessageBox.Show("El Producto se a registrado correctamente", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    p4.BringToFront();
+                }
+                else
+                {
+                    Reader.Close();
+                    MessageBox.Show("El Distribuidor no existe", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
+
+
 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+
             MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
             string nombre2 = Named.Text;
-
-            try
+            var checkInfo = new MySqlCommand($"select * from producto WHERE Nombre =\"{nombre2}\"", connection);
+            var reade = checkInfo.ExecuteReader();
+            reade.Read();
+            if (reade.HasRows)
             {
+                reade.Close();
 
 
-
-                connection.Open();
                 var registerQuery = new MySqlCommand($"select * from producto WHERE Nombre =\"{nombre2}\"", connection);
                 registerQuery.ExecuteNonQuery();
                 MySqlDataAdapter adaptar = new MySqlDataAdapter();
@@ -159,11 +181,82 @@ namespace TestingTDP
                 dt1.DataSource = tabla;
 
             }
-            catch (Exception b)
+            else
             {
+                reade.Close();
+                var checkInfo1 = new MySqlCommand($"select * from producto WHERE id_producto =\"{nombre2}\"", connection);
+                var reader = checkInfo1.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
+                {
+                    reader.Close();
 
-                MessageBox.Show(b.Message + b.StackTrace);
+                    var registerQuery = new MySqlCommand($"select * from producto WHERE id_producto =\"{nombre2}\"", connection);
+                    registerQuery.ExecuteNonQuery();
+                    MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                    adaptar.SelectCommand = registerQuery;
+                    DataTable tabla = new DataTable();
+                    adaptar.Fill(tabla);
+                    dt1.DataSource = tabla;
+
+
+
+                }
+                else
+                {
+                    reader.Close();
+                    var checkInfo2 = new MySqlCommand($"select * from producto WHERE id_Distribuidores =\"{nombre2}\"", connection);
+                    var reader1 = checkInfo2.ExecuteReader();
+                    reader1.Read();
+                    if (reader1.HasRows)
+                    {
+                        reader1.Close();
+
+
+
+                        var registerQuery = new MySqlCommand($"select * from producto WHERE id_Distribuidores =\"{nombre2}\"", connection);
+                        registerQuery.ExecuteNonQuery();
+                        MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                        adaptar.SelectCommand = registerQuery;
+                        DataTable tabla = new DataTable();
+                        adaptar.Fill(tabla);
+                        dt1.DataSource = tabla;
+
+
+
+                    }
+                    else
+                    {
+                        reader1.Close();
+                        var checkInfo3 = new MySqlCommand($"select * from producto WHERE Tipo =\"{nombre2}\"", connection);
+                        var reader2 = checkInfo3.ExecuteReader();
+                        reader2.Read();
+                        if (reader2.HasRows)
+                        {
+                            reader2.Close();
+                            var registerQuery = new MySqlCommand($"select * from producto WHERE Tipo =\"{nombre2}\"", connection);
+                            registerQuery.ExecuteNonQuery();
+                            MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                            adaptar.SelectCommand = registerQuery;
+                            DataTable tabla = new DataTable();
+                            adaptar.Fill(tabla);
+                            dt1.DataSource = tabla;
+
+                        }
+                        else
+                        {
+                            reader2.Close();
+                            MessageBox.Show("No existe un Producto con esas caracterizticas", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
+
+                    }
+
+
+                }
+
             }
+
 
         }
 
@@ -185,6 +278,26 @@ namespace TestingTDP
             connection.Open();
             var registerQuery = new MySqlCommand($"DELETE from producto WHERE Nombre =\"{nombre1}\"", connection);
             registerQuery.ExecuteNonQuery();
+            try
+            {
+
+                MySqlCommand comando = new MySqlCommand();
+                comando.Connection = connection;
+                comando.CommandText = ("select * from producto;");
+
+                MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                adaptar.SelectCommand = comando;
+                DataTable tabla = new DataTable();
+                adaptar.Fill(tabla);
+                dt1.DataSource = tabla;
+
+            }
+            catch (Exception b)
+            {
+
+                MessageBox.Show(b.Message + b.StackTrace);
+            }
+
 
         }
 
@@ -251,6 +364,7 @@ namespace TestingTDP
                 {
                     reader.Close();
                     MessageBox.Show("El Usuario ya existe", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                 }
                 else
                 {
@@ -258,6 +372,25 @@ namespace TestingTDP
                     var registerQuery = new MySqlCommand($"INSERT INTO usuario (Nombre, Cargo, Contraseña, Cedula) VALUES (\"{nombre}\",\"{Cargo}\",\"{passwd}\",\"{Cedula}\")", connection);
                     registerQuery.ExecuteNonQuery();
                     MessageBox.Show("Usuario registrado correctamente", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    try
+                    {
+
+                        MySqlCommand comando = new MySqlCommand();
+                        comando.Connection = connection;
+                        comando.CommandText = ("select Nombre,Cargo,Cedula from usuario;");
+
+                        MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                        adaptar.SelectCommand = comando;
+                        DataTable tabla = new DataTable();
+                        adaptar.Fill(tabla);
+                        DtUser.DataSource = tabla;
+
+                    }
+                    catch (Exception b)
+                    {
+
+                        MessageBox.Show(b.Message + b.StackTrace);
+                    }
 
                 }
             }
@@ -281,6 +414,477 @@ namespace TestingTDP
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            string Busca = textBus.Text;
+
+            try
+            {
+
+
+
+                connection.Open();
+                var registerQuery = new MySqlCommand($"select Nombre,Cargo,Cedula from Usuario WHERE Cedula =\"{Busca}\"", connection);
+                registerQuery.ExecuteNonQuery();
+                MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                adaptar.SelectCommand = registerQuery;
+                DataTable tabla = new DataTable();
+                adaptar.Fill(tabla);
+                DtUser.DataSource = tabla;
+
+            }
+            catch (Exception b)
+            {
+
+                MessageBox.Show(b.Message + b.StackTrace);
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            string Cedula = textBus.Text;
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+
+            connection.Open();
+            var registerQuery = new MySqlCommand($"DELETE from usuario WHERE cedula =\"{Cedula}\"", connection);
+            registerQuery.ExecuteNonQuery();
+            try
+            {
+
+                MySqlCommand comando = new MySqlCommand();
+                comando.Connection = connection;
+                comando.CommandText = ("select Nombre,Cargo,Cedula from usuario;");
+
+                MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                adaptar.SelectCommand = comando;
+                DataTable tabla = new DataTable();
+                adaptar.Fill(tabla);
+                DtUser.DataSource = tabla;
+
+            }
+            catch (Exception b)
+            {
+
+                MessageBox.Show(b.Message + b.StackTrace);
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            try
+            {
+                connection.Open();
+                MySqlCommand comando = new MySqlCommand();
+                comando.Connection = connection;
+                comando.CommandText = ("select Nombre,Cargo,Cedula from usuario;");
+
+                MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                adaptar.SelectCommand = comando;
+                DataTable tabla = new DataTable();
+                adaptar.Fill(tabla);
+                DtUser.DataSource = tabla;
+
+            }
+            catch (Exception b)
+            {
+
+                MessageBox.Show(b.Message + b.StackTrace);
+            }
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            string edit = TxtEditar.Text;
+            string edit1 = txtnom.Text;
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+
+            connection.Open();
+            var registerQuery = new MySqlCommand($"UPDATE producto SET Nombre=\"{edit1}\" WHERE id_producto=\"{edit}\";", connection);
+            registerQuery.ExecuteNonQuery();
+            p4.BringToFront();
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            string edit = TxtEditar.Text;
+
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+
+            connection.Open();
+            var registerQuery = new MySqlCommand($"UPDATE producto SET Tipo=\"{Tipo1}\" WHERE id_producto=\"{edit}\";", connection);
+            registerQuery.ExecuteNonQuery();
+            p4.BringToFront();
+        }
+
+        private void checkBox8_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo1 = "Comestible";
+        }
+
+        private void checkBox10_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo1 = "Panaderia";
+        }
+
+        private void checkBox9_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo1 = "Bebida";
+        }
+
+        private void checkBox7_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo1 = "Otro";
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            string edit = TxtEditar.Text;
+            string edit1 = txtpre.Text;
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+
+            connection.Open();
+            var registerQuery = new MySqlCommand($"UPDATE producto SET precio=\"{edit1}\" WHERE id_producto=\"{edit}\";", connection);
+            registerQuery.ExecuteNonQuery();
+
+            p4.BringToFront();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            Pan1.BringToFront();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            Pan2.BringToFront();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            pan3.BringToFront();
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            string edit = TxtEditar.Text;
+            string edit1 = txtcan.Text;
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+
+            connection.Open();
+            var registerQuery = new MySqlCommand($"UPDATE producto SET cantidad=\"{edit1}\" WHERE id_producto=\"{edit}\";", connection);
+            registerQuery.ExecuteNonQuery();
+
+            p4.BringToFront();
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            string edit = TxtEditar.Text;
+            string Editar = IdDis.Text;
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            var checkInfo1 = new MySqlCommand($"Select Rut From distribuidor where Rut=\"{Editar}\"", connection);
+            var Reader = checkInfo1.ExecuteReader();
+            Reader.Read();
+            if (Reader.HasRows)
+            {
+                var registerQuery = new MySqlCommand($"UPDATE producto SET id_Distribuidores=\"{Editar}\" WHERE id_producto=\"{edit}\";", connection);
+                registerQuery.ExecuteNonQuery();
+
+                p4.BringToFront();
+            }
+            else
+            {
+                Reader.Close();
+                MessageBox.Show("El Distribuidor no existe", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            pan4.BringToFront();
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            pan5.BringToFront();
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            p4.BringToFront();
+            Pan.BringToFront();
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            panel5.BringToFront();
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            MySqlCommand comando = new MySqlCommand();
+            comando.Connection = connection;
+            comando.CommandText = ("select * from distribuidor;");
+
+            MySqlDataAdapter adaptar = new MySqlDataAdapter();
+            adaptar.SelectCommand = comando;
+            DataTable tabla = new DataTable();
+            adaptar.Fill(tabla);
+            DatDis.DataSource = tabla;
+
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            MySqlCommand comando = new MySqlCommand();
+            comando.Connection = connection;
+            comando.CommandText = ("select * from distribuidor;");
+
+            MySqlDataAdapter adaptar = new MySqlDataAdapter();
+            adaptar.SelectCommand = comando;
+            DataTable tabla = new DataTable();
+            adaptar.Fill(tabla);
+            DatDis.DataSource = tabla;
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            string Buscar = txtbusca.Text;
+            var checkInfo = new MySqlCommand($"select * from distribuidor WHERE Nombre =\"{Buscar}\"", connection);
+            var reade = checkInfo.ExecuteReader();
+            reade.Read();
+            if (reade.HasRows)
+            {
+                reade.Close();
+
+
+                var registerQuery = new MySqlCommand($"select * from distribuidor WHERE Nombre =\"{Buscar}\"", connection);
+                registerQuery.ExecuteNonQuery();
+                MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                adaptar.SelectCommand = registerQuery;
+                DataTable tabla = new DataTable();
+                adaptar.Fill(tabla);
+                DatDis.DataSource = tabla;
+
+            }
+            else
+            {
+                reade.Close();
+                var checkInfo1 = new MySqlCommand($"select * from distribuidor WHERE Rut =\"{Buscar}\"", connection);
+                var reader = checkInfo1.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
+                {
+                    reader.Close();
+
+                    var registerQuery = new MySqlCommand($"select * from distribuidor WHERE Rut =\"{Buscar}\"", connection);
+                    registerQuery.ExecuteNonQuery();
+                    MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                    adaptar.SelectCommand = registerQuery;
+                    DataTable tabla = new DataTable();
+                    adaptar.Fill(tabla);
+                    DatDis.DataSource = tabla;
+
+
+
+                }
+                else
+                {
+                    reader.Close();
+                    var checkInfo2 = new MySqlCommand($"select * from distribuidor WHERE Telefono =\"{Buscar}\"", connection);
+                    var reader1 = checkInfo2.ExecuteReader();
+                    reader1.Read();
+                    if (reader1.HasRows)
+                    {
+                        reader1.Close();
+
+
+
+                        var registerQuery = new MySqlCommand($"select * from distribuidor WHERE Telefono =\"{Buscar}\"", connection);
+                        registerQuery.ExecuteNonQuery();
+                        MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                        adaptar.SelectCommand = registerQuery;
+                        DataTable tabla = new DataTable();
+                        adaptar.Fill(tabla);
+                        DatDis.DataSource = tabla;
+
+
+
+                    }
+                    else
+                    {
+                        reader1.Close();
+                        var checkInfo3 = new MySqlCommand($"select * from distribuidor WHERE Direccion =\"{Buscar}\"", connection);
+                        var reader2 = checkInfo3.ExecuteReader();
+                        reader2.Read();
+                        if (reader2.HasRows)
+                        {
+                            reader2.Close();
+                            var registerQuery = new MySqlCommand($"select * from distribuidor WHERE Direccion =\"{Buscar}\"", connection);
+                            registerQuery.ExecuteNonQuery();
+                            MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                            adaptar.SelectCommand = registerQuery;
+                            DataTable tabla = new DataTable();
+                            adaptar.Fill(tabla);
+                            DatDis.DataSource = tabla;
+
+                        }
+                        else
+                        {
+                            reader2.Close();
+                            MessageBox.Show("No existe un Distribuidor con esos Datos", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
+
+                    }
+
+
+                }
+
+            }
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            MatPan.BringToFront();
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            MySqlCommand comando = new MySqlCommand();
+            comando.Connection = connection;
+            comando.CommandText = ("select * from materia_prima;");
+
+            MySqlDataAdapter adaptar = new MySqlDataAdapter();
+            adaptar.SelectCommand = comando;
+            DataTable tabla = new DataTable();
+            adaptar.Fill(tabla);
+            DtMatPri.DataSource = tabla;
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button27_Click(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            MySqlCommand comando = new MySqlCommand();
+            comando.Connection = connection;
+            comando.CommandText = ("select * from materia_prima;");
+
+            MySqlDataAdapter adaptar = new MySqlDataAdapter();
+            adaptar.SelectCommand = comando;
+            DataTable tabla = new DataTable();
+            adaptar.Fill(tabla);
+            DtMatPri.DataSource = tabla;
+        }
+
+        private void buss_Click(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            string Buscar = textbusca.Text;
+            var checkInfo = new MySqlCommand($"select * from materia_prima WHERE Nombre =\"{Buscar}\"", connection);
+            var reade = checkInfo.ExecuteReader();
+            reade.Read();
+            if (reade.HasRows)
+            {
+                reade.Close();
+
+
+                var registerQuery = new MySqlCommand($"select * from materia_prima WHERE Nombre =\"{Buscar}\"", connection);
+                registerQuery.ExecuteNonQuery();
+                MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                adaptar.SelectCommand = registerQuery;
+                DataTable tabla = new DataTable();
+                adaptar.Fill(tabla);
+                DtMatPri.DataSource = tabla;
+
+            }
+            else
+            {
+                reade.Close();
+                var checkInfo1 = new MySqlCommand($"select * from materia_prima WHERE IdM =\"{Buscar}\"", connection);
+                var reader = checkInfo1.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
+                {
+                    reader.Close();
+
+                    var registerQuery = new MySqlCommand($"select * from materia_prima WHERE IdM =\"{Buscar}\"", connection);
+                    registerQuery.ExecuteNonQuery();
+                    MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                    adaptar.SelectCommand = registerQuery;
+                    DataTable tabla = new DataTable();
+                    adaptar.Fill(tabla);
+                    DtMatPri.DataSource = tabla;
+
+
+
+                }
+                else
+                {
+                    reader.Close();
+                    var checkInfo2 = new MySqlCommand($"select * from materia_prima WHERE tipo =\"{Buscar}\"", connection);
+                    var reader1 = checkInfo2.ExecuteReader();
+                    reader1.Read();
+                    if (reader1.HasRows)
+                    {
+                        reader1.Close();
+
+
+
+                        var registerQuery = new MySqlCommand($"select * from materia_prima WHERE tipo =\"{Buscar}\"", connection);
+                        registerQuery.ExecuteNonQuery();
+                        MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                        adaptar.SelectCommand = registerQuery;
+                        DataTable tabla = new DataTable();
+                        adaptar.Fill(tabla);
+                        DtMatPri.DataSource = tabla;
+
+
+
+                    }
+                    else
+                    {
+                        reader1.Close();
+                        var checkInfo3 = new MySqlCommand($"select * from distribuidor WHERE IdD =\"{Buscar}\"", connection);
+                        var reader2 = checkInfo3.ExecuteReader();
+                        reader2.Read();
+                        if (reader2.HasRows)
+                        {
+                            reader2.Close();
+                            var registerQuery = new MySqlCommand($"select * from distribuidor WHERE IdD =\"{Buscar}\"", connection);
+                            registerQuery.ExecuteNonQuery();
+                            MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                            adaptar.SelectCommand = registerQuery;
+                            DataTable tabla = new DataTable();
+                            adaptar.Fill(tabla);
+                            DtMatPri.DataSource = tabla;
+
+                        }
+                        else
+                        {
+                            reader2.Close();
+                            MessageBox.Show("No existe una Materia Prima con esos Datos", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
+
+                    }
+
+
+                }
+
+            }
         }
     }
 }
