@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             panel2 = new Panel();
             p3 = new Panel();
             panel1 = new Panel();
@@ -64,6 +65,7 @@
             label1 = new Label();
             Cantidad = new TextBox();
             panel4 = new Panel();
+            button28 = new Button();
             button10 = new Button();
             button9 = new Button();
             button8 = new Button();
@@ -117,10 +119,45 @@
             button23 = new Button();
             DatDis = new DataGridView();
             MatPan = new Panel();
+            button30 = new Button();
+            button26 = new Button();
             buss = new Button();
             textbusca = new TextBox();
             button27 = new Button();
             DtMatPri = new DataGridView();
+            PanNC = new Panel();
+            label18 = new Label();
+            NewCotraseña = new TextBox();
+            label17 = new Label();
+            button29 = new Button();
+            UserName = new TextBox();
+            panel6 = new Panel();
+            label20 = new Label();
+            TextIdDIS = new TextBox();
+            groupBox4 = new GroupBox();
+            checkBox23 = new CheckBox();
+            checkBox25 = new CheckBox();
+            checkBox26 = new CheckBox();
+            checkBox27 = new CheckBox();
+            checkBox28 = new CheckBox();
+            checkBox29 = new CheckBox();
+            checkBox30 = new CheckBox();
+            checkBox31 = new CheckBox();
+            checkBox17 = new CheckBox();
+            checkBox18 = new CheckBox();
+            checkBox19 = new CheckBox();
+            checkBox20 = new CheckBox();
+            checkBox21 = new CheckBox();
+            checkBox22 = new CheckBox();
+            checkBox14 = new CheckBox();
+            checkBox15 = new CheckBox();
+            checkBox16 = new CheckBox();
+            checkBox11 = new CheckBox();
+            checkBox12 = new CheckBox();
+            checkBox13 = new CheckBox();
+            label19 = new Label();
+            button31 = new Button();
+            TextNomMat = new TextBox();
             panel1.SuspendLayout();
             p4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dt1).BeginInit();
@@ -140,6 +177,9 @@
             ((System.ComponentModel.ISupportInitialize)DatDis).BeginInit();
             MatPan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DtMatPri).BeginInit();
+            PanNC.SuspendLayout();
+            panel6.SuspendLayout();
+            groupBox4.SuspendLayout();
             SuspendLayout();
             // 
             // panel2
@@ -154,7 +194,7 @@
             // p3
             // 
             p3.BackColor = Color.AliceBlue;
-            p3.Location = new Point(120, 53);
+            p3.Location = new Point(123, 53);
             p3.Name = "p3";
             p3.Size = new Size(769, 451);
             p3.TabIndex = 9;
@@ -237,7 +277,7 @@
             p4.Controls.Add(button2);
             p4.Controls.Add(button1);
             p4.Controls.Add(dt1);
-            p4.Location = new Point(120, 52);
+            p4.Location = new Point(121, 53);
             p4.Name = "p4";
             p4.Size = new Size(769, 454);
             p4.TabIndex = 10;
@@ -498,6 +538,7 @@
             // panel4
             // 
             panel4.BackColor = Color.AliceBlue;
+            panel4.Controls.Add(button28);
             panel4.Controls.Add(button10);
             panel4.Controls.Add(button9);
             panel4.Controls.Add(button8);
@@ -516,6 +557,16 @@
             panel4.Size = new Size(769, 451);
             panel4.TabIndex = 10;
             panel4.Paint += panel4_Paint;
+            // 
+            // button28
+            // 
+            button28.Location = new Point(454, 400);
+            button28.Name = "button28";
+            button28.Size = new Size(135, 23);
+            button28.TabIndex = 13;
+            button28.Text = "Cambiar Contraseña";
+            button28.UseVisualStyleBackColor = true;
+            button28.Click += button28_Click;
             // 
             // button10
             // 
@@ -558,7 +609,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(61, 201);
+            label10.Location = new Point(68, 214);
             label10.Name = "label10";
             label10.Size = new Size(47, 15);
             label10.TabIndex = 8;
@@ -566,7 +617,7 @@
             // 
             // textCedula
             // 
-            textCedula.Location = new Point(86, 219);
+            textCedula.Location = new Point(93, 232);
             textCedula.Name = "textCedula";
             textCedula.Size = new Size(100, 23);
             textCedula.TabIndex = 7;
@@ -584,7 +635,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(61, 105);
+            label9.Location = new Point(68, 118);
             label9.Name = "label9";
             label9.Size = new Size(50, 15);
             label9.TabIndex = 5;
@@ -593,7 +644,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(61, 151);
+            label8.Location = new Point(68, 164);
             label8.Name = "label8";
             label8.Size = new Size(70, 15);
             label8.TabIndex = 4;
@@ -602,7 +653,7 @@
             // 
             // button7
             // 
-            button7.Location = new Point(86, 358);
+            button7.Location = new Point(93, 371);
             button7.Name = "button7";
             button7.Size = new Size(75, 23);
             button7.TabIndex = 3;
@@ -615,7 +666,7 @@
             groupBox2.Controls.Add(checkBox5);
             groupBox2.Controls.Add(checkBox6);
             groupBox2.Controls.Add(checkBox4);
-            groupBox2.Location = new Point(53, 260);
+            groupBox2.Location = new Point(60, 273);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(147, 78);
             groupBox2.TabIndex = 2;
@@ -657,14 +708,14 @@
             // 
             // TextPass
             // 
-            TextPass.Location = new Point(86, 166);
+            TextPass.Location = new Point(93, 179);
             TextPass.Name = "TextPass";
             TextPass.Size = new Size(100, 23);
             TextPass.TabIndex = 1;
             // 
             // TextName
             // 
-            TextName.Location = new Point(86, 123);
+            TextName.Location = new Point(93, 136);
             TextName.Name = "TextName";
             TextName.Size = new Size(100, 23);
             TextName.TabIndex = 0;
@@ -684,7 +735,7 @@
             Pan.Controls.Add(button12);
             Pan.Controls.Add(button11);
             Pan.Controls.Add(TxtEditar);
-            Pan.Location = new Point(120, 52);
+            Pan.Location = new Point(120, 51);
             Pan.Name = "Pan";
             Pan.Size = new Size(769, 127);
             Pan.TabIndex = 11;
@@ -696,7 +747,7 @@
             pan5.Controls.Add(button20);
             pan5.Controls.Add(IdDis);
             pan5.ForeColor = SystemColors.ControlLight;
-            pan5.Location = new Point(1, 43);
+            pan5.Location = new Point(1, 42);
             pan5.Name = "pan5";
             pan5.Size = new Size(769, 85);
             pan5.TabIndex = 13;
@@ -1002,7 +1053,7 @@
             panel5.Controls.Add(txtbusca);
             panel5.Controls.Add(button23);
             panel5.Controls.Add(DatDis);
-            panel5.Location = new Point(121, 54);
+            panel5.Location = new Point(121, 53);
             panel5.Name = "panel5";
             panel5.Size = new Size(769, 451);
             panel5.TabIndex = 12;
@@ -1046,14 +1097,36 @@
             // MatPan
             // 
             MatPan.BackColor = Color.Azure;
+            MatPan.Controls.Add(button30);
+            MatPan.Controls.Add(button26);
             MatPan.Controls.Add(buss);
             MatPan.Controls.Add(textbusca);
             MatPan.Controls.Add(button27);
             MatPan.Controls.Add(DtMatPri);
-            MatPan.Location = new Point(122, 52);
+            MatPan.Location = new Point(121, 53);
             MatPan.Name = "MatPan";
             MatPan.Size = new Size(769, 451);
             MatPan.TabIndex = 13;
+            // 
+            // button30
+            // 
+            button30.Location = new Point(142, 402);
+            button30.Name = "button30";
+            button30.Size = new Size(75, 23);
+            button30.TabIndex = 5;
+            button30.Text = "Agregar";
+            button30.UseVisualStyleBackColor = true;
+            button30.Click += button30_Click;
+            // 
+            // button26
+            // 
+            button26.Location = new Point(369, 102);
+            button26.Name = "button26";
+            button26.Size = new Size(75, 23);
+            button26.TabIndex = 4;
+            button26.Text = "Borrar";
+            button26.UseVisualStyleBackColor = true;
+            button26.Click += button26_Click;
             // 
             // buss
             // 
@@ -1074,7 +1147,7 @@
             // 
             // button27
             // 
-            button27.Location = new Point(192, 394);
+            button27.Location = new Point(258, 402);
             button27.Name = "button27";
             button27.Size = new Size(75, 23);
             button27.TabIndex = 1;
@@ -1092,20 +1165,387 @@
             DtMatPri.TabIndex = 0;
             DtMatPri.CellContentClick += dataGridView1_CellContentClick_1;
             // 
+            // PanNC
+            // 
+            PanNC.BackColor = Color.CadetBlue;
+            PanNC.Controls.Add(label18);
+            PanNC.Controls.Add(NewCotraseña);
+            PanNC.Controls.Add(label17);
+            PanNC.Controls.Add(button29);
+            PanNC.Controls.Add(UserName);
+            PanNC.ForeColor = SystemColors.ControlLight;
+            PanNC.Location = new Point(120, 54);
+            PanNC.Name = "PanNC";
+            PanNC.Size = new Size(769, 85);
+            PanNC.TabIndex = 14;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new Point(210, 13);
+            label18.Name = "label18";
+            label18.Size = new Size(107, 15);
+            label18.TabIndex = 12;
+            label18.Text = "Nueva Contraseña:";
+            // 
+            // NewCotraseña
+            // 
+            NewCotraseña.Location = new Point(243, 31);
+            NewCotraseña.Name = "NewCotraseña";
+            NewCotraseña.Size = new Size(128, 23);
+            NewCotraseña.TabIndex = 11;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(53, 13);
+            label17.Name = "label17";
+            label17.Size = new Size(54, 15);
+            label17.TabIndex = 10;
+            label17.Text = "Nombre:";
+            // 
+            // button29
+            // 
+            button29.ForeColor = SystemColors.ActiveCaptionText;
+            button29.Location = new Point(395, 30);
+            button29.Name = "button29";
+            button29.Size = new Size(75, 23);
+            button29.TabIndex = 6;
+            button29.Text = "Modificar";
+            button29.UseVisualStyleBackColor = true;
+            button29.Click += button29_Click;
+            // 
+            // UserName
+            // 
+            UserName.Location = new Point(76, 31);
+            UserName.Name = "UserName";
+            UserName.Size = new Size(128, 23);
+            UserName.TabIndex = 9;
+            // 
+            // panel6
+            // 
+            panel6.BackColor = Color.CadetBlue;
+            panel6.Controls.Add(label20);
+            panel6.Controls.Add(TextIdDIS);
+            panel6.Controls.Add(groupBox4);
+            panel6.Controls.Add(label19);
+            panel6.Controls.Add(button31);
+            panel6.Controls.Add(TextNomMat);
+            panel6.ForeColor = SystemColors.ControlLight;
+            panel6.Location = new Point(623, 49);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(267, 453);
+            panel6.TabIndex = 9;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new Point(34, 56);
+            label20.Name = "label20";
+            label20.Size = new Size(82, 15);
+            label20.TabIndex = 14;
+            label20.Text = "IdDistribuidor:";
+            // 
+            // TextIdDIS
+            // 
+            TextIdDIS.Location = new Point(57, 74);
+            TextIdDIS.Name = "TextIdDIS";
+            TextIdDIS.Size = new Size(140, 23);
+            TextIdDIS.TabIndex = 13;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(checkBox23);
+            groupBox4.Controls.Add(checkBox25);
+            groupBox4.Controls.Add(checkBox26);
+            groupBox4.Controls.Add(checkBox27);
+            groupBox4.Controls.Add(checkBox28);
+            groupBox4.Controls.Add(checkBox29);
+            groupBox4.Controls.Add(checkBox30);
+            groupBox4.Controls.Add(checkBox31);
+            groupBox4.Controls.Add(checkBox17);
+            groupBox4.Controls.Add(checkBox18);
+            groupBox4.Controls.Add(checkBox19);
+            groupBox4.Controls.Add(checkBox20);
+            groupBox4.Controls.Add(checkBox21);
+            groupBox4.Controls.Add(checkBox22);
+            groupBox4.Controls.Add(checkBox14);
+            groupBox4.Controls.Add(checkBox15);
+            groupBox4.Controls.Add(checkBox16);
+            groupBox4.Controls.Add(checkBox11);
+            groupBox4.Controls.Add(checkBox12);
+            groupBox4.Controls.Add(checkBox13);
+            groupBox4.Location = new Point(10, 121);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(255, 222);
+            groupBox4.TabIndex = 12;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Seleccione un Tipo";
+            // 
+            // checkBox23
+            // 
+            checkBox23.AutoSize = true;
+            checkBox23.Location = new Point(38, 185);
+            checkBox23.Name = "checkBox23";
+            checkBox23.Size = new Size(94, 19);
+            checkBox23.TabIndex = 27;
+            checkBox23.Text = "Margarina M";
+            checkBox23.UseVisualStyleBackColor = true;
+            checkBox23.CheckedChanged += checkBox23_CheckedChanged;
+            // 
+            // checkBox25
+            // 
+            checkBox25.AutoSize = true;
+            checkBox25.Location = new Point(135, 185);
+            checkBox25.Name = "checkBox25";
+            checkBox25.Size = new Size(55, 19);
+            checkBox25.TabIndex = 29;
+            checkBox25.Text = "Otros";
+            checkBox25.UseVisualStyleBackColor = true;
+            checkBox25.CheckedChanged += checkBox25_CheckedChanged;
+            // 
+            // checkBox26
+            // 
+            checkBox26.AutoSize = true;
+            checkBox26.Location = new Point(6, 158);
+            checkBox26.Name = "checkBox26";
+            checkBox26.Size = new Size(60, 19);
+            checkBox26.TabIndex = 24;
+            checkBox26.Text = "F maiz";
+            checkBox26.UseVisualStyleBackColor = true;
+            checkBox26.CheckedChanged += checkBox26_CheckedChanged;
+            // 
+            // checkBox27
+            // 
+            checkBox27.AutoSize = true;
+            checkBox27.Location = new Point(151, 158);
+            checkBox27.Name = "checkBox27";
+            checkBox27.Size = new Size(79, 19);
+            checkBox27.TabIndex = 25;
+            checkBox27.Text = "P Hornear";
+            checkBox27.UseVisualStyleBackColor = true;
+            checkBox27.CheckedChanged += checkBox27_CheckedChanged;
+            // 
+            // checkBox28
+            // 
+            checkBox28.AutoSize = true;
+            checkBox28.Location = new Point(71, 158);
+            checkBox28.Name = "checkBox28";
+            checkBox28.Size = new Size(61, 19);
+            checkBox28.TabIndex = 26;
+            checkBox28.Text = "Huevo";
+            checkBox28.UseVisualStyleBackColor = true;
+            checkBox28.CheckedChanged += checkBox28_CheckedChanged;
+            // 
+            // checkBox29
+            // 
+            checkBox29.AutoSize = true;
+            checkBox29.Location = new Point(6, 129);
+            checkBox29.Name = "checkBox29";
+            checkBox29.Size = new Size(65, 19);
+            checkBox29.TabIndex = 21;
+            checkBox29.Text = "D leche";
+            checkBox29.UseVisualStyleBackColor = true;
+            checkBox29.CheckedChanged += checkBox29_CheckedChanged;
+            // 
+            // checkBox30
+            // 
+            checkBox30.AutoSize = true;
+            checkBox30.Location = new Point(163, 129);
+            checkBox30.Name = "checkBox30";
+            checkBox30.Size = new Size(92, 19);
+            checkBox30.TabIndex = 22;
+            checkBox30.Text = "D Membrillo";
+            checkBox30.UseVisualStyleBackColor = true;
+            checkBox30.CheckedChanged += checkBox30_CheckedChanged;
+            // 
+            // checkBox31
+            // 
+            checkBox31.AutoSize = true;
+            checkBox31.Location = new Point(71, 129);
+            checkBox31.Name = "checkBox31";
+            checkBox31.Size = new Size(92, 19);
+            checkBox31.TabIndex = 23;
+            checkBox31.Text = "Margarina H";
+            checkBox31.UseVisualStyleBackColor = true;
+            checkBox31.CheckedChanged += checkBox31_CheckedChanged;
+            // 
+            // checkBox17
+            // 
+            checkBox17.AutoSize = true;
+            checkBox17.Location = new Point(5, 104);
+            checkBox17.Name = "checkBox17";
+            checkBox17.Size = new Size(59, 19);
+            checkBox17.TabIndex = 18;
+            checkBox17.Text = "Fonda";
+            checkBox17.UseVisualStyleBackColor = true;
+            checkBox17.CheckedChanged += checkBox17_CheckedChanged;
+            // 
+            // checkBox18
+            // 
+            checkBox18.AutoSize = true;
+            checkBox18.Location = new Point(150, 104);
+            checkBox18.Name = "checkBox18";
+            checkBox18.Size = new Size(96, 19);
+            checkBox18.TabIndex = 19;
+            checkBox18.Text = "Coco Rallado";
+            checkBox18.UseVisualStyleBackColor = true;
+            checkBox18.CheckedChanged += checkBox18_CheckedChanged;
+            // 
+            // checkBox19
+            // 
+            checkBox19.AutoSize = true;
+            checkBox19.Location = new Point(70, 104);
+            checkBox19.Name = "checkBox19";
+            checkBox19.Size = new Size(80, 19);
+            checkBox19.TabIndex = 20;
+            checkBox19.Text = "Chocolate";
+            checkBox19.UseVisualStyleBackColor = true;
+            checkBox19.CheckedChanged += checkBox19_CheckedChanged;
+            // 
+            // checkBox20
+            // 
+            checkBox20.AutoSize = true;
+            checkBox20.Location = new Point(5, 79);
+            checkBox20.Name = "checkBox20";
+            checkBox20.Size = new Size(54, 19);
+            checkBox20.TabIndex = 15;
+            checkBox20.Text = "Masa";
+            checkBox20.UseVisualStyleBackColor = true;
+            checkBox20.CheckedChanged += checkBox20_CheckedChanged;
+            // 
+            // checkBox21
+            // 
+            checkBox21.AutoSize = true;
+            checkBox21.Location = new Point(150, 79);
+            checkBox21.Name = "checkBox21";
+            checkBox21.Size = new Size(81, 19);
+            checkBox21.TabIndex = 16;
+            checkBox21.Text = "CPastelera";
+            checkBox21.UseVisualStyleBackColor = true;
+            checkBox21.CheckedChanged += checkBox21_CheckedChanged;
+            // 
+            // checkBox22
+            // 
+            checkBox22.AutoSize = true;
+            checkBox22.Location = new Point(70, 79);
+            checkBox22.Name = "checkBox22";
+            checkBox22.Size = new Size(78, 19);
+            checkBox22.TabIndex = 17;
+            checkBox22.Text = "Mj Harina";
+            checkBox22.UseVisualStyleBackColor = true;
+            checkBox22.CheckedChanged += checkBox22_CheckedChanged;
+            // 
+            // checkBox14
+            // 
+            checkBox14.AutoSize = true;
+            checkBox14.Location = new Point(5, 53);
+            checkBox14.Name = "checkBox14";
+            checkBox14.Size = new Size(55, 19);
+            checkBox14.TabIndex = 12;
+            checkBox14.Text = "Grasa";
+            checkBox14.UseVisualStyleBackColor = true;
+            checkBox14.CheckedChanged += checkBox14_CheckedChanged;
+            // 
+            // checkBox15
+            // 
+            checkBox15.AutoSize = true;
+            checkBox15.Location = new Point(150, 53);
+            checkBox15.Name = "checkBox15";
+            checkBox15.Size = new Size(45, 19);
+            checkBox15.TabIndex = 13;
+            checkBox15.Text = "Gas";
+            checkBox15.UseVisualStyleBackColor = true;
+            checkBox15.CheckedChanged += checkBox15_CheckedChanged;
+            // 
+            // checkBox16
+            // 
+            checkBox16.AutoSize = true;
+            checkBox16.Location = new Point(70, 53);
+            checkBox16.Name = "checkBox16";
+            checkBox16.Size = new Size(62, 19);
+            checkBox16.TabIndex = 14;
+            checkBox16.Text = "Azucar";
+            checkBox16.UseVisualStyleBackColor = true;
+            checkBox16.CheckedChanged += checkBox16_CheckedChanged;
+            // 
+            // checkBox11
+            // 
+            checkBox11.AutoSize = true;
+            checkBox11.Location = new Point(5, 30);
+            checkBox11.Name = "checkBox11";
+            checkBox11.Size = new Size(61, 19);
+            checkBox11.TabIndex = 9;
+            checkBox11.Text = "Harina";
+            checkBox11.UseVisualStyleBackColor = true;
+            checkBox11.CheckedChanged += checkBox11_CheckedChanged;
+            // 
+            // checkBox12
+            // 
+            checkBox12.AutoSize = true;
+            checkBox12.Location = new Point(150, 30);
+            checkBox12.Name = "checkBox12";
+            checkBox12.Size = new Size(41, 19);
+            checkBox12.TabIndex = 10;
+            checkBox12.Text = "Sal";
+            checkBox12.UseVisualStyleBackColor = true;
+            checkBox12.CheckedChanged += checkBox12_CheckedChanged;
+            // 
+            // checkBox13
+            // 
+            checkBox13.AutoSize = true;
+            checkBox13.Location = new Point(70, 30);
+            checkBox13.Name = "checkBox13";
+            checkBox13.Size = new Size(74, 19);
+            checkBox13.TabIndex = 11;
+            checkBox13.Text = "Levadura";
+            checkBox13.UseVisualStyleBackColor = true;
+            checkBox13.CheckedChanged += checkBox13_CheckedChanged;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new Point(34, 9);
+            label19.Name = "label19";
+            label19.Size = new Size(54, 15);
+            label19.TabIndex = 8;
+            label19.Text = "Nombre:";
+            // 
+            // button31
+            // 
+            button31.ForeColor = SystemColors.ActiveCaptionText;
+            button31.Location = new Point(91, 372);
+            button31.Name = "button31";
+            button31.Size = new Size(75, 23);
+            button31.TabIndex = 6;
+            button31.Text = "Agregar";
+            button31.UseVisualStyleBackColor = true;
+            button31.Click += button31_Click;
+            // 
+            // TextNomMat
+            // 
+            TextNomMat.Location = new Point(58, 27);
+            TextNomMat.Name = "TextNomMat";
+            TextNomMat.Size = new Size(140, 23);
+            TextNomMat.TabIndex = 6;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(887, 501);
-            Controls.Add(MatPan);
-            Controls.Add(panel5);
-            Controls.Add(p3);
-            Controls.Add(p4);
+            ClientSize = new Size(885, 496);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(Pan);
-            Controls.Add(panel4);
+            Controls.Add(panel6);
             Controls.Add(panel3);
+            Controls.Add(MatPan);
+            Controls.Add(panel4);
+            Controls.Add(PanNC);
+            Controls.Add(panel5);
+            Controls.Add(p3);
+            Controls.Add(p4);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form2";
             Text = "Admin";
             Load += Form2_Load;
@@ -1141,6 +1581,12 @@
             MatPan.ResumeLayout(false);
             MatPan.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DtMatPri).EndInit();
+            PanNC.ResumeLayout(false);
+            PanNC.PerformLayout();
+            panel6.ResumeLayout(false);
+            panel6.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1239,5 +1685,41 @@
         private TextBox textbusca;
         private Button button27;
         private DataGridView DtMatPri;
+        private Button button26;
+        private Button button28;
+        private Panel PanNC;
+        private Label label18;
+        private TextBox NewCotraseña;
+        private Label label17;
+        private Button button29;
+        private TextBox UserName;
+        private Button button30;
+        private Panel panel6;
+        private Label label19;
+        private Button button31;
+        private TextBox TextNomMat;
+        private GroupBox groupBox4;
+        private CheckBox checkBox17;
+        private CheckBox checkBox18;
+        private CheckBox checkBox19;
+        private CheckBox checkBox20;
+        private CheckBox checkBox21;
+        private CheckBox checkBox22;
+        private CheckBox checkBox14;
+        private CheckBox checkBox15;
+        private CheckBox checkBox16;
+        private CheckBox checkBox11;
+        private CheckBox checkBox12;
+        private CheckBox checkBox13;
+        private CheckBox checkBox23;
+        private CheckBox checkBox25;
+        private CheckBox checkBox26;
+        private CheckBox checkBox27;
+        private CheckBox checkBox28;
+        private CheckBox checkBox29;
+        private CheckBox checkBox30;
+        private CheckBox checkBox31;
+        private Label label20;
+        private TextBox TextIdDIS;
     }
 }

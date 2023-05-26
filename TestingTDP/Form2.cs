@@ -16,6 +16,7 @@ namespace TestingTDP
 
     public partial class Form2 : Form
     {
+        string Tipo2;
         string Tipo;
         string Tipo1;
         String Cargo;
@@ -886,5 +887,216 @@ namespace TestingTDP
 
             }
         }
+
+        private void btnañadira_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+
+
+            PanNC.BringToFront();
+        }
+
+        private void button29_Click(object sender, EventArgs e)
+        {
+            string edit = UserName.Text;
+            string edit1 = NewCotraseña.Text;
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+
+            connection.Open();
+            var registerQuery = new MySqlCommand($"UPDATE usuario SET Contraseña=\"{edit1}\" WHERE Nombre=\"{edit}\";", connection);
+            registerQuery.ExecuteNonQuery();
+            panel4.BringToFront();
+        }
+
+        private void button26_Click(object sender, EventArgs e)
+        {
+            string nombre1 = textbusca.Text;
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+
+            connection.Open();
+            var registerQuery = new MySqlCommand($"DELETE from materia_prima WHERE Nombre =\"{nombre1}\"", connection);
+            registerQuery.ExecuteNonQuery();
+            try
+            {
+
+                MySqlCommand comando = new MySqlCommand();
+                comando.Connection = connection;
+                comando.CommandText = ("select * from materia_prima;");
+
+                MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                adaptar.SelectCommand = comando;
+                DataTable tabla = new DataTable();
+                adaptar.Fill(tabla);
+                DtMatPri.DataSource = tabla;
+
+            }
+            catch (Exception b)
+            {
+
+                MessageBox.Show(b.Message + b.StackTrace);
+            }
+        }
+
+        private void checkBox11_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo2 = "Harina";
+        }
+
+        private void checkBox13_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo2 = "Levadura";
+        }
+
+        private void checkBox12_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo2 = "Sal";
+        }
+
+        private void checkBox14_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo2 = "Grasa";
+        }
+
+        private void checkBox16_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo2 = "Azucar";
+        }
+
+        private void checkBox15_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo2 = "Gas";
+        }
+
+        private void checkBox20_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo2 = "Masa";
+        }
+
+        private void checkBox22_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo2 = "Mejorador de Harina";
+        }
+
+        private void checkBox21_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo2 = "Crema Pastelera";
+        }
+
+        private void checkBox17_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo2 = "Fondan";
+
+        }
+
+        private void checkBox19_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo2 = "Chocolate";
+        }
+
+        private void checkBox18_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo2 = "Coco Rallado";
+        }
+
+        private void checkBox29_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo2 = "Dulce de Leche";
+        }
+
+        private void checkBox31_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo2 = "Margarina de Hogaldre";
+        }
+
+        private void checkBox30_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo2 = "Dulce de Membrillo";
+        }
+
+        private void checkBox26_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo2 = "Fecula de Maiz";
+        }
+
+        private void checkBox28_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo2 = "Huevo";
+        }
+
+        private void checkBox27_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo2 = "Polvo De Hornear";
+        }
+
+        private void checkBox23_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo2 = "Margarina De Masa";
+        }
+
+        private void checkBox25_CheckedChanged(object sender, EventArgs e)
+        {
+            Tipo2 = "Otros";
+        }
+
+        private void button31_Click(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            string nombre = TextNomMat.Text;
+
+            string precio = Precio.Text;
+            string cantidad = Cantidad.Text;
+            string IdD = TextIdDIS.Text;
+
+
+
+
+            connection.Open();
+
+            var checkInfo1 = new MySqlCommand($"Select Rut From distribuidor where Rut=\"{IdD}\"", connection);
+            var Reader = checkInfo1.ExecuteReader();
+            Reader.Read();
+            if (Reader.HasRows)
+            {
+                Reader.Close();
+                var registerQuery = new MySqlCommand($"INSERT INTO materia_prima (Nombre,tipo, IdD) VALUES (\"{nombre}\", \"{Tipo2}\", \"{IdD}\")", connection);
+                registerQuery.ExecuteNonQuery();
+                MessageBox.Show("El Producto se a registrado correctamente", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MatPan.BringToFront();
+                try
+                {
+
+                    MySqlCommand comando = new MySqlCommand();
+                    comando.Connection = connection;
+                    comando.CommandText = ("select * from materia_prima;");
+
+                    MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                    adaptar.SelectCommand = comando;
+                    DataTable tabla = new DataTable();
+                    adaptar.Fill(tabla);
+                    DtMatPri.DataSource = tabla;
+
+                }
+                catch (Exception b)
+                {
+
+                    MessageBox.Show(b.Message + b.StackTrace);
+                }
+            }
+            else
+            {
+                Reader.Close();
+                MessageBox.Show("El Distribuidor no existe", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void button30_Click(object sender, EventArgs e)
+        {
+            panel6.BringToFront();
+        }
     }
 }
+
