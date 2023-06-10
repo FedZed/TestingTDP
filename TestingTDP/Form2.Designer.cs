@@ -31,6 +31,21 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             panel2 = new Panel();
             p3 = new Panel();
+            Lbls = new Label();
+            DtFactu = new DataGridView();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            Column1 = new DataGridViewTextBoxColumn();
+            Preci = new TextBox();
+            label24 = new Label();
+            button34 = new Button();
+            label23 = new Label();
+            Cant = new TextBox();
+            label22 = new Label();
+            button33 = new Button();
+            Idpro = new TextBox();
+            Produ = new DataGridView();
+            button32 = new Button();
             panel1 = new Panel();
             button25 = new Button();
             button22 = new Button();
@@ -83,10 +98,6 @@
             TextPass = new TextBox();
             TextName = new TextBox();
             Pan = new Panel();
-            pan5 = new Panel();
-            label16 = new Label();
-            button20 = new Button();
-            IdDis = new TextBox();
             pan4 = new Panel();
             label15 = new Label();
             button19 = new Button();
@@ -113,6 +124,10 @@
             button12 = new Button();
             button11 = new Button();
             TxtEditar = new TextBox();
+            pan5 = new Panel();
+            label16 = new Label();
+            button20 = new Button();
+            IdDis = new TextBox();
             panel5 = new Panel();
             button24 = new Button();
             txtbusca = new TextBox();
@@ -132,6 +147,8 @@
             button29 = new Button();
             UserName = new TextBox();
             panel6 = new Panel();
+            label21 = new Label();
+            textCanti = new TextBox();
             label20 = new Label();
             TextIdDIS = new TextBox();
             groupBox4 = new GroupBox();
@@ -158,6 +175,10 @@
             label19 = new Label();
             button31 = new Button();
             TextNomMat = new TextBox();
+            mySqlCommand1 = new MySqlConnector.MySqlCommand();
+            p3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DtFactu).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Produ).BeginInit();
             panel1.SuspendLayout();
             p4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dt1).BeginInit();
@@ -167,12 +188,12 @@
             ((System.ComponentModel.ISupportInitialize)DtUser).BeginInit();
             groupBox2.SuspendLayout();
             Pan.SuspendLayout();
-            pan5.SuspendLayout();
             pan4.SuspendLayout();
             pan3.SuspendLayout();
             Pan2.SuspendLayout();
             groupBox3.SuspendLayout();
             Pan1.SuspendLayout();
+            pan5.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DatDis).BeginInit();
             MatPan.SuspendLayout();
@@ -186,7 +207,7 @@
             // 
             panel2.BackColor = Color.CadetBlue;
             panel2.ForeColor = SystemColors.ControlLight;
-            panel2.Location = new Point(0, -35);
+            panel2.Location = new Point(-1, -33);
             panel2.Name = "panel2";
             panel2.Size = new Size(889, 87);
             panel2.TabIndex = 8;
@@ -194,10 +215,147 @@
             // p3
             // 
             p3.BackColor = Color.AliceBlue;
-            p3.Location = new Point(123, 53);
+            p3.Controls.Add(Lbls);
+            p3.Controls.Add(DtFactu);
+            p3.Controls.Add(Preci);
+            p3.Controls.Add(label24);
+            p3.Controls.Add(button34);
+            p3.Controls.Add(label23);
+            p3.Controls.Add(Cant);
+            p3.Controls.Add(label22);
+            p3.Controls.Add(button33);
+            p3.Controls.Add(Idpro);
+            p3.Controls.Add(Produ);
+            p3.Controls.Add(button32);
+            p3.Location = new Point(120, 52);
             p3.Name = "p3";
-            p3.Size = new Size(769, 451);
+            p3.Size = new Size(784, 451);
             p3.TabIndex = 9;
+            // 
+            // Lbls
+            // 
+            Lbls.AutoSize = true;
+            Lbls.Location = new Point(503, 398);
+            Lbls.Name = "Lbls";
+            Lbls.Size = new Size(0, 15);
+            Lbls.TabIndex = 11;
+            // 
+            // DtFactu
+            // 
+            DtFactu.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DtFactu.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, Column1 });
+            DtFactu.Location = new Point(421, 46);
+            DtFactu.Name = "DtFactu";
+            DtFactu.RowTemplate.Height = 25;
+            DtFactu.ShowCellErrors = false;
+            DtFactu.ShowRowErrors = false;
+            DtFactu.Size = new Size(328, 328);
+            DtFactu.TabIndex = 10;
+            DtFactu.CellContentClick += DtFactu_CellContentClick;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.HeaderText = "Nombre";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.HeaderText = "Cantidad";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // Column1
+            // 
+            Column1.HeaderText = "Precio";
+            Column1.Name = "Column1";
+            // 
+            // Preci
+            // 
+            Preci.Location = new Point(51, 132);
+            Preci.Name = "Preci";
+            Preci.Size = new Size(100, 23);
+            Preci.TabIndex = 9;
+            Preci.Text = "$";
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.Location = new Point(27, 115);
+            label24.Name = "label24";
+            label24.Size = new Size(43, 15);
+            label24.TabIndex = 8;
+            label24.Text = "Precio:";
+            label24.Click += label24_Click;
+            // 
+            // button34
+            // 
+            button34.Location = new Point(164, 129);
+            button34.Name = "button34";
+            button34.Size = new Size(115, 23);
+            button34.TabIndex = 7;
+            button34.Text = "Agregar a lista";
+            button34.UseVisualStyleBackColor = true;
+            button34.Click += button34_Click;
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Location = new Point(25, 80);
+            label23.Name = "label23";
+            label23.Size = new Size(35, 15);
+            label23.TabIndex = 6;
+            label23.Text = "Cant:";
+            // 
+            // Cant
+            // 
+            Cant.Location = new Point(50, 92);
+            Cant.Name = "Cant";
+            Cant.Size = new Size(100, 23);
+            Cant.TabIndex = 5;
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Location = new Point(21, 40);
+            label22.Name = "label22";
+            label22.Size = new Size(59, 15);
+            label22.TabIndex = 4;
+            label22.Text = "Producto:";
+            // 
+            // button33
+            // 
+            button33.Location = new Point(173, 57);
+            button33.Name = "button33";
+            button33.Size = new Size(75, 23);
+            button33.TabIndex = 3;
+            button33.Text = "Buscar";
+            button33.UseVisualStyleBackColor = true;
+            button33.Click += button33_Click;
+            // 
+            // Idpro
+            // 
+            Idpro.Location = new Point(49, 57);
+            Idpro.Name = "Idpro";
+            Idpro.Size = new Size(100, 23);
+            Idpro.TabIndex = 2;
+            // 
+            // Produ
+            // 
+            Produ.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Produ.Location = new Point(51, 164);
+            Produ.Name = "Produ";
+            Produ.RowTemplate.Height = 25;
+            Produ.Size = new Size(345, 206);
+            Produ.TabIndex = 1;
+            // 
+            // button32
+            // 
+            button32.Location = new Point(179, 389);
+            button32.Name = "button32";
+            button32.Size = new Size(75, 23);
+            button32.TabIndex = 0;
+            button32.Text = "Actualizar";
+            button32.UseVisualStyleBackColor = true;
+            button32.Click += button32_Click;
             // 
             // panel1
             // 
@@ -277,7 +435,7 @@
             p4.Controls.Add(button2);
             p4.Controls.Add(button1);
             p4.Controls.Add(dt1);
-            p4.Location = new Point(121, 53);
+            p4.Location = new Point(119, 53);
             p4.Name = "p4";
             p4.Size = new Size(769, 454);
             p4.TabIndex = 10;
@@ -723,7 +881,6 @@
             // Pan
             // 
             Pan.BackColor = SystemColors.InactiveBorder;
-            Pan.Controls.Add(pan5);
             Pan.Controls.Add(pan4);
             Pan.Controls.Add(pan3);
             Pan.Controls.Add(Pan2);
@@ -735,49 +892,11 @@
             Pan.Controls.Add(button12);
             Pan.Controls.Add(button11);
             Pan.Controls.Add(TxtEditar);
+            Pan.Controls.Add(pan5);
             Pan.Location = new Point(120, 51);
             Pan.Name = "Pan";
             Pan.Size = new Size(769, 127);
             Pan.TabIndex = 11;
-            // 
-            // pan5
-            // 
-            pan5.BackColor = Color.CadetBlue;
-            pan5.Controls.Add(label16);
-            pan5.Controls.Add(button20);
-            pan5.Controls.Add(IdDis);
-            pan5.ForeColor = SystemColors.ControlLight;
-            pan5.Location = new Point(1, 42);
-            pan5.Name = "pan5";
-            pan5.Size = new Size(769, 85);
-            pan5.TabIndex = 13;
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Location = new Point(209, 10);
-            label16.Name = "label16";
-            label16.Size = new Size(87, 15);
-            label16.TabIndex = 10;
-            label16.Text = "Id_Distribuidor:";
-            // 
-            // button20
-            // 
-            button20.ForeColor = SystemColors.ActiveCaptionText;
-            button20.Location = new Point(395, 30);
-            button20.Name = "button20";
-            button20.Size = new Size(75, 23);
-            button20.TabIndex = 6;
-            button20.Text = "Modificar";
-            button20.UseVisualStyleBackColor = true;
-            button20.Click += button20_Click;
-            // 
-            // IdDis
-            // 
-            IdDis.Location = new Point(225, 30);
-            IdDis.Name = "IdDis";
-            IdDis.Size = new Size(128, 23);
-            IdDis.TabIndex = 9;
             // 
             // pan4
             // 
@@ -1046,6 +1165,45 @@
             TxtEditar.Size = new Size(100, 23);
             TxtEditar.TabIndex = 0;
             // 
+            // pan5
+            // 
+            pan5.BackColor = Color.CadetBlue;
+            pan5.Controls.Add(label16);
+            pan5.Controls.Add(button20);
+            pan5.Controls.Add(IdDis);
+            pan5.ForeColor = SystemColors.ControlLight;
+            pan5.Location = new Point(1, 42);
+            pan5.Name = "pan5";
+            pan5.Size = new Size(769, 85);
+            pan5.TabIndex = 13;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(209, 10);
+            label16.Name = "label16";
+            label16.Size = new Size(87, 15);
+            label16.TabIndex = 10;
+            label16.Text = "Id_Distribuidor:";
+            // 
+            // button20
+            // 
+            button20.ForeColor = SystemColors.ActiveCaptionText;
+            button20.Location = new Point(395, 30);
+            button20.Name = "button20";
+            button20.Size = new Size(75, 23);
+            button20.TabIndex = 6;
+            button20.Text = "Modificar";
+            button20.UseVisualStyleBackColor = true;
+            button20.Click += button20_Click;
+            // 
+            // IdDis
+            // 
+            IdDis.Location = new Point(225, 30);
+            IdDis.Name = "IdDis";
+            IdDis.Size = new Size(128, 23);
+            IdDis.TabIndex = 9;
+            // 
             // panel5
             // 
             panel5.BackColor = Color.MintCream;
@@ -1225,6 +1383,8 @@
             // panel6
             // 
             panel6.BackColor = Color.CadetBlue;
+            panel6.Controls.Add(label21);
+            panel6.Controls.Add(textCanti);
             panel6.Controls.Add(label20);
             panel6.Controls.Add(TextIdDIS);
             panel6.Controls.Add(groupBox4);
@@ -1236,6 +1396,22 @@
             panel6.Name = "panel6";
             panel6.Size = new Size(267, 453);
             panel6.TabIndex = 9;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new Point(40, 342);
+            label21.Name = "label21";
+            label21.Size = new Size(58, 15);
+            label21.TabIndex = 16;
+            label21.Text = "Cantidad:";
+            // 
+            // textCanti
+            // 
+            textCanti.Location = new Point(63, 360);
+            textCanti.Name = "textCanti";
+            textCanti.Size = new Size(140, 23);
+            textCanti.TabIndex = 15;
             // 
             // label20
             // 
@@ -1275,7 +1451,7 @@
             groupBox4.Controls.Add(checkBox11);
             groupBox4.Controls.Add(checkBox12);
             groupBox4.Controls.Add(checkBox13);
-            groupBox4.Location = new Point(10, 121);
+            groupBox4.Location = new Point(10, 114);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new Size(255, 222);
             groupBox4.TabIndex = 12;
@@ -1514,7 +1690,7 @@
             // button31
             // 
             button31.ForeColor = SystemColors.ActiveCaptionText;
-            button31.Location = new Point(91, 372);
+            button31.Location = new Point(91, 393);
             button31.Name = "button31";
             button31.Size = new Size(75, 23);
             button31.TabIndex = 6;
@@ -1529,26 +1705,37 @@
             TextNomMat.Size = new Size(140, 23);
             TextNomMat.TabIndex = 6;
             // 
+            // mySqlCommand1
+            // 
+            mySqlCommand1.CommandTimeout = 0;
+            mySqlCommand1.Connection = null;
+            mySqlCommand1.Transaction = null;
+            mySqlCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(885, 496);
+            ClientSize = new Size(929, 507);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(Pan);
+            Controls.Add(PanNC);
+            Controls.Add(panel4);
+            Controls.Add(panel5);
             Controls.Add(panel6);
             Controls.Add(panel3);
-            Controls.Add(MatPan);
-            Controls.Add(panel4);
-            Controls.Add(PanNC);
-            Controls.Add(panel5);
             Controls.Add(p3);
             Controls.Add(p4);
+            Controls.Add(MatPan);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form2";
             Text = "Admin";
             Load += Form2_Load;
+            p3.ResumeLayout(false);
+            p3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)DtFactu).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Produ).EndInit();
             panel1.ResumeLayout(false);
             p4.ResumeLayout(false);
             p4.PerformLayout();
@@ -1564,8 +1751,6 @@
             groupBox2.PerformLayout();
             Pan.ResumeLayout(false);
             Pan.PerformLayout();
-            pan5.ResumeLayout(false);
-            pan5.PerformLayout();
             pan4.ResumeLayout(false);
             pan4.PerformLayout();
             pan3.ResumeLayout(false);
@@ -1575,6 +1760,8 @@
             groupBox3.PerformLayout();
             Pan1.ResumeLayout(false);
             Pan1.PerformLayout();
+            pan5.ResumeLayout(false);
+            pan5.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DatDis).EndInit();
@@ -1721,5 +1908,23 @@
         private CheckBox checkBox31;
         private Label label20;
         private TextBox TextIdDIS;
+        private Label label21;
+        private TextBox textCanti;
+        private DataGridView Produ;
+        private Button button32;
+        private Label label22;
+        private Button button33;
+        private TextBox Idpro;
+        private Button button34;
+        private Label label23;
+        private TextBox Cant;
+        private MySqlConnector.MySqlCommand mySqlCommand1;
+        private Label label24;
+        private DataGridView DtFactu;
+        private TextBox Preci;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn Column1;
+        private Label Lbls;
     }
 }

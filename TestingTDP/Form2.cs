@@ -26,26 +26,18 @@ namespace TestingTDP
             p3.BringToFront();
             MySqlConnection connection = new MySqlConnection(MainFunc.connString);
 
+            connection.Open();
+            MySqlCommand comando = new MySqlCommand();
+            comando.Connection = connection;
+            comando.CommandText = ("select nombre,cantidad,precio from producto;");
 
-            try
-            {
-                connection.Open();
-                MySqlCommand comando = new MySqlCommand();
-                comando.Connection = connection;
-                comando.CommandText = ("select * from producto;");
+            MySqlDataAdapter adaptar = new MySqlDataAdapter();
+            adaptar.SelectCommand = comando;
+            DataTable tabla = new DataTable();
+            adaptar.Fill(tabla);
+            Produ.DataSource = tabla;
 
-                MySqlDataAdapter adaptar = new MySqlDataAdapter();
-                adaptar.SelectCommand = comando;
-                DataTable tabla = new DataTable();
-                adaptar.Fill(tabla);
-                dt1.DataSource = tabla;
 
-            }
-            catch (Exception b)
-            {
-
-                MessageBox.Show(b.Message + b.StackTrace);
-            }
         }
         public class MainFunc
         {
@@ -63,12 +55,26 @@ namespace TestingTDP
 
         private void C1_Click(object sender, EventArgs e)
         {
+
             p3.BringToFront();
         }
 
         private void c2_Click(object sender, EventArgs e)
         {
             p4.BringToFront();
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+
+            connection.Open();
+            MySqlCommand comando = new MySqlCommand();
+            comando.Connection = connection;
+            comando.CommandText = ("select * from producto;");
+
+            MySqlDataAdapter adaptar = new MySqlDataAdapter();
+            adaptar.SelectCommand = comando;
+            DataTable tabla = new DataTable();
+            adaptar.Fill(tabla);
+            dt1.DataSource = tabla;
+
 
         }
 
@@ -1046,9 +1052,7 @@ namespace TestingTDP
         {
             MySqlConnection connection = new MySqlConnection(MainFunc.connString);
             string nombre = TextNomMat.Text;
-
-            string precio = Precio.Text;
-            string cantidad = Cantidad.Text;
+            string cantidad = textCanti.Text;
             string IdD = TextIdDIS.Text;
 
 
@@ -1062,7 +1066,7 @@ namespace TestingTDP
             if (Reader.HasRows)
             {
                 Reader.Close();
-                var registerQuery = new MySqlCommand($"INSERT INTO materia_prima (Nombre,tipo, IdD) VALUES (\"{nombre}\", \"{Tipo2}\", \"{IdD}\")", connection);
+                var registerQuery = new MySqlCommand($"INSERT INTO materia_prima (Nombre,tipo,Cantidad,IdD) VALUES (\"{nombre}\", \"{Tipo2}\", \"{cantidad}\", \"{IdD}\")", connection);
                 registerQuery.ExecuteNonQuery();
                 MessageBox.Show("El Producto se a registrado correctamente", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 MatPan.BringToFront();
@@ -1096,6 +1100,212 @@ namespace TestingTDP
         private void button30_Click(object sender, EventArgs e)
         {
             panel6.BringToFront();
+        }
+
+        private void button32_Click(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            try
+            {
+
+                MySqlCommand comando = new MySqlCommand();
+                comando.Connection = connection;
+                comando.CommandText = ("select nombre,cantidad,precio from producto;");
+
+                MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                adaptar.SelectCommand = comando;
+                DataTable tabla = new DataTable();
+                adaptar.Fill(tabla);
+                Produ.DataSource = tabla;
+
+            }
+            catch (Exception b)
+            {
+
+                MessageBox.Show(b.Message + b.StackTrace);
+            }
+        }
+
+        private void button33_Click(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            string nombre2 = Idpro.Text;
+            var checkInfo = new MySqlCommand($"select nombre,cantidad,precio from producto WHERE Nombre =\"{nombre2}\"", connection);
+            var reade = checkInfo.ExecuteReader();
+            reade.Read();
+            if (reade.HasRows)
+            {
+                reade.Close();
+
+
+                var registerQuery = new MySqlCommand($"select nombre,cantidad,precio from producto WHERE Nombre =\"{nombre2}\"", connection);
+                registerQuery.ExecuteNonQuery();
+                MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                adaptar.SelectCommand = registerQuery;
+                DataTable tabla = new DataTable();
+                adaptar.Fill(tabla);
+                Produ.DataSource = tabla;
+
+            }
+            else
+            {
+                reade.Close();
+                var checkInfo1 = new MySqlCommand($"select nombre,cantidad,precio from producto WHERE id_producto =\"{nombre2}\"", connection);
+                var reader = checkInfo1.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
+                {
+                    reader.Close();
+
+                    var registerQuery = new MySqlCommand($"select nombre,cantidad,precio from producto WHERE id_producto =\"{nombre2}\"", connection);
+                    registerQuery.ExecuteNonQuery();
+                    MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                    adaptar.SelectCommand = registerQuery;
+                    DataTable tabla = new DataTable();
+                    adaptar.Fill(tabla);
+                    Produ.DataSource = tabla;
+
+
+
+                }
+                else
+                {
+                    reader.Close();
+                    var checkInfo2 = new MySqlCommand($"select nombre,cantidad,precio from producto WHERE id_Distribuidores =\"{nombre2}\"", connection);
+                    var reader1 = checkInfo2.ExecuteReader();
+                    reader1.Read();
+                    if (reader1.HasRows)
+                    {
+                        reader1.Close();
+
+
+
+                        var registerQuery = new MySqlCommand($"select nombre,cantidad,precio from producto WHERE id_Distribuidores =\"{nombre2}\"", connection);
+                        registerQuery.ExecuteNonQuery();
+                        MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                        adaptar.SelectCommand = registerQuery;
+                        DataTable tabla = new DataTable();
+                        adaptar.Fill(tabla);
+                        Produ.DataSource = tabla;
+
+
+
+                    }
+                    else
+                    {
+                        reader1.Close();
+                        var checkInfo3 = new MySqlCommand($"select nombre,cantidad,precio from producto WHERE Tipo =\"{nombre2}\"", connection);
+                        var reader2 = checkInfo3.ExecuteReader();
+                        reader2.Read();
+                        if (reader2.HasRows)
+                        {
+                            reader2.Close();
+                            var registerQuery = new MySqlCommand($"select nombre,cantidad,precio from producto WHERE Tipo =\"{nombre2}\"", connection);
+                            registerQuery.ExecuteNonQuery();
+                            MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                            adaptar.SelectCommand = registerQuery;
+                            DataTable tabla = new DataTable();
+                            adaptar.Fill(tabla);
+                            Produ.DataSource = tabla;
+
+                        }
+                        else
+                        {
+                            reader2.Close();
+                            MessageBox.Show("No existe un Producto con esas caracterizticas", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
+
+                    }
+
+
+                }
+
+            }
+
+        }
+
+        private void label24_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button34_Click(object sender, EventArgs e)
+        {
+
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            string nombre = Idpro.Text;
+            string precio = Preci.Text;
+            string cantidad = Cant.Text;
+
+
+
+
+            connection.Open();
+
+            var checkInfo = new MySqlCommand($"SELECT nombre FROM producto WHERE nombre =\"{nombre}\"", connection);
+            var reade = checkInfo.ExecuteReader();
+            reade.Read();
+
+            if (reade.HasRows)
+            {
+                reade.Close();
+                var checkInfo1 = new MySqlCommand($"Select cantidad From producto where cantidad>=\"{cantidad}\"", connection);
+                var Reader = checkInfo1.ExecuteReader();
+                Reader.Read();
+
+
+                if (Reader.HasRows)
+                {
+                    Reader.Close();
+                    reade.Close();
+                    var checkInfo2 = new MySqlCommand($"Select precio From producto where precio=\"{precio}\"", connection);
+                    var Reader1 = checkInfo2.ExecuteReader();
+                    Reader1.Read();
+
+
+                    if (Reader1.HasRows)
+                    {
+                        int n = DtFactu.Rows.Add();
+
+                        DtFactu.Rows[n].Cells[0].Value = Idpro.Text;
+                        DtFactu.Rows[n].Cells[1].Value = Cant.Text;
+                        DtFactu.Rows[n].Cells[2].Value = Preci.Text;
+
+                        Idpro.Text = "";
+                        Cant.Text = "";
+                        Preci.Text = "$";
+                        int Pre = Int32.Parse(cantidad);
+                        int Pre2 = Int32.Parse(precio);
+                        Lbls.Text = "SubTotal =  " + Pre * Pre2;
+
+
+                    }
+                    else
+                    {
+                        reade.Close();
+                        MessageBox.Show("El precio asignado no es el mismo que el de su respectiva tabla", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                }
+                else
+                {
+                    reade.Close();
+                    MessageBox.Show("La cantidad del producto es mayor a la cantidad en stock", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                reade.Close();
+                MessageBox.Show("El Nombre del producto es incorrecto", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+        }
+
+        private void DtFactu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
