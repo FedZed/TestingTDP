@@ -40,13 +40,11 @@
             Pb1 = new PictureBox();
             pictureBox2 = new PictureBox();
             p1 = new Panel();
-            pictureBox3 = new PictureBox();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Pb1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             p1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -163,25 +161,12 @@
             p1.Size = new Size(567, 340);
             p1.TabIndex = 9;
             // 
-            // pictureBox3
-            // 
-            pictureBox3.BackColor = Color.Transparent;
-            pictureBox3.Image = Properties.Resources.logo_of_bakery_loaf_of_bread_kitchen_utensils_rolling_pin_vector_removebg_preview;
-            pictureBox3.Location = new Point(-15, -16);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(411, 351);
-            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox3.TabIndex = 9;
-            pictureBox3.TabStop = false;
-            pictureBox3.Click += pictureBox3_Click;
-            // 
             // Form1
             // 
             AllowDrop = true;
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.LightCyan;
             ClientSize = new Size(394, 332);
-            Controls.Add(pictureBox3);
             Controls.Add(p1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -198,7 +183,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             p1.ResumeLayout(false);
             p1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
         }
 
@@ -215,6 +199,5 @@
         private PictureBox Pb1;
         private PictureBox pictureBox2;
         private Panel p1;
-        private PictureBox pictureBox3;
     }
 }

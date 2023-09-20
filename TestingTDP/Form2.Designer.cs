@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             panel2 = new Panel();
             p3 = new Panel();
+            button35 = new Button();
+            lbls2 = new Label();
             Lbls = new Label();
             DtFactu = new DataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
@@ -98,14 +100,6 @@
             TextPass = new TextBox();
             TextName = new TextBox();
             Pan = new Panel();
-            pan4 = new Panel();
-            label15 = new Label();
-            button19 = new Button();
-            txtcan = new TextBox();
-            pan3 = new Panel();
-            label14 = new Label();
-            button18 = new Button();
-            txtpre = new TextBox();
             Pan2 = new Panel();
             button17 = new Button();
             groupBox3 = new GroupBox();
@@ -128,6 +122,14 @@
             label16 = new Label();
             button20 = new Button();
             IdDis = new TextBox();
+            pan4 = new Panel();
+            label15 = new Label();
+            button19 = new Button();
+            txtcan = new TextBox();
+            pan3 = new Panel();
+            label14 = new Label();
+            button18 = new Button();
+            txtpre = new TextBox();
             panel5 = new Panel();
             button24 = new Button();
             txtbusca = new TextBox();
@@ -188,12 +190,12 @@
             ((System.ComponentModel.ISupportInitialize)DtUser).BeginInit();
             groupBox2.SuspendLayout();
             Pan.SuspendLayout();
-            pan4.SuspendLayout();
-            pan3.SuspendLayout();
             Pan2.SuspendLayout();
             groupBox3.SuspendLayout();
             Pan1.SuspendLayout();
             pan5.SuspendLayout();
+            pan4.SuspendLayout();
+            pan3.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DatDis).BeginInit();
             MatPan.SuspendLayout();
@@ -215,6 +217,8 @@
             // p3
             // 
             p3.BackColor = Color.AliceBlue;
+            p3.Controls.Add(button35);
+            p3.Controls.Add(lbls2);
             p3.Controls.Add(Lbls);
             p3.Controls.Add(DtFactu);
             p3.Controls.Add(Preci);
@@ -231,14 +235,36 @@
             p3.Name = "p3";
             p3.Size = new Size(784, 451);
             p3.TabIndex = 9;
+            p3.Paint += p3_Paint;
+            // 
+            // button35
+            // 
+            button35.Location = new Point(673, 402);
+            button35.Name = "button35";
+            button35.Size = new Size(75, 23);
+            button35.TabIndex = 13;
+            button35.Text = "Venta";
+            button35.UseVisualStyleBackColor = true;
+            button35.Click += button35_Click;
+            // 
+            // lbls2
+            // 
+            lbls2.AutoSize = true;
+            lbls2.Location = new Point(441, 411);
+            lbls2.Name = "lbls2";
+            lbls2.Size = new Size(35, 15);
+            lbls2.TabIndex = 12;
+            lbls2.Text = "Total:";
             // 
             // Lbls
             // 
             Lbls.AutoSize = true;
-            Lbls.Location = new Point(503, 398);
+            Lbls.Location = new Point(421, 390);
             Lbls.Name = "Lbls";
-            Lbls.Size = new Size(0, 15);
+            Lbls.Size = new Size(55, 15);
             Lbls.TabIndex = 11;
+            Lbls.Text = "SubTotal:";
+            Lbls.Click += Lbls_Click;
             // 
             // DtFactu
             // 
@@ -274,7 +300,6 @@
             Preci.Name = "Preci";
             Preci.Size = new Size(100, 23);
             Preci.TabIndex = 9;
-            Preci.Text = "$";
             // 
             // label24
             // 
@@ -442,7 +467,7 @@
             // 
             // button21
             // 
-            button21.Location = new Point(285, 409);
+            button21.Location = new Point(387, 410);
             button21.Name = "button21";
             button21.Size = new Size(75, 23);
             button21.TabIndex = 6;
@@ -452,7 +477,7 @@
             // 
             // button5
             // 
-            button5.Location = new Point(249, 135);
+            button5.Location = new Point(418, 140);
             button5.Name = "button5";
             button5.Size = new Size(75, 23);
             button5.TabIndex = 5;
@@ -462,7 +487,7 @@
             // 
             // button4
             // 
-            button4.Location = new Point(168, 135);
+            button4.Location = new Point(337, 140);
             button4.Name = "button4";
             button4.Size = new Size(75, 23);
             button4.TabIndex = 4;
@@ -472,14 +497,14 @@
             // 
             // Named
             // 
-            Named.Location = new Point(62, 135);
+            Named.Location = new Point(95, 140);
             Named.Name = "Named";
-            Named.Size = new Size(100, 23);
+            Named.Size = new Size(236, 23);
             Named.TabIndex = 3;
             // 
             // button2
             // 
-            button2.Location = new Point(182, 409);
+            button2.Location = new Point(284, 410);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 2;
@@ -489,7 +514,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(77, 409);
+            button1.Location = new Point(179, 410);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 1;
@@ -500,7 +525,7 @@
             // dt1
             // 
             dt1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dt1.Location = new Point(22, 179);
+            dt1.Location = new Point(89, 175);
             dt1.Name = "dt1";
             dt1.RowTemplate.Height = 25;
             dt1.Size = new Size(472, 224);
@@ -881,8 +906,6 @@
             // Pan
             // 
             Pan.BackColor = SystemColors.InactiveBorder;
-            Pan.Controls.Add(pan4);
-            Pan.Controls.Add(pan3);
             Pan.Controls.Add(Pan2);
             Pan.Controls.Add(Pan1);
             Pan.Controls.Add(button15);
@@ -893,89 +916,12 @@
             Pan.Controls.Add(button11);
             Pan.Controls.Add(TxtEditar);
             Pan.Controls.Add(pan5);
+            Pan.Controls.Add(pan4);
+            Pan.Controls.Add(pan3);
             Pan.Location = new Point(120, 51);
             Pan.Name = "Pan";
             Pan.Size = new Size(769, 127);
             Pan.TabIndex = 11;
-            // 
-            // pan4
-            // 
-            pan4.BackColor = Color.DarkCyan;
-            pan4.Controls.Add(label15);
-            pan4.Controls.Add(button19);
-            pan4.Controls.Add(txtcan);
-            pan4.ForeColor = SystemColors.ControlLight;
-            pan4.Location = new Point(1, 44);
-            pan4.Name = "pan4";
-            pan4.Size = new Size(769, 85);
-            pan4.TabIndex = 12;
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Location = new Point(209, 10);
-            label15.Name = "label15";
-            label15.Size = new Size(58, 15);
-            label15.TabIndex = 10;
-            label15.Text = "Cantidad:";
-            // 
-            // button19
-            // 
-            button19.ForeColor = SystemColors.ActiveCaptionText;
-            button19.Location = new Point(395, 30);
-            button19.Name = "button19";
-            button19.Size = new Size(75, 23);
-            button19.TabIndex = 6;
-            button19.Text = "Modificar";
-            button19.UseVisualStyleBackColor = true;
-            button19.Click += button19_Click;
-            // 
-            // txtcan
-            // 
-            txtcan.Location = new Point(225, 30);
-            txtcan.Name = "txtcan";
-            txtcan.Size = new Size(128, 23);
-            txtcan.TabIndex = 9;
-            // 
-            // pan3
-            // 
-            pan3.BackColor = Color.CadetBlue;
-            pan3.Controls.Add(label14);
-            pan3.Controls.Add(button18);
-            pan3.Controls.Add(txtpre);
-            pan3.ForeColor = SystemColors.ControlLight;
-            pan3.Location = new Point(0, 43);
-            pan3.Name = "pan3";
-            pan3.Size = new Size(769, 85);
-            pan3.TabIndex = 11;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Location = new Point(209, 10);
-            label14.Name = "label14";
-            label14.Size = new Size(43, 15);
-            label14.TabIndex = 10;
-            label14.Text = "Precio:";
-            // 
-            // button18
-            // 
-            button18.ForeColor = SystemColors.ActiveCaptionText;
-            button18.Location = new Point(395, 30);
-            button18.Name = "button18";
-            button18.Size = new Size(75, 23);
-            button18.TabIndex = 6;
-            button18.Text = "Modificar";
-            button18.UseVisualStyleBackColor = true;
-            button18.Click += button18_Click;
-            // 
-            // txtpre
-            // 
-            txtpre.Location = new Point(225, 30);
-            txtpre.Name = "txtpre";
-            txtpre.Size = new Size(128, 23);
-            txtpre.TabIndex = 9;
-            txtpre.Text = "$";
             // 
             // Pan2
             // 
@@ -1203,6 +1149,85 @@
             IdDis.Name = "IdDis";
             IdDis.Size = new Size(128, 23);
             IdDis.TabIndex = 9;
+            // 
+            // pan4
+            // 
+            pan4.BackColor = Color.DarkCyan;
+            pan4.Controls.Add(label15);
+            pan4.Controls.Add(button19);
+            pan4.Controls.Add(txtcan);
+            pan4.ForeColor = SystemColors.ControlLight;
+            pan4.Location = new Point(1, 44);
+            pan4.Name = "pan4";
+            pan4.Size = new Size(769, 85);
+            pan4.TabIndex = 12;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(209, 10);
+            label15.Name = "label15";
+            label15.Size = new Size(58, 15);
+            label15.TabIndex = 10;
+            label15.Text = "Cantidad:";
+            // 
+            // button19
+            // 
+            button19.ForeColor = SystemColors.ActiveCaptionText;
+            button19.Location = new Point(395, 30);
+            button19.Name = "button19";
+            button19.Size = new Size(75, 23);
+            button19.TabIndex = 6;
+            button19.Text = "Modificar";
+            button19.UseVisualStyleBackColor = true;
+            button19.Click += button19_Click;
+            // 
+            // txtcan
+            // 
+            txtcan.Location = new Point(225, 30);
+            txtcan.Name = "txtcan";
+            txtcan.Size = new Size(128, 23);
+            txtcan.TabIndex = 9;
+            // 
+            // pan3
+            // 
+            pan3.BackColor = Color.CadetBlue;
+            pan3.Controls.Add(label14);
+            pan3.Controls.Add(button18);
+            pan3.Controls.Add(txtpre);
+            pan3.ForeColor = SystemColors.ControlLight;
+            pan3.Location = new Point(0, 43);
+            pan3.Name = "pan3";
+            pan3.Size = new Size(769, 85);
+            pan3.TabIndex = 11;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(209, 10);
+            label14.Name = "label14";
+            label14.Size = new Size(43, 15);
+            label14.TabIndex = 10;
+            label14.Text = "Precio:";
+            // 
+            // button18
+            // 
+            button18.ForeColor = SystemColors.ActiveCaptionText;
+            button18.Location = new Point(395, 30);
+            button18.Name = "button18";
+            button18.Size = new Size(75, 23);
+            button18.TabIndex = 6;
+            button18.Text = "Modificar";
+            button18.UseVisualStyleBackColor = true;
+            button18.Click += button18_Click;
+            // 
+            // txtpre
+            // 
+            txtpre.Location = new Point(225, 30);
+            txtpre.Name = "txtpre";
+            txtpre.Size = new Size(128, 23);
+            txtpre.TabIndex = 9;
+            txtpre.Text = "$";
             // 
             // panel5
             // 
@@ -1716,18 +1741,18 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(929, 507);
+            ClientSize = new Size(887, 507);
+            Controls.Add(p3);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Controls.Add(Pan);
-            Controls.Add(PanNC);
-            Controls.Add(panel4);
-            Controls.Add(panel5);
-            Controls.Add(panel6);
-            Controls.Add(panel3);
-            Controls.Add(p3);
             Controls.Add(p4);
             Controls.Add(MatPan);
+            Controls.Add(panel4);
+            Controls.Add(panel5);
+            Controls.Add(Pan);
+            Controls.Add(panel6);
+            Controls.Add(panel3);
+            Controls.Add(PanNC);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form2";
             Text = "Admin";
@@ -1751,10 +1776,6 @@
             groupBox2.PerformLayout();
             Pan.ResumeLayout(false);
             Pan.PerformLayout();
-            pan4.ResumeLayout(false);
-            pan4.PerformLayout();
-            pan3.ResumeLayout(false);
-            pan3.PerformLayout();
             Pan2.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
@@ -1762,6 +1783,10 @@
             Pan1.PerformLayout();
             pan5.ResumeLayout(false);
             pan5.PerformLayout();
+            pan4.ResumeLayout(false);
+            pan4.PerformLayout();
+            pan3.ResumeLayout(false);
+            pan3.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DatDis).EndInit();
@@ -1926,5 +1951,7 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn Column1;
         private Label Lbls;
+        private Label lbls2;
+        private Button button35;
     }
 }

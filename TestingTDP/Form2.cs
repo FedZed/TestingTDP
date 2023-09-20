@@ -93,7 +93,7 @@ namespace TestingTDP
                 connection.Open();
                 MySqlCommand comando = new MySqlCommand();
                 comando.Connection = connection;
-                comando.CommandText = ("select * from producto;");
+                comando.CommandText = ("select Nombre, id_producto , tipo , precio , cantidad , Id_Distribuidores from producto;");
 
                 MySqlDataAdapter adaptar = new MySqlDataAdapter();
                 adaptar.SelectCommand = comando;
@@ -120,7 +120,7 @@ namespace TestingTDP
         {
             MySqlConnection connection = new MySqlConnection(MainFunc.connString);
             string nombre = Nombre.Text;
-            string id_producto = Id_producto.Text;
+
             string precio = Precio.Text;
             string cantidad = Cantidad.Text;
             string IdD = txtidd.Text;
@@ -130,36 +130,23 @@ namespace TestingTDP
 
             connection.Open();
 
-            var checkInfo = new MySqlCommand($"SELECT id_producto FROM producto WHERE id_producto =\"{id_producto}\"", connection);
-            var reade = checkInfo.ExecuteReader();
-            reade.Read();
-
-            if (reade.HasRows)
+            var checkInfo1 = new MySqlCommand($"Select Rut From distribuidor where Rut=\"{IdD}\"", connection);
+            var Reader = checkInfo1.ExecuteReader();
+            Reader.Read();
+            if (Reader.HasRows)
             {
-                reade.Close();
-                MessageBox.Show("El Producto ya existe", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
+                Reader.Close();
+                var registerQuery = new MySqlCommand($"INSERT INTO producto (Nombre, tipo , precio2 , precio , cantidad , Id_Distribuidores) VALUES (\"{nombre}\", \"{Tipo}\", \"{precio}\", \"${precio}\", \"{cantidad}\", \"{IdD}\")", connection);
+                registerQuery.ExecuteNonQuery();
+                MessageBox.Show("El Producto se a registrado correctamente", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                p4.BringToFront();
             }
             else
             {
-                reade.Close();
-                var checkInfo1 = new MySqlCommand($"Select Rut From distribuidor where Rut=\"{IdD}\"", connection);
-                var Reader = checkInfo1.ExecuteReader();
-                Reader.Read();
-                if (Reader.HasRows)
-                {
-                    Reader.Close();
-                    var registerQuery = new MySqlCommand($"INSERT INTO producto (Nombre, id_producto , tipo , precio , cantidad , Id_Distribuidores) VALUES (\"{nombre}\", \"{id_producto}\", \"{Tipo}\", \"{precio}\", \"{cantidad}\", \"{IdD}\")", connection);
-                    registerQuery.ExecuteNonQuery();
-                    MessageBox.Show("El Producto se a registrado correctamente", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    p4.BringToFront();
-                }
-                else
-                {
-                    Reader.Close();
-                    MessageBox.Show("El Distribuidor no existe", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                Reader.Close();
+                MessageBox.Show("El Distribuidor no existe", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
 
 
 
@@ -171,7 +158,7 @@ namespace TestingTDP
             MySqlConnection connection = new MySqlConnection(MainFunc.connString);
             connection.Open();
             string nombre2 = Named.Text;
-            var checkInfo = new MySqlCommand($"select * from producto WHERE Nombre =\"{nombre2}\"", connection);
+            var checkInfo = new MySqlCommand($"select Nombre, id_producto , tipo , precio , cantidad , Id_Distribuidores  from producto WHERE Nombre =\"{nombre2}\"", connection);
             var reade = checkInfo.ExecuteReader();
             reade.Read();
             if (reade.HasRows)
@@ -179,7 +166,7 @@ namespace TestingTDP
                 reade.Close();
 
 
-                var registerQuery = new MySqlCommand($"select * from producto WHERE Nombre =\"{nombre2}\"", connection);
+                var registerQuery = new MySqlCommand($"select Nombre, id_producto , tipo , precio , cantidad , Id_Distribuidores  from producto WHERE Nombre =\"{nombre2}\"", connection);
                 registerQuery.ExecuteNonQuery();
                 MySqlDataAdapter adaptar = new MySqlDataAdapter();
                 adaptar.SelectCommand = registerQuery;
@@ -191,14 +178,14 @@ namespace TestingTDP
             else
             {
                 reade.Close();
-                var checkInfo1 = new MySqlCommand($"select * from producto WHERE id_producto =\"{nombre2}\"", connection);
+                var checkInfo1 = new MySqlCommand($"select Nombre, id_producto , tipo , precio , cantidad , Id_Distribuidores  from producto WHERE id_producto =\"{nombre2}\"", connection);
                 var reader = checkInfo1.ExecuteReader();
                 reader.Read();
                 if (reader.HasRows)
                 {
                     reader.Close();
 
-                    var registerQuery = new MySqlCommand($"select * from producto WHERE id_producto =\"{nombre2}\"", connection);
+                    var registerQuery = new MySqlCommand($"select Nombre, id_producto , tipo , precio , cantidad , Id_Distribuidores  from producto WHERE id_producto =\"{nombre2}\"", connection);
                     registerQuery.ExecuteNonQuery();
                     MySqlDataAdapter adaptar = new MySqlDataAdapter();
                     adaptar.SelectCommand = registerQuery;
@@ -212,7 +199,7 @@ namespace TestingTDP
                 else
                 {
                     reader.Close();
-                    var checkInfo2 = new MySqlCommand($"select * from producto WHERE id_Distribuidores =\"{nombre2}\"", connection);
+                    var checkInfo2 = new MySqlCommand($"select Nombre, id_producto , tipo , precio , cantidad , Id_Distribuidores  from producto WHERE id_Distribuidores =\"{nombre2}\"", connection);
                     var reader1 = checkInfo2.ExecuteReader();
                     reader1.Read();
                     if (reader1.HasRows)
@@ -221,7 +208,7 @@ namespace TestingTDP
 
 
 
-                        var registerQuery = new MySqlCommand($"select * from producto WHERE id_Distribuidores =\"{nombre2}\"", connection);
+                        var registerQuery = new MySqlCommand($"select Nombre, id_producto , tipo , precio , cantidad , Id_Distribuidores  from producto WHERE id_Distribuidores =\"{nombre2}\"", connection);
                         registerQuery.ExecuteNonQuery();
                         MySqlDataAdapter adaptar = new MySqlDataAdapter();
                         adaptar.SelectCommand = registerQuery;
@@ -235,13 +222,13 @@ namespace TestingTDP
                     else
                     {
                         reader1.Close();
-                        var checkInfo3 = new MySqlCommand($"select * from producto WHERE Tipo =\"{nombre2}\"", connection);
+                        var checkInfo3 = new MySqlCommand($"select Nombre, id_producto , tipo , precio , cantidad , Id_Distribuidores  from producto WHERE Tipo =\"{nombre2}\"", connection);
                         var reader2 = checkInfo3.ExecuteReader();
                         reader2.Read();
                         if (reader2.HasRows)
                         {
                             reader2.Close();
-                            var registerQuery = new MySqlCommand($"select * from producto WHERE Tipo =\"{nombre2}\"", connection);
+                            var registerQuery = new MySqlCommand($"select Nombre, id_producto , tipo , precio , cantidad , Id_Distribuidores  from producto WHERE Tipo =\"{nombre2}\"", connection);
                             registerQuery.ExecuteNonQuery();
                             MySqlDataAdapter adaptar = new MySqlDataAdapter();
                             adaptar.SelectCommand = registerQuery;
@@ -376,7 +363,7 @@ namespace TestingTDP
                 else
                 {
                     reader.Close();
-                    var registerQuery = new MySqlCommand($"INSERT INTO usuario (Nombre, Cargo, Contraseña, Cedula) VALUES (\"{nombre}\",\"{Cargo}\",\"{passwd}\",\"{Cedula}\")", connection);
+                    var registerQuery = new MySqlCommand($"INSERT INTO usuario (Nombre, Cargo, Contraseña, Cedula) VALUES (\"{nombre}\",\"{Cargo}\",SHA(\"{passwd}\"),\"{Cedula}\")", connection);
                     registerQuery.ExecuteNonQuery();
                     MessageBox.Show("Usuario registrado correctamente", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     try
@@ -913,7 +900,7 @@ namespace TestingTDP
             MySqlConnection connection = new MySqlConnection(MainFunc.connString);
 
             connection.Open();
-            var registerQuery = new MySqlCommand($"UPDATE usuario SET Contraseña=\"{edit1}\" WHERE Nombre=\"{edit}\";", connection);
+            var registerQuery = new MySqlCommand($"UPDATE usuario SET Contraseña=SHA(\"{edit1}\") WHERE Nombre=\"{edit}\";", connection);
             registerQuery.ExecuteNonQuery();
             panel4.BringToFront();
         }
@@ -1260,7 +1247,7 @@ namespace TestingTDP
                 {
                     Reader.Close();
                     reade.Close();
-                    var checkInfo2 = new MySqlCommand($"Select precio From producto where precio=\"{precio}\"", connection);
+                    var checkInfo2 = new MySqlCommand($"Select precio From producto where precio2=\"{precio}\"", connection);
                     var Reader1 = checkInfo2.ExecuteReader();
                     Reader1.Read();
 
@@ -1275,11 +1262,14 @@ namespace TestingTDP
 
                         Idpro.Text = "";
                         Cant.Text = "";
-                        Preci.Text = "$";
+                        Preci.Text = "";
                         int Pre = Int32.Parse(cantidad);
                         int Pre2 = Int32.Parse(precio);
-                        Lbls.Text = "SubTotal =  " + Pre * Pre2;
-
+                        int res = Pre * Pre2;
+                        double res2 = res * 0.22;
+                        double res3 = res + res2;
+                        Lbls.Text = "Subtotal: $" + res;
+                        lbls2.Text = "Total: $" + res3;
 
                     }
                     else
@@ -1306,6 +1296,25 @@ namespace TestingTDP
         private void DtFactu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void p3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Lbls_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button35_Click(object sender, EventArgs e)
+        {
+
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+
+            connection.Open();
+            var registerQuery = new MySqlCommand($"UPDATE `producto` SET cantidad=cantidad-23  WHERE nombre=azul", connection);
         }
     }
 }
