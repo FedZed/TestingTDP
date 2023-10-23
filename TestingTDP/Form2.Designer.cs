@@ -100,13 +100,6 @@
             TextPass = new TextBox();
             TextName = new TextBox();
             Pan = new Panel();
-            Pan2 = new Panel();
-            button17 = new Button();
-            groupBox3 = new GroupBox();
-            checkBox10 = new CheckBox();
-            checkBox7 = new CheckBox();
-            checkBox8 = new CheckBox();
-            checkBox9 = new CheckBox();
             Pan1 = new Panel();
             label13 = new Label();
             button16 = new Button();
@@ -130,6 +123,13 @@
             label14 = new Label();
             button18 = new Button();
             txtpre = new TextBox();
+            Pan2 = new Panel();
+            button17 = new Button();
+            groupBox3 = new GroupBox();
+            checkBox10 = new CheckBox();
+            checkBox7 = new CheckBox();
+            checkBox8 = new CheckBox();
+            checkBox9 = new CheckBox();
             panel5 = new Panel();
             button24 = new Button();
             txtbusca = new TextBox();
@@ -190,12 +190,12 @@
             ((System.ComponentModel.ISupportInitialize)DtUser).BeginInit();
             groupBox2.SuspendLayout();
             Pan.SuspendLayout();
-            Pan2.SuspendLayout();
-            groupBox3.SuspendLayout();
             Pan1.SuspendLayout();
             pan5.SuspendLayout();
             pan4.SuspendLayout();
             pan3.SuspendLayout();
+            Pan2.SuspendLayout();
+            groupBox3.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DatDis).BeginInit();
             MatPan.SuspendLayout();
@@ -906,7 +906,6 @@
             // Pan
             // 
             Pan.BackColor = SystemColors.InactiveBorder;
-            Pan.Controls.Add(Pan2);
             Pan.Controls.Add(Pan1);
             Pan.Controls.Add(button15);
             Pan.Controls.Add(label12);
@@ -918,88 +917,11 @@
             Pan.Controls.Add(pan5);
             Pan.Controls.Add(pan4);
             Pan.Controls.Add(pan3);
+            Pan.Controls.Add(Pan2);
             Pan.Location = new Point(120, 51);
             Pan.Name = "Pan";
             Pan.Size = new Size(769, 127);
             Pan.TabIndex = 11;
-            // 
-            // Pan2
-            // 
-            Pan2.BackColor = Color.Teal;
-            Pan2.Controls.Add(button17);
-            Pan2.Controls.Add(groupBox3);
-            Pan2.ForeColor = SystemColors.ControlLight;
-            Pan2.Location = new Point(0, 43);
-            Pan2.Name = "Pan2";
-            Pan2.Size = new Size(769, 85);
-            Pan2.TabIndex = 10;
-            // 
-            // button17
-            // 
-            button17.ForeColor = SystemColors.ActiveCaptionText;
-            button17.Location = new Point(395, 30);
-            button17.Name = "button17";
-            button17.Size = new Size(75, 23);
-            button17.TabIndex = 6;
-            button17.Text = "Modificar";
-            button17.UseVisualStyleBackColor = true;
-            button17.Click += button17_Click;
-            // 
-            // groupBox3
-            // 
-            groupBox3.Controls.Add(checkBox10);
-            groupBox3.Controls.Add(checkBox7);
-            groupBox3.Controls.Add(checkBox8);
-            groupBox3.Controls.Add(checkBox9);
-            groupBox3.Location = new Point(133, 23);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(146, 30);
-            groupBox3.TabIndex = 21;
-            groupBox3.TabStop = false;
-            // 
-            // checkBox10
-            // 
-            checkBox10.AutoSize = true;
-            checkBox10.Location = new Point(0, 16);
-            checkBox10.Name = "checkBox10";
-            checkBox10.Size = new Size(84, 19);
-            checkBox10.TabIndex = 17;
-            checkBox10.Text = "Panaderia  ";
-            checkBox10.UseVisualStyleBackColor = true;
-            checkBox10.CheckedChanged += checkBox10_CheckedChanged;
-            // 
-            // checkBox7
-            // 
-            checkBox7.AutoSize = true;
-            checkBox7.Location = new Point(84, 16);
-            checkBox7.Name = "checkBox7";
-            checkBox7.Size = new Size(143, 19);
-            checkBox7.TabIndex = 16;
-            checkBox7.Text = "Otro                               ";
-            checkBox7.UseVisualStyleBackColor = true;
-            checkBox7.CheckedChanged += checkBox7_CheckedChanged;
-            // 
-            // checkBox8
-            // 
-            checkBox8.AutoSize = true;
-            checkBox8.Location = new Point(0, 2);
-            checkBox8.Name = "checkBox8";
-            checkBox8.Size = new Size(86, 19);
-            checkBox8.TabIndex = 14;
-            checkBox8.Text = "Comestible";
-            checkBox8.UseVisualStyleBackColor = true;
-            checkBox8.CheckedChanged += checkBox8_CheckedChanged;
-            // 
-            // checkBox9
-            // 
-            checkBox9.AutoSize = true;
-            checkBox9.Location = new Point(84, 2);
-            checkBox9.Name = "checkBox9";
-            checkBox9.Size = new Size(62, 19);
-            checkBox9.TabIndex = 15;
-            checkBox9.Text = "Bebida";
-            checkBox9.UseVisualStyleBackColor = true;
-            checkBox9.CheckedChanged += checkBox9_CheckedChanged;
             // 
             // Pan1
             // 
@@ -1228,6 +1150,84 @@
             txtpre.Size = new Size(128, 23);
             txtpre.TabIndex = 9;
             txtpre.Text = "$";
+            // 
+            // Pan2
+            // 
+            Pan2.BackColor = Color.Teal;
+            Pan2.Controls.Add(button17);
+            Pan2.Controls.Add(groupBox3);
+            Pan2.ForeColor = SystemColors.ControlLight;
+            Pan2.Location = new Point(0, 43);
+            Pan2.Name = "Pan2";
+            Pan2.Size = new Size(769, 85);
+            Pan2.TabIndex = 10;
+            // 
+            // button17
+            // 
+            button17.ForeColor = SystemColors.ActiveCaptionText;
+            button17.Location = new Point(395, 30);
+            button17.Name = "button17";
+            button17.Size = new Size(75, 23);
+            button17.TabIndex = 6;
+            button17.Text = "Modificar";
+            button17.UseVisualStyleBackColor = true;
+            button17.Click += button17_Click;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(checkBox10);
+            groupBox3.Controls.Add(checkBox7);
+            groupBox3.Controls.Add(checkBox8);
+            groupBox3.Controls.Add(checkBox9);
+            groupBox3.Location = new Point(133, 23);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(146, 30);
+            groupBox3.TabIndex = 21;
+            groupBox3.TabStop = false;
+            // 
+            // checkBox10
+            // 
+            checkBox10.AutoSize = true;
+            checkBox10.Location = new Point(0, 16);
+            checkBox10.Name = "checkBox10";
+            checkBox10.Size = new Size(84, 19);
+            checkBox10.TabIndex = 17;
+            checkBox10.Text = "Panaderia  ";
+            checkBox10.UseVisualStyleBackColor = true;
+            checkBox10.CheckedChanged += checkBox10_CheckedChanged;
+            // 
+            // checkBox7
+            // 
+            checkBox7.AutoSize = true;
+            checkBox7.Location = new Point(84, 16);
+            checkBox7.Name = "checkBox7";
+            checkBox7.Size = new Size(143, 19);
+            checkBox7.TabIndex = 16;
+            checkBox7.Text = "Otro                               ";
+            checkBox7.UseVisualStyleBackColor = true;
+            checkBox7.CheckedChanged += checkBox7_CheckedChanged;
+            // 
+            // checkBox8
+            // 
+            checkBox8.AutoSize = true;
+            checkBox8.Location = new Point(0, 2);
+            checkBox8.Name = "checkBox8";
+            checkBox8.Size = new Size(86, 19);
+            checkBox8.TabIndex = 14;
+            checkBox8.Text = "Comestible";
+            checkBox8.UseVisualStyleBackColor = true;
+            checkBox8.CheckedChanged += checkBox8_CheckedChanged;
+            // 
+            // checkBox9
+            // 
+            checkBox9.AutoSize = true;
+            checkBox9.Location = new Point(84, 2);
+            checkBox9.Name = "checkBox9";
+            checkBox9.Size = new Size(62, 19);
+            checkBox9.TabIndex = 15;
+            checkBox9.Text = "Bebida";
+            checkBox9.UseVisualStyleBackColor = true;
+            checkBox9.CheckedChanged += checkBox9_CheckedChanged;
             // 
             // panel5
             // 
@@ -1741,18 +1741,18 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(887, 507);
-            Controls.Add(p3);
+            ClientSize = new Size(887, 495);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            Controls.Add(Pan);
+            Controls.Add(panel3);
+            Controls.Add(PanNC);
             Controls.Add(p4);
             Controls.Add(MatPan);
             Controls.Add(panel4);
             Controls.Add(panel5);
-            Controls.Add(Pan);
+            Controls.Add(p3);
             Controls.Add(panel6);
-            Controls.Add(panel3);
-            Controls.Add(PanNC);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form2";
             Text = "Admin";
@@ -1776,9 +1776,6 @@
             groupBox2.PerformLayout();
             Pan.ResumeLayout(false);
             Pan.PerformLayout();
-            Pan2.ResumeLayout(false);
-            groupBox3.ResumeLayout(false);
-            groupBox3.PerformLayout();
             Pan1.ResumeLayout(false);
             Pan1.PerformLayout();
             pan5.ResumeLayout(false);
@@ -1787,6 +1784,9 @@
             pan4.PerformLayout();
             pan3.ResumeLayout(false);
             pan3.PerformLayout();
+            Pan2.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DatDis).EndInit();

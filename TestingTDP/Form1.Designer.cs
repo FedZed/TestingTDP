@@ -59,7 +59,7 @@
             // 
             // textBox1
             // 
-            textBox1.BackColor = Color.DarkSlateGray;
+            textBox1.BackColor = Color.CornflowerBlue;
             textBox1.ForeColor = SystemColors.InactiveCaption;
             textBox1.Location = new Point(179, 152);
             textBox1.Name = "textBox1";
@@ -68,7 +68,7 @@
             // 
             // textBox2
             // 
-            textBox2.BackColor = Color.DarkSlateGray;
+            textBox2.BackColor = Color.CornflowerBlue;
             textBox2.ForeColor = SystemColors.InactiveCaption;
             textBox2.Location = new Point(179, 205);
             textBox2.Name = "textBox2";
@@ -95,15 +95,15 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.DarkSlateGray;
+            panel1.BackColor = Color.MidnightBlue;
             panel1.Location = new Point(0, 83);
             panel1.Name = "panel1";
-            panel1.Size = new Size(115, 441);
+            panel1.Size = new Size(113, 441);
             panel1.TabIndex = 5;
             // 
             // panel2
             // 
-            panel2.BackColor = Color.CadetBlue;
+            panel2.BackColor = Color.DarkBlue;
             panel2.Controls.Add(pictureBox1);
             panel2.ForeColor = SystemColors.ControlLight;
             panel2.Location = new Point(3, 3);
@@ -147,6 +147,7 @@
             // 
             // p1
             // 
+            p1.BackColor = Color.CornflowerBlue;
             p1.Controls.Add(panel2);
             p1.Controls.Add(panel1);
             p1.Controls.Add(pictureBox2);

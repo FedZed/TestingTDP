@@ -36,7 +36,7 @@ namespace TestingTDP
 
             if ((reader.HasRows && reader["Cargo"].ToString() == "Administrador"))
             {
-                Form2 paneladmin = new Form2();
+                Admin paneladmin = new Admin();
                 this.Hide();
                 paneladmin.Show();
             }

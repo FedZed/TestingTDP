@@ -1316,6 +1316,56 @@ namespace TestingTDP
             connection.Open();
             var registerQuery = new MySqlCommand($"UPDATE `producto` SET cantidad=cantidad-23  WHERE nombre=azul", connection);
         }
+        private void Named_keyPress(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            if (Named.Text.Length == 0)
+            {
+                try
+                {
+
+                    MySqlCommand comando = new MySqlCommand();
+                    comando.Connection = connection;
+                    comando.CommandText = ("select nombre,cantidad,precio from producto;");
+
+                    MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                    adaptar.SelectCommand = comando;
+                    DataTable tabla = new DataTable();
+                    adaptar.Fill(tabla);
+                    dt1.DataSource = tabla;
+
+                }
+                catch (Exception b)
+                {
+
+                    MessageBox.Show(b.Message + b.StackTrace);
+                }
+            }
+            if (Named.Text.Length > 0)
+            {
+                string nombre2 = Named.Text;
+                var checkInfo = new MySqlCommand($"select Nombre, id_producto , tipo , precio , cantidad , Id_Distribuidores  from producto WHERE Nombre LIKE \"{nombre2}\"", connection);
+                var reade = checkInfo.ExecuteReader();
+                reade.Read();
+                if (reade.HasRows)
+                {
+                    reade.Close();
+
+
+                    var registerQuery = new MySqlCommand($"select Nombre, id_producto , tipo , precio , cantidad , Id_Distribuidores  from producto WHERE Nombre  LIKE \"{nombre2}\"", connection);
+                    registerQuery.ExecuteNonQuery();
+                    MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                    adaptar.SelectCommand = registerQuery;
+                    DataTable tabla = new DataTable();
+                    adaptar.Fill(tabla);
+                    dt1.DataSource = tabla;
+
+                }
+
+            }
+
+        }
     }
 }
 
