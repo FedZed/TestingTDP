@@ -386,6 +386,139 @@ namespace TestingTDP
                 MessageBox.Show(b.Message + b.StackTrace);
             }
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+
+            try
+            {
+
+                MySqlCommand comando = new MySqlCommand();
+                comando.Connection = connection;
+                comando.CommandText = ("select Nombre,Cantidad,tipo,IdD from materia_prima where visible != 1 ;");
+
+                MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                adaptar.SelectCommand = comando;
+                DataTable tabla = new DataTable();
+                adaptar.Fill(tabla);
+                MateriaPrima.DataSource = tabla;
+
+            }
+            catch (Exception b)
+            {
+
+                MessageBox.Show(b.Message + b.StackTrace);
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+            String Datos = MateriaPrima.CurrentRow.Cells[0].Value.ToString();
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+
+            var registerQuery = new MySqlCommand($"UPDATE materia_prima SET visible=1 WHERE nombre=\"{Datos}\";", connection);
+            registerQuery.ExecuteNonQuery();
+            MessageBox.Show("El Producto sea a Eliminado correctamente", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+
+                MySqlCommand comando = new MySqlCommand();
+                comando.Connection = connection;
+                comando.CommandText = ("select Nombre,Cantidad,tipo,IdD from materia_prima where visible != 1 ;");
+
+                MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                adaptar.SelectCommand = comando;
+                DataTable tabla = new DataTable();
+                adaptar.Fill(tabla);
+                MateriaPrima.DataSource = tabla;
+
+            }
+            catch (Exception b)
+            {
+
+                MessageBox.Show(b.Message + b.StackTrace);
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panel2.BringToFront();
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+
+            try
+            {
+
+                MySqlCommand comando = new MySqlCommand();
+                comando.Connection = connection;
+                comando.CommandText = ("select nombre,cantidad,tipo,idD from materia_prima where visible != 1 ;");
+
+                MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                adaptar.SelectCommand = comando;
+                DataTable tabla = new DataTable();
+                adaptar.Fill(tabla);
+                MateriaPrima.DataSource = tabla;
+
+            }
+            catch (Exception b)
+            {
+
+                MessageBox.Show(b.Message + b.StackTrace);
+            }
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            agregarmatcs FF = new agregarmatcs();
+            AddOwnedForm(FF);
+            FF.Show();
+
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            Mat FF = new Mat();
+            AddOwnedForm(FF);
+            FF.Show();
+        }
+
+        private void MateriaPrima_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_MouseClick(object sender, MouseEventArgs e)
+        {
+            Eliminar.Visible = false;
+            Modificar.Visible = false;
+            Agg.Visible = false;
+        }
+
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            Eliminar.Visible = true;
+            Modificar.Visible = true;
+            Agg.Visible = true;
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            ModificarMat FF = new ModificarMat();
+            AddOwnedForm(FF);
+            FF.Show();
+        }
     }
 }
 

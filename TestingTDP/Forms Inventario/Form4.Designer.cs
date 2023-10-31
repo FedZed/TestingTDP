@@ -180,6 +180,7 @@
             Cantidadtxt.Name = "Cantidadtxt";
             Cantidadtxt.Size = new Size(100, 23);
             Cantidadtxt.TabIndex = 13;
+            Cantidadtxt.TextChanged += Cantidadtxt_TextChanged;
             Cantidadtxt.KeyPress += Cantidadtxt_KeyPress;
             // 
             // button1

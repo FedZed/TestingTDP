@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             button1 = new Button();
             label3 = new Label();
             Cantidadtxt = new TextBox();
@@ -43,7 +44,9 @@
             iDd = new TextBox();
             Nombretxt = new TextBox();
             ll = new Label();
+            dataGridView2 = new DataGridView();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -175,6 +178,7 @@
             Nombretxt.Name = "Nombretxt";
             Nombretxt.Size = new Size(100, 23);
             Nombretxt.TabIndex = 16;
+            Nombretxt.TextChanged += Nombretxt_TextChanged;
             // 
             // ll
             // 
@@ -186,11 +190,54 @@
             ll.Text = "ll";
             ll.Visible = false;
             // 
+            // dataGridView2
+            // 
+            dataGridView2.AllowUserToAddRows = false;
+            dataGridView2.AllowUserToDeleteRows = false;
+            dataGridView2.AllowUserToOrderColumns = true;
+            dataGridView2.AllowUserToResizeColumns = false;
+            dataGridView2.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.Font = new Font("Microsoft YaHei", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView2.BackgroundColor = SystemColors.ActiveCaption;
+            dataGridView2.BorderStyle = BorderStyle.None;
+            dataGridView2.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridView2.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridView2.ColumnHeadersHeight = 35;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridView2.EnableHeadersVisualStyles = false;
+            dataGridView2.GridColor = Color.SteelBlue;
+            dataGridView2.ImeMode = ImeMode.Off;
+            dataGridView2.Location = new Point(277, 16);
+            dataGridView2.MultiSelect = false;
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.ReadOnly = true;
+            dataGridView2.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridView2.RowHeadersVisible = false;
+            dataGridView2.RowTemplate.Height = 25;
+            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView2.Size = new Size(393, 372);
+            dataGridView2.StandardTab = true;
+            dataGridView2.TabIndex = 27;
+            dataGridView2.UseWaitCursor = true;
+            dataGridView2.CellClick += dataGridView2_CellContentClick;
+            dataGridView2.CellContentClick += dataGridView2_CellContentClick_2;
+            dataGridView2.MouseClick += dataGridView2_MouseClick;
+            // 
             // Form6
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(338, 450);
+            ClientSize = new Size(702, 450);
+            Controls.Add(dataGridView2);
             Controls.Add(ll);
             Controls.Add(button1);
             Controls.Add(label3);
@@ -206,6 +253,7 @@
             Text = "Form6";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -226,5 +274,6 @@
         public RadioButton radioButton2;
         public TextBox Tipotxt;
         public Label ll;
+        internal DataGridView dataGridView2;
     }
 }

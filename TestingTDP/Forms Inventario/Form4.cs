@@ -106,5 +106,10 @@ namespace TestingTDP
                 e.Handled = true;
             }
         }
+
+        private void Cantidadtxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

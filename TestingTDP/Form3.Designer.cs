@@ -30,6 +30,7 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panel1 = new Panel();
             button5 = new Button();
             button1 = new Button();
@@ -46,7 +47,6 @@
             Borrar = new Button();
             Reintegrar = new Button();
             Busqueda2 = new TextBox();
-            dataGridView2 = new DataGridView();
             DtE = new Button();
             Modificar = new Button();
             Eliminar = new Button();
@@ -55,13 +55,29 @@
             button6 = new Button();
             Busqueda = new TextBox();
             dataGridView1 = new DataGridView();
+            dataGridView2 = new DataGridView();
+            panel2 = new Panel();
+            button8 = new Button();
+            button9 = new Button();
+            button10 = new Button();
+            textBox1 = new TextBox();
+            MateriaPrima = new DataGridView();
+            button11 = new Button();
+            button12 = new Button();
+            button13 = new Button();
+            button14 = new Button();
+            button15 = new Button();
+            button16 = new Button();
+            textBox2 = new TextBox();
             panel1.SuspendLayout();
             Pancho.SuspendLayout();
             Pancho1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             Pancho2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)MateriaPrima).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -80,7 +96,7 @@
             button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 0, 0);
             button5.FlatStyle = FlatStyle.Flat;
             button5.ForeColor = SystemColors.ButtonHighlight;
-            button5.Location = new Point(981, 17);
+            button5.Location = new Point(984, 11);
             button5.Name = "button5";
             button5.Size = new Size(23, 23);
             button5.TabIndex = 1;
@@ -107,7 +123,7 @@
             Pancho.Controls.Add(pictureBox1);
             Pancho.Location = new Point(-4, 92);
             Pancho.Name = "Pancho";
-            Pancho.Size = new Size(1016, 521);
+            Pancho.Size = new Size(1025, 521);
             Pancho.TabIndex = 1;
             // 
             // Pancho1
@@ -165,6 +181,7 @@
             button2.TabIndex = 1;
             button2.Text = "Materia Prima";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // BtInventario
             // 
@@ -196,7 +213,6 @@
             Pancho2.Controls.Add(Borrar);
             Pancho2.Controls.Add(Reintegrar);
             Pancho2.Controls.Add(Busqueda2);
-            Pancho2.Controls.Add(dataGridView2);
             Pancho2.Controls.Add(DtE);
             Pancho2.Controls.Add(Modificar);
             Pancho2.Controls.Add(Eliminar);
@@ -205,9 +221,10 @@
             Pancho2.Controls.Add(button6);
             Pancho2.Controls.Add(Busqueda);
             Pancho2.Controls.Add(dataGridView1);
+            Pancho2.Controls.Add(dataGridView2);
             Pancho2.Location = new Point(204, 93);
             Pancho2.Name = "Pancho2";
-            Pancho2.Size = new Size(808, 521);
+            Pancho2.Size = new Size(817, 521);
             Pancho2.TabIndex = 2;
             // 
             // DtC
@@ -258,47 +275,6 @@
             Busqueda2.Size = new Size(423, 23);
             Busqueda2.TabIndex = 11;
             Busqueda2.TextChanged += Busqueda2_TextChanged;
-            // 
-            // dataGridView2
-            // 
-            dataGridView2.AllowUserToAddRows = false;
-            dataGridView2.AllowUserToDeleteRows = false;
-            dataGridView2.AllowUserToOrderColumns = true;
-            dataGridView2.AllowUserToResizeColumns = false;
-            dataGridView2.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle1.Font = new Font("Microsoft YaHei", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle1.NullValue = null;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridView2.BackgroundColor = SystemColors.ActiveCaption;
-            dataGridView2.BorderStyle = BorderStyle.None;
-            dataGridView2.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridView2.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridView2.ColumnHeadersHeight = 35;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView2.EnableHeadersVisualStyles = false;
-            dataGridView2.GridColor = Color.SteelBlue;
-            dataGridView2.ImeMode = ImeMode.Off;
-            dataGridView2.Location = new Point(209, 55);
-            dataGridView2.MultiSelect = false;
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.ReadOnly = true;
-            dataGridView2.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridView2.RowHeadersVisible = false;
-            dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView2.Size = new Size(478, 417);
-            dataGridView2.StandardTab = true;
-            dataGridView2.TabIndex = 10;
-            dataGridView2.UseWaitCursor = true;
-            dataGridView2.CellClick += dataGridView1_CellContentClick;
-            dataGridView2.CellContentClick += dataGridView1_CellContentClick;
             // 
             // DtE
             // 
@@ -395,13 +371,13 @@
             dataGridView1.AllowUserToOrderColumns = true;
             dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle2.Font = new Font("Microsoft YaHei", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle2.NullValue = null;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.Font = new Font("Microsoft YaHei", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
@@ -422,20 +398,253 @@
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(478, 417);
+            dataGridView1.Size = new Size(487, 417);
             dataGridView1.StandardTab = true;
             dataGridView1.TabIndex = 0;
             dataGridView1.UseWaitCursor = true;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dataGridView1.MouseClick += dataGridView1_MouseClick;
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.AllowUserToAddRows = false;
+            dataGridView2.AllowUserToDeleteRows = false;
+            dataGridView2.AllowUserToOrderColumns = true;
+            dataGridView2.AllowUserToResizeColumns = false;
+            dataGridView2.AllowUserToResizeRows = false;
+            dataGridViewCellStyle2.BackColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle2.Font = new Font("Microsoft YaHei", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle2.NullValue = null;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridView2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView2.BackgroundColor = SystemColors.ActiveCaption;
+            dataGridView2.BorderStyle = BorderStyle.None;
+            dataGridView2.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridView2.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridView2.ColumnHeadersHeight = 35;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridView2.EnableHeadersVisualStyles = false;
+            dataGridView2.GridColor = Color.SteelBlue;
+            dataGridView2.ImeMode = ImeMode.Off;
+            dataGridView2.Location = new Point(209, 55);
+            dataGridView2.MultiSelect = false;
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.ReadOnly = true;
+            dataGridView2.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridView2.RowHeadersVisible = false;
+            dataGridView2.RowTemplate.Height = 25;
+            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView2.Size = new Size(475, 417);
+            dataGridView2.StandardTab = true;
+            dataGridView2.TabIndex = 10;
+            dataGridView2.UseWaitCursor = true;
+            dataGridView2.MouseClick += dataGridView2_MouseClick;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = SystemColors.ActiveCaption;
+            panel2.Controls.Add(button8);
+            panel2.Controls.Add(button9);
+            panel2.Controls.Add(button10);
+            panel2.Controls.Add(textBox1);
+            panel2.Controls.Add(MateriaPrima);
+            panel2.Controls.Add(button11);
+            panel2.Controls.Add(button12);
+            panel2.Controls.Add(button13);
+            panel2.Controls.Add(button14);
+            panel2.Controls.Add(button15);
+            panel2.Controls.Add(button16);
+            panel2.Controls.Add(textBox2);
+            panel2.Location = new Point(204, 93);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(817, 521);
+            panel2.TabIndex = 15;
+            // 
+            // button8
+            // 
+            button8.FlatStyle = FlatStyle.Popup;
+            button8.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button8.ForeColor = Color.MintCream;
+            button8.Location = new Point(690, 124);
+            button8.Name = "button8";
+            button8.Size = new Size(115, 42);
+            button8.TabIndex = 14;
+            button8.Text = "Datos Comunes";
+            button8.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            button9.FlatStyle = FlatStyle.Popup;
+            button9.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button9.ForeColor = Color.MintCream;
+            button9.Location = new Point(27, 406);
+            button9.Name = "button9";
+            button9.Size = new Size(115, 42);
+            button9.TabIndex = 13;
+            button9.Text = "Eliminar";
+            button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click;
+            // 
+            // button10
+            // 
+            button10.FlatStyle = FlatStyle.Popup;
+            button10.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button10.ForeColor = Color.MintCream;
+            button10.Location = new Point(27, 64);
+            button10.Name = "button10";
+            button10.Size = new Size(115, 42);
+            button10.TabIndex = 12;
+            button10.Text = "Actualizar";
+            button10.UseVisualStyleBackColor = true;
+            button10.Click += button10_Click;
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = SystemColors.MenuBar;
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.Location = new Point(203, 21);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(423, 23);
+            textBox1.TabIndex = 11;
+            // 
+            // MateriaPrima
+            // 
+            MateriaPrima.AllowUserToAddRows = false;
+            MateriaPrima.AllowUserToDeleteRows = false;
+            MateriaPrima.AllowUserToOrderColumns = true;
+            MateriaPrima.AllowUserToResizeColumns = false;
+            MateriaPrima.AllowUserToResizeRows = false;
+            dataGridViewCellStyle3.BackColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle3.Font = new Font("Microsoft YaHei", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle3.NullValue = null;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            MateriaPrima.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            MateriaPrima.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            MateriaPrima.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            MateriaPrima.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            MateriaPrima.BackgroundColor = SystemColors.ActiveCaption;
+            MateriaPrima.BorderStyle = BorderStyle.None;
+            MateriaPrima.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            MateriaPrima.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            MateriaPrima.ColumnHeadersHeight = 35;
+            MateriaPrima.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            MateriaPrima.EnableHeadersVisualStyles = false;
+            MateriaPrima.GridColor = Color.SteelBlue;
+            MateriaPrima.ImeMode = ImeMode.Off;
+            MateriaPrima.Location = new Point(203, 64);
+            MateriaPrima.MultiSelect = false;
+            MateriaPrima.Name = "MateriaPrima";
+            MateriaPrima.ReadOnly = true;
+            MateriaPrima.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            MateriaPrima.RowHeadersVisible = false;
+            MateriaPrima.RowTemplate.Height = 25;
+            MateriaPrima.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            MateriaPrima.Size = new Size(464, 402);
+            MateriaPrima.StandardTab = true;
+            MateriaPrima.TabIndex = 10;
+            MateriaPrima.UseWaitCursor = true;
+            MateriaPrima.MouseClick += MateriaPrima_MouseClick;
+            // 
+            // button11
+            // 
+            button11.FlatStyle = FlatStyle.Popup;
+            button11.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button11.ForeColor = Color.MintCream;
+            button11.Location = new Point(690, 64);
+            button11.Name = "button11";
+            button11.Size = new Size(115, 42);
+            button11.TabIndex = 9;
+            button11.Text = "Datos Eliminados";
+            button11.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            button12.FlatStyle = FlatStyle.Popup;
+            button12.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button12.ForeColor = Color.MintCream;
+            button12.Location = new Point(27, 261);
+            button12.Name = "button12";
+            button12.Size = new Size(115, 42);
+            button12.TabIndex = 8;
+            button12.Text = "Nuevo Producto";
+            button12.UseVisualStyleBackColor = true;
+            button12.Click += button12_Click;
+            // 
+            // button13
+            // 
+            button13.FlatStyle = FlatStyle.Popup;
+            button13.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button13.ForeColor = Color.MintCream;
+            button13.Location = new Point(27, 332);
+            button13.Name = "button13";
+            button13.Size = new Size(115, 42);
+            button13.TabIndex = 7;
+            button13.Text = "Modificar";
+            button13.UseVisualStyleBackColor = true;
+            button13.Click += button13_Click;
+            // 
+            // button14
+            // 
+            button14.FlatStyle = FlatStyle.Popup;
+            button14.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button14.ForeColor = Color.MintCream;
+            button14.Location = new Point(27, 193);
+            button14.Name = "button14";
+            button14.Size = new Size(115, 42);
+            button14.TabIndex = 6;
+            button14.Text = "Agregar Materia Prima";
+            button14.UseVisualStyleBackColor = true;
+            button14.Click += button14_Click;
+            // 
+            // button15
+            // 
+            button15.FlatStyle = FlatStyle.Popup;
+            button15.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button15.ForeColor = Color.MintCream;
+            button15.Location = new Point(27, 64);
+            button15.Name = "button15";
+            button15.Size = new Size(115, 42);
+            button15.TabIndex = 5;
+            button15.Text = "Actualizar";
+            button15.UseVisualStyleBackColor = true;
+            // 
+            // button16
+            // 
+            button16.FlatStyle = FlatStyle.Popup;
+            button16.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button16.ForeColor = Color.MintCream;
+            button16.Location = new Point(27, 127);
+            button16.Name = "button16";
+            button16.Size = new Size(115, 42);
+            button16.TabIndex = 4;
+            button16.Text = "Agregar Producto";
+            button16.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            textBox2.BackColor = SystemColors.MenuBar;
+            textBox2.BorderStyle = BorderStyle.FixedSingle;
+            textBox2.Location = new Point(203, 21);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(423, 23);
+            textBox2.TabIndex = 1;
             // 
             // Admin
             // 
             AutoScaleMode = AutoScaleMode.None;
-            ClientSize = new Size(1012, 614);
+            ClientSize = new Size(1019, 607);
             ControlBox = false;
-            Controls.Add(Pancho);
             Controls.Add(panel1);
+            Controls.Add(panel2);
             Controls.Add(Pancho2);
+            Controls.Add(Pancho);
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             MdiChildrenMinimizedAnchorBottom = false;
@@ -448,8 +657,11 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             Pancho2.ResumeLayout(false);
             Pancho2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)MateriaPrima).EndInit();
             ResumeLayout(false);
         }
 
@@ -480,5 +692,18 @@
         private Button Borrar;
         private Button DtC;
         public DataGridView dataGridView1;
+        private Panel panel2;
+        private Button button8;
+        private Button button9;
+        private Button button10;
+        private TextBox textBox1;
+        internal DataGridView MateriaPrima;
+        private Button button11;
+        private Button button12;
+        private Button button13;
+        private Button button14;
+        private Button button15;
+        private Button button16;
+        private TextBox textBox2;
     }
 }
