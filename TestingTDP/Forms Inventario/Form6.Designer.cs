@@ -189,6 +189,7 @@
             ll.TabIndex = 26;
             ll.Text = "ll";
             ll.Visible = false;
+            ll.Click += ll_Click;
             // 
             // dataGridView2
             // 

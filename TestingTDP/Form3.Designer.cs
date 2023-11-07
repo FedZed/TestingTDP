@@ -31,6 +31,9 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             panel1 = new Panel();
             button5 = new Button();
             button1 = new Button();
@@ -57,18 +60,35 @@
             dataGridView1 = new DataGridView();
             dataGridView2 = new DataGridView();
             panel2 = new Panel();
+            label1 = new Label();
+            Txtbusq = new TextBox();
+            eliminarp = new Button();
+            Elin = new Button();
+            dataGridView3 = new DataGridView();
             button8 = new Button();
-            button9 = new Button();
+            eli = new Button();
             button10 = new Button();
-            textBox1 = new TextBox();
+            txtbus = new TextBox();
             MateriaPrima = new DataGridView();
             button11 = new Button();
-            button12 = new Button();
-            button13 = new Button();
-            button14 = new Button();
+            np = new Button();
+            mod = new Button();
+            agm = new Button();
             button15 = new Button();
-            button16 = new Button();
+            ags = new Button();
             textBox2 = new TextBox();
+            Facturacion = new Panel();
+            Elimin = new Button();
+            Venta = new Button();
+            AgregarP = new Button();
+            cmbCant = new ComboBox();
+            Nep = new TextBox();
+            Produ = new DataGridView();
+            DtFactura = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Cantidad = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             Pancho.SuspendLayout();
             Pancho1.SuspendLayout();
@@ -77,7 +97,11 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MateriaPrima).BeginInit();
+            Facturacion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Produ).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DtFactura).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -157,6 +181,7 @@
             button4.TabIndex = 3;
             button4.Text = "Facturacion";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // button3
             // 
@@ -448,22 +473,114 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.ActiveCaption;
+            panel2.Controls.Add(label1);
+            panel2.Controls.Add(Txtbusq);
+            panel2.Controls.Add(eliminarp);
+            panel2.Controls.Add(Elin);
+            panel2.Controls.Add(dataGridView3);
             panel2.Controls.Add(button8);
-            panel2.Controls.Add(button9);
+            panel2.Controls.Add(eli);
             panel2.Controls.Add(button10);
-            panel2.Controls.Add(textBox1);
+            panel2.Controls.Add(txtbus);
             panel2.Controls.Add(MateriaPrima);
             panel2.Controls.Add(button11);
-            panel2.Controls.Add(button12);
-            panel2.Controls.Add(button13);
-            panel2.Controls.Add(button14);
+            panel2.Controls.Add(np);
+            panel2.Controls.Add(mod);
+            panel2.Controls.Add(agm);
             panel2.Controls.Add(button15);
-            panel2.Controls.Add(button16);
+            panel2.Controls.Add(ags);
             panel2.Controls.Add(textBox2);
             panel2.Location = new Point(204, 93);
             panel2.Name = "panel2";
             panel2.Size = new Size(817, 521);
             panel2.TabIndex = 15;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Tahoma", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ActiveCaptionText;
+            label1.Location = new Point(214, 172);
+            label1.Name = "label1";
+            label1.Size = new Size(395, 78);
+            label1.TabIndex = 19;
+            label1.Text = "   No existe un datos \r\ncon esas caracteristicas";
+            label1.Visible = false;
+            // 
+            // Txtbusq
+            // 
+            Txtbusq.BackColor = SystemColors.MenuBar;
+            Txtbusq.BorderStyle = BorderStyle.FixedSingle;
+            Txtbusq.Location = new Point(203, 21);
+            Txtbusq.Name = "Txtbusq";
+            Txtbusq.Size = new Size(423, 23);
+            Txtbusq.TabIndex = 18;
+            Txtbusq.TextChanged += Txtbusq_TextChanged;
+            // 
+            // eliminarp
+            // 
+            eliminarp.FlatStyle = FlatStyle.Popup;
+            eliminarp.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            eliminarp.ForeColor = Color.MintCream;
+            eliminarp.Location = new Point(27, 190);
+            eliminarp.Name = "eliminarp";
+            eliminarp.Size = new Size(115, 42);
+            eliminarp.TabIndex = 17;
+            eliminarp.Text = "Eliminar";
+            eliminarp.UseVisualStyleBackColor = true;
+            eliminarp.Click += eliminarp_Click;
+            // 
+            // Elin
+            // 
+            Elin.FlatStyle = FlatStyle.Popup;
+            Elin.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            Elin.ForeColor = Color.MintCream;
+            Elin.Location = new Point(27, 124);
+            Elin.Name = "Elin";
+            Elin.Size = new Size(115, 42);
+            Elin.TabIndex = 16;
+            Elin.Text = "Reintegrar";
+            Elin.UseVisualStyleBackColor = true;
+            Elin.Click += button9_Click_1;
+            // 
+            // dataGridView3
+            // 
+            dataGridView3.AllowUserToAddRows = false;
+            dataGridView3.AllowUserToDeleteRows = false;
+            dataGridView3.AllowUserToOrderColumns = true;
+            dataGridView3.AllowUserToResizeColumns = false;
+            dataGridView3.AllowUserToResizeRows = false;
+            dataGridViewCellStyle3.BackColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle3.Font = new Font("Microsoft YaHei", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle3.NullValue = null;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridView3.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridView3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView3.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView3.BackgroundColor = SystemColors.ActiveCaption;
+            dataGridView3.BorderStyle = BorderStyle.None;
+            dataGridView3.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridView3.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridView3.ColumnHeadersHeight = 35;
+            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridView3.EnableHeadersVisualStyles = false;
+            dataGridView3.GridColor = Color.SteelBlue;
+            dataGridView3.ImeMode = ImeMode.Off;
+            dataGridView3.Location = new Point(251, 55);
+            dataGridView3.MultiSelect = false;
+            dataGridView3.Name = "dataGridView3";
+            dataGridView3.ReadOnly = true;
+            dataGridView3.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridView3.RowHeadersVisible = false;
+            dataGridView3.RowTemplate.Height = 25;
+            dataGridView3.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView3.Size = new Size(342, 402);
+            dataGridView3.StandardTab = true;
+            dataGridView3.TabIndex = 15;
+            dataGridView3.UseWaitCursor = true;
             // 
             // button8
             // 
@@ -476,19 +593,20 @@
             button8.TabIndex = 14;
             button8.Text = "Datos Comunes";
             button8.UseVisualStyleBackColor = true;
+            button8.Click += button8_Click;
             // 
-            // button9
+            // eli
             // 
-            button9.FlatStyle = FlatStyle.Popup;
-            button9.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            button9.ForeColor = Color.MintCream;
-            button9.Location = new Point(27, 406);
-            button9.Name = "button9";
-            button9.Size = new Size(115, 42);
-            button9.TabIndex = 13;
-            button9.Text = "Eliminar";
-            button9.UseVisualStyleBackColor = true;
-            button9.Click += button9_Click;
+            eli.FlatStyle = FlatStyle.Popup;
+            eli.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            eli.ForeColor = Color.MintCream;
+            eli.Location = new Point(27, 406);
+            eli.Name = "eli";
+            eli.Size = new Size(115, 42);
+            eli.TabIndex = 13;
+            eli.Text = "Eliminar";
+            eli.UseVisualStyleBackColor = true;
+            eli.Click += button9_Click;
             // 
             // button10
             // 
@@ -503,14 +621,15 @@
             button10.UseVisualStyleBackColor = true;
             button10.Click += button10_Click;
             // 
-            // textBox1
+            // txtbus
             // 
-            textBox1.BackColor = SystemColors.MenuBar;
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(203, 21);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(423, 23);
-            textBox1.TabIndex = 11;
+            txtbus.BackColor = SystemColors.MenuBar;
+            txtbus.BorderStyle = BorderStyle.FixedSingle;
+            txtbus.Location = new Point(203, 21);
+            txtbus.Name = "txtbus";
+            txtbus.Size = new Size(423, 23);
+            txtbus.TabIndex = 11;
+            txtbus.TextChanged += textBox1_TextChanged;
             // 
             // MateriaPrima
             // 
@@ -519,13 +638,13 @@
             MateriaPrima.AllowUserToOrderColumns = true;
             MateriaPrima.AllowUserToResizeColumns = false;
             MateriaPrima.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle3.Font = new Font("Microsoft YaHei", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle3.NullValue = null;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
-            MateriaPrima.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.BackColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle4.Font = new Font("Microsoft YaHei", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle4.NullValue = null;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
+            MateriaPrima.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             MateriaPrima.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             MateriaPrima.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             MateriaPrima.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
@@ -538,7 +657,7 @@
             MateriaPrima.EnableHeadersVisualStyles = false;
             MateriaPrima.GridColor = Color.SteelBlue;
             MateriaPrima.ImeMode = ImeMode.Off;
-            MateriaPrima.Location = new Point(203, 64);
+            MateriaPrima.Location = new Point(251, 55);
             MateriaPrima.MultiSelect = false;
             MateriaPrima.Name = "MateriaPrima";
             MateriaPrima.ReadOnly = true;
@@ -546,10 +665,11 @@
             MateriaPrima.RowHeadersVisible = false;
             MateriaPrima.RowTemplate.Height = 25;
             MateriaPrima.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            MateriaPrima.Size = new Size(464, 402);
+            MateriaPrima.Size = new Size(342, 402);
             MateriaPrima.StandardTab = true;
             MateriaPrima.TabIndex = 10;
             MateriaPrima.UseWaitCursor = true;
+            MateriaPrima.CellClick += MateriaPrima_CellClick;
             MateriaPrima.MouseClick += MateriaPrima_MouseClick;
             // 
             // button11
@@ -563,45 +683,46 @@
             button11.TabIndex = 9;
             button11.Text = "Datos Eliminados";
             button11.UseVisualStyleBackColor = true;
+            button11.Click += button11_Click;
             // 
-            // button12
+            // np
             // 
-            button12.FlatStyle = FlatStyle.Popup;
-            button12.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            button12.ForeColor = Color.MintCream;
-            button12.Location = new Point(27, 261);
-            button12.Name = "button12";
-            button12.Size = new Size(115, 42);
-            button12.TabIndex = 8;
-            button12.Text = "Nuevo Producto";
-            button12.UseVisualStyleBackColor = true;
-            button12.Click += button12_Click;
+            np.FlatStyle = FlatStyle.Popup;
+            np.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            np.ForeColor = Color.MintCream;
+            np.Location = new Point(27, 261);
+            np.Name = "np";
+            np.Size = new Size(115, 42);
+            np.TabIndex = 8;
+            np.Text = "Nuevo Producto";
+            np.UseVisualStyleBackColor = true;
+            np.Click += button12_Click;
             // 
-            // button13
+            // mod
             // 
-            button13.FlatStyle = FlatStyle.Popup;
-            button13.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            button13.ForeColor = Color.MintCream;
-            button13.Location = new Point(27, 332);
-            button13.Name = "button13";
-            button13.Size = new Size(115, 42);
-            button13.TabIndex = 7;
-            button13.Text = "Modificar";
-            button13.UseVisualStyleBackColor = true;
-            button13.Click += button13_Click;
+            mod.FlatStyle = FlatStyle.Popup;
+            mod.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            mod.ForeColor = Color.MintCream;
+            mod.Location = new Point(27, 332);
+            mod.Name = "mod";
+            mod.Size = new Size(115, 42);
+            mod.TabIndex = 7;
+            mod.Text = "Modificar";
+            mod.UseVisualStyleBackColor = true;
+            mod.Click += button13_Click;
             // 
-            // button14
+            // agm
             // 
-            button14.FlatStyle = FlatStyle.Popup;
-            button14.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            button14.ForeColor = Color.MintCream;
-            button14.Location = new Point(27, 193);
-            button14.Name = "button14";
-            button14.Size = new Size(115, 42);
-            button14.TabIndex = 6;
-            button14.Text = "Agregar Materia Prima";
-            button14.UseVisualStyleBackColor = true;
-            button14.Click += button14_Click;
+            agm.FlatStyle = FlatStyle.Popup;
+            agm.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            agm.ForeColor = Color.MintCream;
+            agm.Location = new Point(27, 124);
+            agm.Name = "agm";
+            agm.Size = new Size(115, 42);
+            agm.TabIndex = 6;
+            agm.Text = "Agregar Materia Prima";
+            agm.UseVisualStyleBackColor = true;
+            agm.Click += button14_Click;
             // 
             // button15
             // 
@@ -615,17 +736,18 @@
             button15.Text = "Actualizar";
             button15.UseVisualStyleBackColor = true;
             // 
-            // button16
+            // ags
             // 
-            button16.FlatStyle = FlatStyle.Popup;
-            button16.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            button16.ForeColor = Color.MintCream;
-            button16.Location = new Point(27, 127);
-            button16.Name = "button16";
-            button16.Size = new Size(115, 42);
-            button16.TabIndex = 4;
-            button16.Text = "Agregar Producto";
-            button16.UseVisualStyleBackColor = true;
+            ags.FlatStyle = FlatStyle.Popup;
+            ags.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            ags.ForeColor = Color.MintCream;
+            ags.Location = new Point(27, 190);
+            ags.Name = "ags";
+            ags.Size = new Size(115, 42);
+            ags.TabIndex = 4;
+            ags.Text = "Agregar Stock";
+            ags.UseVisualStyleBackColor = true;
+            ags.Click += ags_Click;
             // 
             // textBox2
             // 
@@ -636,15 +758,185 @@
             textBox2.Size = new Size(423, 23);
             textBox2.TabIndex = 1;
             // 
+            // Facturacion
+            // 
+            Facturacion.BackColor = SystemColors.ActiveCaption;
+            Facturacion.Controls.Add(Elimin);
+            Facturacion.Controls.Add(Venta);
+            Facturacion.Controls.Add(AgregarP);
+            Facturacion.Controls.Add(cmbCant);
+            Facturacion.Controls.Add(Nep);
+            Facturacion.Controls.Add(Produ);
+            Facturacion.Controls.Add(DtFactura);
+            Facturacion.Location = new Point(204, 93);
+            Facturacion.Name = "Facturacion";
+            Facturacion.Size = new Size(817, 521);
+            Facturacion.TabIndex = 15;
+            // 
+            // Elimin
+            // 
+            Elimin.Location = new Point(354, 124);
+            Elimin.Name = "Elimin";
+            Elimin.Size = new Size(77, 25);
+            Elimin.TabIndex = 16;
+            Elimin.Text = "Eliminar";
+            Elimin.UseVisualStyleBackColor = true;
+            Elimin.Click += Elimin_Click;
+            // 
+            // Venta
+            // 
+            Venta.Location = new Point(538, 440);
+            Venta.Name = "Venta";
+            Venta.Size = new Size(117, 41);
+            Venta.TabIndex = 15;
+            Venta.Text = "Venta";
+            Venta.UseVisualStyleBackColor = true;
+            // 
+            // AgregarP
+            // 
+            AgregarP.Location = new Point(139, 454);
+            AgregarP.Name = "AgregarP";
+            AgregarP.Size = new Size(117, 41);
+            AgregarP.TabIndex = 14;
+            AgregarP.Text = "Agregar Producto";
+            AgregarP.UseVisualStyleBackColor = true;
+            AgregarP.Click += AgregarP_Click;
+            // 
+            // cmbCant
+            // 
+            cmbCant.FormattingEnabled = true;
+            cmbCant.Location = new Point(209, 409);
+            cmbCant.Name = "cmbCant";
+            cmbCant.Size = new Size(121, 23);
+            cmbCant.TabIndex = 13;
+            // 
+            // Nep
+            // 
+            Nep.Location = new Point(75, 409);
+            Nep.Name = "Nep";
+            Nep.ReadOnly = true;
+            Nep.Size = new Size(100, 23);
+            Nep.TabIndex = 12;
+            // 
+            // Produ
+            // 
+            Produ.AllowUserToAddRows = false;
+            Produ.AllowUserToDeleteRows = false;
+            Produ.AllowUserToOrderColumns = true;
+            Produ.AllowUserToResizeColumns = false;
+            Produ.AllowUserToResizeRows = false;
+            dataGridViewCellStyle5.BackColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle5.Font = new Font("Microsoft YaHei", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle5.NullValue = null;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
+            Produ.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            Produ.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Produ.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            Produ.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            Produ.BackgroundColor = SystemColors.ActiveCaption;
+            Produ.BorderStyle = BorderStyle.None;
+            Produ.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            Produ.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            Produ.ColumnHeadersHeight = 35;
+            Produ.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            Produ.EnableHeadersVisualStyles = false;
+            Produ.GridColor = Color.SteelBlue;
+            Produ.ImeMode = ImeMode.Off;
+            Produ.Location = new Point(90, 84);
+            Produ.MultiSelect = false;
+            Produ.Name = "Produ";
+            Produ.ReadOnly = true;
+            Produ.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            Produ.RowHeadersVisible = false;
+            Produ.RowTemplate.Height = 25;
+            Produ.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            Produ.Size = new Size(258, 316);
+            Produ.StandardTab = true;
+            Produ.TabIndex = 11;
+            Produ.UseWaitCursor = true;
+            Produ.CellClick += Produ_CellClick;
+            // 
+            // DtFactura
+            // 
+            DtFactura.AllowUserToAddRows = false;
+            DtFactura.AllowUserToDeleteRows = false;
+            DtFactura.AllowUserToOrderColumns = true;
+            DtFactura.AllowUserToResizeColumns = false;
+            DtFactura.AllowUserToResizeRows = false;
+            dataGridViewCellStyle6.BackColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle6.Font = new Font("Microsoft YaHei", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle6.NullValue = null;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = Color.Black;
+            DtFactura.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            DtFactura.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            DtFactura.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            DtFactura.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            DtFactura.BackgroundColor = SystemColors.ActiveCaption;
+            DtFactura.BorderStyle = BorderStyle.None;
+            DtFactura.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            DtFactura.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            DtFactura.ColumnHeadersHeight = 35;
+            DtFactura.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            DtFactura.Columns.AddRange(new DataGridViewColumn[] { Column1, Cantidad, Column2, Column3 });
+            DtFactura.EnableHeadersVisualStyles = false;
+            DtFactura.GridColor = Color.SteelBlue;
+            DtFactura.ImeMode = ImeMode.Off;
+            DtFactura.Location = new Point(437, 64);
+            DtFactura.MultiSelect = false;
+            DtFactura.Name = "DtFactura";
+            DtFactura.ReadOnly = true;
+            DtFactura.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            DtFactura.RowHeadersVisible = false;
+            DtFactura.RowTemplate.Height = 25;
+            DtFactura.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DtFactura.Size = new Size(350, 316);
+            DtFactura.StandardTab = true;
+            DtFactura.TabIndex = 10;
+            DtFactura.UseWaitCursor = true;
+            DtFactura.CellClick += DtFactura_CellClick;
+            // 
+            // Column1
+            // 
+            Column1.HeaderText = "Nombre Producto";
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
+            Column1.Width = 115;
+            // 
+            // Cantidad
+            // 
+            Cantidad.HeaderText = "Cantidad";
+            Cantidad.Name = "Cantidad";
+            Cantidad.ReadOnly = true;
+            Cantidad.Width = 78;
+            // 
+            // Column2
+            // 
+            Column2.HeaderText = "Precio";
+            Column2.Name = "Column2";
+            Column2.ReadOnly = true;
+            Column2.Width = 63;
+            // 
+            // Column3
+            // 
+            Column3.HeaderText = "PrecioTotal";
+            Column3.Name = "Column3";
+            Column3.ReadOnly = true;
+            Column3.Width = 88;
+            // 
             // Admin
             // 
             AutoScaleMode = AutoScaleMode.None;
-            ClientSize = new Size(1019, 607);
+            ClientSize = new Size(1021, 607);
             ControlBox = false;
+            Controls.Add(Facturacion);
             Controls.Add(panel1);
-            Controls.Add(panel2);
             Controls.Add(Pancho2);
             Controls.Add(Pancho);
+            Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             MdiChildrenMinimizedAnchorBottom = false;
@@ -661,7 +953,12 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             ((System.ComponentModel.ISupportInitialize)MateriaPrima).EndInit();
+            Facturacion.ResumeLayout(false);
+            Facturacion.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)Produ).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DtFactura).EndInit();
             ResumeLayout(false);
         }
 
@@ -694,16 +991,33 @@
         public DataGridView dataGridView1;
         private Panel panel2;
         private Button button8;
-        private Button button9;
+        private Button eli;
         private Button button10;
-        private TextBox textBox1;
+        private TextBox txtbus;
         internal DataGridView MateriaPrima;
         private Button button11;
-        private Button button12;
-        private Button button13;
-        private Button button14;
+        private Button np;
+        private Button mod;
+        private Button agm;
         private Button button15;
-        private Button button16;
+        private Button ags;
         private TextBox textBox2;
+        internal DataGridView dataGridView3;
+        private Button Elin;
+        private Button eliminarp;
+        private TextBox Txtbusq;
+        private Label label1;
+        private Panel Facturacion;
+        internal DataGridView DtFactura;
+        internal DataGridView Produ;
+        private TextBox Nep;
+        private ComboBox cmbCant;
+        private Button AgregarP;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Cantidad;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private Button Elimin;
+        private Button Venta;
     }
 }

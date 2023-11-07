@@ -15,28 +15,21 @@ namespace TestingTDP
     {
         public Form5()
         {
-            InitializeComponent();
             MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            InitializeComponent();
+            var checkInfo = new MySqlCommand($"select Id_producto,Nombre from producto WHERE integrado !=\"X\"", connection);
             connection.Open();
-            try
+            MySqlDataReader reade;
+            reade = checkInfo.ExecuteReader();
+            if (reade.Read())
             {
-
-                MySqlCommand comando = new MySqlCommand();
-                comando.Connection = connection;
-                comando.CommandText = ("select nombre,cantidad from producto where integrado !=\"X\" ;");
-
-                MySqlDataAdapter adaptar = new MySqlDataAdapter();
-                adaptar.SelectCommand = comando;
-                DataTable tabla = new DataTable();
-                adaptar.Fill(tabla);
-                dataGridView2.DataSource = tabla;
-
+                while (reade.Read())
+                {
+                    comboBox1.Items.Add(reade.GetString("Nombre"));
+                }
+                comboBox1.SelectedIndex = 0;
             }
-            catch (Exception b)
-            {
-
-                MessageBox.Show(b.Message + b.StackTrace);
-            }
+            reade.Read();
         }
         public class MainFunc
         {
@@ -46,7 +39,7 @@ namespace TestingTDP
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            string edit = txtNombre.Text;
+            string edit = comboBox1.SelectedItem.ToString();
             string edit1 = txtCant.Text;
             MySqlConnection connection = new MySqlConnection(MainFunc.connString);
 
@@ -66,53 +59,7 @@ namespace TestingTDP
 
         private void txtNombre_TextChanged(object sender, EventArgs e)
         {
-            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
-            connection.Open();
-            if (txtNombre.Text == "")
-            {
-                try
-                {
 
-                    MySqlCommand comando = new MySqlCommand();
-                    comando.Connection = connection;
-                    comando.CommandText = ("select nombre,cantidad from producto where integrado !=\"X\" ;");
-
-                    MySqlDataAdapter adaptar = new MySqlDataAdapter();
-                    adaptar.SelectCommand = comando;
-                    DataTable tabla = new DataTable();
-                    adaptar.Fill(tabla);
-                    dataGridView2.DataSource = tabla;
-
-                }
-                catch (Exception b)
-                {
-
-                    MessageBox.Show(b.Message + b.StackTrace);
-                }
-            }
-            else
-            if (txtNombre.Text != "")
-            {
-                string nombre2 = txtNombre.Text;
-                var checkInfo = new MySqlCommand($"select Nombre , cantidad  from producto WHERE integrado !=\"X\" and Nombre LIKE \"%{nombre2}%\"", connection);
-                var reade = checkInfo.ExecuteReader();
-                reade.Read();
-                if (reade.HasRows)
-                {
-                    reade.Close();
-
-
-                    var registerQuery = new MySqlCommand($"select Nombre , cantidad  from producto WHERE integrado !=\"X\" and  Nombre  LIKE \"%{nombre2}%\"", connection);
-                    registerQuery.ExecuteNonQuery();
-                    MySqlDataAdapter adaptar = new MySqlDataAdapter();
-                    adaptar.SelectCommand = registerQuery;
-                    DataTable tabla = new DataTable();
-                    adaptar.Fill(tabla);
-                    dataGridView2.DataSource = tabla;
-
-                }
-
-            }
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -123,12 +70,17 @@ namespace TestingTDP
 
         private void button2_Click(object sender, EventArgs e)
         {
-            txtNombre.Text = dataGridView2.CurrentRow.Cells[0].Value.ToString();
+
         }
 
         private void dataGridView2_MouseClick(object sender, MouseEventArgs e)
         {
-            txtNombre.Text = dataGridView2.CurrentRow.Cells[0].Value.ToString();
+
+        }
+
+        private void Form5_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
