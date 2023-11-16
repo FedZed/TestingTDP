@@ -34,12 +34,14 @@
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             panel1 = new Panel();
             button5 = new Button();
             button1 = new Button();
             Pancho = new Panel();
             Pancho1 = new Panel();
-            Bts = new Panel();
+            MtFactu = new Button();
             button4 = new Button();
             button3 = new Button();
             button2 = new Button();
@@ -47,9 +49,7 @@
             pictureBox1 = new PictureBox();
             Pancho2 = new Panel();
             DtC = new Button();
-            Borrar = new Button();
             Reintegrar = new Button();
-            Busqueda2 = new TextBox();
             DtE = new Button();
             Modificar = new Button();
             Eliminar = new Button();
@@ -57,18 +57,15 @@
             button7 = new Button();
             button6 = new Button();
             Busqueda = new TextBox();
-            dataGridView1 = new DataGridView();
             dataGridView2 = new DataGridView();
+            dataGridView1 = new DataGridView();
+            Busqueda2 = new TextBox();
             panel2 = new Panel();
-            label1 = new Label();
-            Txtbusq = new TextBox();
-            eliminarp = new Button();
             Elin = new Button();
             dataGridView3 = new DataGridView();
             button8 = new Button();
             eli = new Button();
             button10 = new Button();
-            txtbus = new TextBox();
             MateriaPrima = new DataGridView();
             button11 = new Button();
             np = new Button();
@@ -76,8 +73,13 @@
             agm = new Button();
             button15 = new Button();
             ags = new Button();
-            textBox2 = new TextBox();
+            Txtbusq = new TextBox();
+            txtbus = new TextBox();
+            label1 = new Label();
             Facturacion = new Panel();
+            TxtDevolucion = new TextBox();
+            Pg = new TextBox();
+            txtPre = new TextBox();
             Elimin = new Button();
             Venta = new Button();
             AgregarP = new Button();
@@ -85,23 +87,36 @@
             Nep = new TextBox();
             Produ = new DataGridView();
             DtFactura = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
+            Nombre_Producto = new DataGridViewTextBoxColumn();
             Cantidad = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
+            Precio = new DataGridViewTextBoxColumn();
+            Ptotal = new DataGridViewTextBoxColumn();
+            MotFac = new Panel();
+            TextBusca = new TextBox();
+            Reis = new Button();
+            dc = new Button();
+            mar = new Button();
+            button9 = new Button();
+            textBox1 = new TextBox();
+            borr = new Button();
+            Factur = new DataGridView();
+            NFac = new DataGridView();
             panel1.SuspendLayout();
             Pancho.SuspendLayout();
             Pancho1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             Pancho2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MateriaPrima).BeginInit();
             Facturacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Produ).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DtFactura).BeginInit();
+            MotFac.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Factur).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NFac).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -118,11 +133,11 @@
             // 
             button5.FlatAppearance.MouseDownBackColor = Color.Red;
             button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 0, 0);
-            button5.FlatStyle = FlatStyle.Flat;
+            button5.FlatStyle = FlatStyle.Popup;
             button5.ForeColor = SystemColors.ButtonHighlight;
-            button5.Location = new Point(984, 11);
+            button5.Location = new Point(997, 8);
             button5.Name = "button5";
-            button5.Size = new Size(23, 23);
+            button5.Size = new Size(22, 22);
             button5.TabIndex = 1;
             button5.Text = "X";
             button5.TextAlign = ContentAlignment.BottomRight;
@@ -145,15 +160,15 @@
             Pancho.BackColor = SystemColors.ActiveCaption;
             Pancho.Controls.Add(Pancho1);
             Pancho.Controls.Add(pictureBox1);
-            Pancho.Location = new Point(-4, 92);
+            Pancho.Location = new Point(-4, 79);
             Pancho.Name = "Pancho";
-            Pancho.Size = new Size(1025, 521);
+            Pancho.Size = new Size(1025, 534);
             Pancho.TabIndex = 1;
             // 
             // Pancho1
             // 
             Pancho1.BackColor = Color.SteelBlue;
-            Pancho1.Controls.Add(Bts);
+            Pancho1.Controls.Add(MtFactu);
             Pancho1.Controls.Add(button4);
             Pancho1.Controls.Add(button3);
             Pancho1.Controls.Add(button2);
@@ -163,19 +178,26 @@
             Pancho1.Size = new Size(208, 521);
             Pancho1.TabIndex = 1;
             // 
-            // Bts
+            // MtFactu
             // 
-            Bts.Location = new Point(208, 173);
-            Bts.Name = "Bts";
-            Bts.Size = new Size(188, 199);
-            Bts.TabIndex = 6;
+            MtFactu.FlatStyle = FlatStyle.Popup;
+            MtFactu.Font = new Font("Tahoma", 8F, FontStyle.Bold, GraphicsUnit.Point);
+            MtFactu.ForeColor = SystemColors.Control;
+            MtFactu.Location = new Point(18, 268);
+            MtFactu.Name = "MtFactu";
+            MtFactu.Size = new Size(127, 29);
+            MtFactu.TabIndex = 4;
+            MtFactu.Text = "Mostrar Facturas";
+            MtFactu.UseVisualStyleBackColor = true;
+            MtFactu.Visible = false;
+            MtFactu.Click += MtFactu_Click;
             // 
             // button4
             // 
             button4.FlatStyle = FlatStyle.Popup;
             button4.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button4.ForeColor = SystemColors.Control;
-            button4.Location = new Point(21, 228);
+            button4.Location = new Point(18, 228);
             button4.Name = "button4";
             button4.Size = new Size(165, 41);
             button4.TabIndex = 3;
@@ -194,6 +216,7 @@
             button3.TabIndex = 2;
             button3.Text = "Distribuidores";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
@@ -235,21 +258,20 @@
             // 
             Pancho2.BackColor = SystemColors.ActiveCaption;
             Pancho2.Controls.Add(DtC);
-            Pancho2.Controls.Add(Borrar);
             Pancho2.Controls.Add(Reintegrar);
-            Pancho2.Controls.Add(Busqueda2);
             Pancho2.Controls.Add(DtE);
             Pancho2.Controls.Add(Modificar);
             Pancho2.Controls.Add(Eliminar);
             Pancho2.Controls.Add(Agg);
             Pancho2.Controls.Add(button7);
             Pancho2.Controls.Add(button6);
-            Pancho2.Controls.Add(Busqueda);
-            Pancho2.Controls.Add(dataGridView1);
             Pancho2.Controls.Add(dataGridView2);
+            Pancho2.Controls.Add(dataGridView1);
+            Pancho2.Controls.Add(Busqueda2);
+            Pancho2.Controls.Add(Busqueda);
             Pancho2.Location = new Point(204, 93);
             Pancho2.Name = "Pancho2";
-            Pancho2.Size = new Size(817, 521);
+            Pancho2.Size = new Size(817, 507);
             Pancho2.TabIndex = 2;
             // 
             // DtC
@@ -257,26 +279,13 @@
             DtC.FlatStyle = FlatStyle.Popup;
             DtC.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             DtC.ForeColor = Color.MintCream;
-            DtC.Location = new Point(690, 124);
+            DtC.Location = new Point(690, 55);
             DtC.Name = "DtC";
             DtC.Size = new Size(115, 42);
             DtC.TabIndex = 14;
             DtC.Text = "Datos Comunes";
             DtC.UseVisualStyleBackColor = true;
             DtC.Click += DtC_Click;
-            // 
-            // Borrar
-            // 
-            Borrar.FlatStyle = FlatStyle.Popup;
-            Borrar.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            Borrar.ForeColor = Color.MintCream;
-            Borrar.Location = new Point(27, 124);
-            Borrar.Name = "Borrar";
-            Borrar.Size = new Size(115, 42);
-            Borrar.TabIndex = 13;
-            Borrar.Text = "Eliminar";
-            Borrar.UseVisualStyleBackColor = true;
-            Borrar.Click += Borrar_Click;
             // 
             // Reintegrar
             // 
@@ -291,22 +300,12 @@
             Reintegrar.UseVisualStyleBackColor = true;
             Reintegrar.Click += Reintegrar_Click;
             // 
-            // Busqueda2
-            // 
-            Busqueda2.BackColor = SystemColors.MenuBar;
-            Busqueda2.BorderStyle = BorderStyle.FixedSingle;
-            Busqueda2.Location = new Point(203, 21);
-            Busqueda2.Name = "Busqueda2";
-            Busqueda2.Size = new Size(423, 23);
-            Busqueda2.TabIndex = 11;
-            Busqueda2.TextChanged += Busqueda2_TextChanged;
-            // 
             // DtE
             // 
             DtE.FlatStyle = FlatStyle.Popup;
             DtE.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             DtE.ForeColor = Color.MintCream;
-            DtE.Location = new Point(690, 64);
+            DtE.Location = new Point(690, 107);
             DtE.Name = "DtE";
             DtE.Size = new Size(115, 42);
             DtE.TabIndex = 9;
@@ -389,47 +388,6 @@
             Busqueda.TabIndex = 1;
             Busqueda.TextChanged += Busqueda_TextChanged;
             // 
-            // dataGridView1
-            // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToOrderColumns = true;
-            dataGridView1.AllowUserToResizeColumns = false;
-            dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle1.Font = new Font("Microsoft YaHei", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle1.NullValue = null;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridView1.BackgroundColor = SystemColors.ActiveCaption;
-            dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridView1.ColumnHeadersHeight = 35;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.GridColor = Color.SteelBlue;
-            dataGridView1.ImeMode = ImeMode.Off;
-            dataGridView1.Location = new Point(209, 55);
-            dataGridView1.MultiSelect = false;
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(487, 417);
-            dataGridView1.StandardTab = true;
-            dataGridView1.TabIndex = 0;
-            dataGridView1.UseWaitCursor = true;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            dataGridView1.MouseClick += dataGridView1_MouseClick;
-            // 
             // dataGridView2
             // 
             dataGridView2.AllowUserToAddRows = false;
@@ -437,13 +395,13 @@
             dataGridView2.AllowUserToOrderColumns = true;
             dataGridView2.AllowUserToResizeColumns = false;
             dataGridView2.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle2.Font = new Font("Microsoft YaHei", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle2.NullValue = null;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
-            dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.Font = new Font("Microsoft YaHei", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
@@ -464,24 +422,71 @@
             dataGridView2.RowHeadersVisible = false;
             dataGridView2.RowTemplate.Height = 25;
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView2.Size = new Size(475, 417);
+            dataGridView2.Size = new Size(475, 403);
             dataGridView2.StandardTab = true;
             dataGridView2.TabIndex = 10;
             dataGridView2.UseWaitCursor = true;
             dataGridView2.MouseClick += dataGridView2_MouseClick;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToOrderColumns = true;
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
+            dataGridViewCellStyle2.BackColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle2.Font = new Font("Microsoft YaHei", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle2.NullValue = null;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView1.BackgroundColor = SystemColors.ActiveCaption;
+            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridView1.ColumnHeadersHeight = 35;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.GridColor = Color.SteelBlue;
+            dataGridView1.ImeMode = ImeMode.Off;
+            dataGridView1.Location = new Point(209, 55);
+            dataGridView1.MultiSelect = false;
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(487, 403);
+            dataGridView1.StandardTab = true;
+            dataGridView1.TabIndex = 0;
+            dataGridView1.UseWaitCursor = true;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dataGridView1.MouseClick += dataGridView1_MouseClick;
+            // 
+            // Busqueda2
+            // 
+            Busqueda2.BackColor = SystemColors.MenuBar;
+            Busqueda2.BorderStyle = BorderStyle.FixedSingle;
+            Busqueda2.Location = new Point(203, 21);
+            Busqueda2.Name = "Busqueda2";
+            Busqueda2.Size = new Size(423, 23);
+            Busqueda2.TabIndex = 11;
+            Busqueda2.TextChanged += Busqueda2_TextChanged;
+            // 
             // panel2
             // 
             panel2.BackColor = SystemColors.ActiveCaption;
-            panel2.Controls.Add(label1);
-            panel2.Controls.Add(Txtbusq);
-            panel2.Controls.Add(eliminarp);
             panel2.Controls.Add(Elin);
             panel2.Controls.Add(dataGridView3);
             panel2.Controls.Add(button8);
             panel2.Controls.Add(eli);
             panel2.Controls.Add(button10);
-            panel2.Controls.Add(txtbus);
             panel2.Controls.Add(MateriaPrima);
             panel2.Controls.Add(button11);
             panel2.Controls.Add(np);
@@ -489,46 +494,12 @@
             panel2.Controls.Add(agm);
             panel2.Controls.Add(button15);
             panel2.Controls.Add(ags);
-            panel2.Controls.Add(textBox2);
+            panel2.Controls.Add(Txtbusq);
+            panel2.Controls.Add(txtbus);
             panel2.Location = new Point(204, 93);
             panel2.Name = "panel2";
             panel2.Size = new Size(817, 521);
             panel2.TabIndex = 15;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Tahoma", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(214, 172);
-            label1.Name = "label1";
-            label1.Size = new Size(395, 78);
-            label1.TabIndex = 19;
-            label1.Text = "   No existe un datos \r\ncon esas caracteristicas";
-            label1.Visible = false;
-            // 
-            // Txtbusq
-            // 
-            Txtbusq.BackColor = SystemColors.MenuBar;
-            Txtbusq.BorderStyle = BorderStyle.FixedSingle;
-            Txtbusq.Location = new Point(203, 21);
-            Txtbusq.Name = "Txtbusq";
-            Txtbusq.Size = new Size(423, 23);
-            Txtbusq.TabIndex = 18;
-            Txtbusq.TextChanged += Txtbusq_TextChanged;
-            // 
-            // eliminarp
-            // 
-            eliminarp.FlatStyle = FlatStyle.Popup;
-            eliminarp.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            eliminarp.ForeColor = Color.MintCream;
-            eliminarp.Location = new Point(27, 190);
-            eliminarp.Name = "eliminarp";
-            eliminarp.Size = new Size(115, 42);
-            eliminarp.TabIndex = 17;
-            eliminarp.Text = "Eliminar";
-            eliminarp.UseVisualStyleBackColor = true;
-            eliminarp.Click += eliminarp_Click;
             // 
             // Elin
             // 
@@ -587,7 +558,7 @@
             button8.FlatStyle = FlatStyle.Popup;
             button8.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             button8.ForeColor = Color.MintCream;
-            button8.Location = new Point(690, 124);
+            button8.Location = new Point(690, 64);
             button8.Name = "button8";
             button8.Size = new Size(115, 42);
             button8.TabIndex = 14;
@@ -620,16 +591,6 @@
             button10.Text = "Actualizar";
             button10.UseVisualStyleBackColor = true;
             button10.Click += button10_Click;
-            // 
-            // txtbus
-            // 
-            txtbus.BackColor = SystemColors.MenuBar;
-            txtbus.BorderStyle = BorderStyle.FixedSingle;
-            txtbus.Location = new Point(203, 21);
-            txtbus.Name = "txtbus";
-            txtbus.Size = new Size(423, 23);
-            txtbus.TabIndex = 11;
-            txtbus.TextChanged += textBox1_TextChanged;
             // 
             // MateriaPrima
             // 
@@ -677,7 +638,7 @@
             button11.FlatStyle = FlatStyle.Popup;
             button11.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             button11.ForeColor = Color.MintCream;
-            button11.Location = new Point(690, 64);
+            button11.Location = new Point(690, 124);
             button11.Name = "button11";
             button11.Size = new Size(115, 42);
             button11.TabIndex = 9;
@@ -749,18 +710,45 @@
             ags.UseVisualStyleBackColor = true;
             ags.Click += ags_Click;
             // 
-            // textBox2
+            // Txtbusq
             // 
-            textBox2.BackColor = SystemColors.MenuBar;
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Location = new Point(203, 21);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(423, 23);
-            textBox2.TabIndex = 1;
+            Txtbusq.BackColor = SystemColors.MenuBar;
+            Txtbusq.BorderStyle = BorderStyle.FixedSingle;
+            Txtbusq.Location = new Point(203, 21);
+            Txtbusq.Name = "Txtbusq";
+            Txtbusq.Size = new Size(423, 23);
+            Txtbusq.TabIndex = 18;
+            Txtbusq.TextChanged += Txtbusq_TextChanged;
+            // 
+            // txtbus
+            // 
+            txtbus.BackColor = SystemColors.MenuBar;
+            txtbus.BorderStyle = BorderStyle.FixedSingle;
+            txtbus.Location = new Point(203, 22);
+            txtbus.Name = "txtbus";
+            txtbus.Size = new Size(423, 23);
+            txtbus.TabIndex = 11;
+            txtbus.TextChanged += textBox1_TextChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = SystemColors.ActiveCaption;
+            label1.Font = new Font("Tahoma", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.AliceBlue;
+            label1.Location = new Point(420, 262);
+            label1.Name = "label1";
+            label1.Size = new Size(395, 78);
+            label1.TabIndex = 19;
+            label1.Text = "   No existe un datos \r\ncon esas caracteristicas";
+            label1.Visible = false;
             // 
             // Facturacion
             // 
             Facturacion.BackColor = SystemColors.ActiveCaption;
+            Facturacion.Controls.Add(TxtDevolucion);
+            Facturacion.Controls.Add(Pg);
+            Facturacion.Controls.Add(txtPre);
             Facturacion.Controls.Add(Elimin);
             Facturacion.Controls.Add(Venta);
             Facturacion.Controls.Add(AgregarP);
@@ -772,6 +760,36 @@
             Facturacion.Name = "Facturacion";
             Facturacion.Size = new Size(817, 521);
             Facturacion.TabIndex = 15;
+            // 
+            // TxtDevolucion
+            // 
+            TxtDevolucion.BackColor = Color.Brown;
+            TxtDevolucion.BorderStyle = BorderStyle.FixedSingle;
+            TxtDevolucion.Location = new Point(690, 475);
+            TxtDevolucion.Name = "TxtDevolucion";
+            TxtDevolucion.ReadOnly = true;
+            TxtDevolucion.Size = new Size(100, 23);
+            TxtDevolucion.TabIndex = 19;
+            // 
+            // Pg
+            // 
+            Pg.Location = new Point(690, 417);
+            Pg.Name = "Pg";
+            Pg.Size = new Size(100, 23);
+            Pg.TabIndex = 18;
+            Pg.TextChanged += Pg_TextChanged;
+            Pg.KeyPress += textBox3_KeyPress;
+            // 
+            // txtPre
+            // 
+            txtPre.BackColor = Color.MediumSeaGreen;
+            txtPre.BorderStyle = BorderStyle.FixedSingle;
+            txtPre.Location = new Point(690, 446);
+            txtPre.Name = "txtPre";
+            txtPre.ReadOnly = true;
+            txtPre.Size = new Size(100, 23);
+            txtPre.TabIndex = 17;
+            txtPre.TextChanged += txtPre_TextChanged;
             // 
             // Elimin
             // 
@@ -791,6 +809,7 @@
             Venta.TabIndex = 15;
             Venta.Text = "Venta";
             Venta.UseVisualStyleBackColor = true;
+            Venta.Click += Venta_Click;
             // 
             // AgregarP
             // 
@@ -881,7 +900,7 @@
             DtFactura.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             DtFactura.ColumnHeadersHeight = 35;
             DtFactura.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            DtFactura.Columns.AddRange(new DataGridViewColumn[] { Column1, Cantidad, Column2, Column3 });
+            DtFactura.Columns.AddRange(new DataGridViewColumn[] { Nombre_Producto, Cantidad, Precio, Ptotal });
             DtFactura.EnableHeadersVisualStyles = false;
             DtFactura.GridColor = Color.SteelBlue;
             DtFactura.ImeMode = ImeMode.Off;
@@ -893,18 +912,18 @@
             DtFactura.RowHeadersVisible = false;
             DtFactura.RowTemplate.Height = 25;
             DtFactura.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DtFactura.Size = new Size(350, 316);
+            DtFactura.Size = new Size(362, 316);
             DtFactura.StandardTab = true;
             DtFactura.TabIndex = 10;
             DtFactura.UseWaitCursor = true;
             DtFactura.CellClick += DtFactura_CellClick;
             // 
-            // Column1
+            // Nombre_Producto
             // 
-            Column1.HeaderText = "Nombre Producto";
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
-            Column1.Width = 115;
+            Nombre_Producto.HeaderText = "Nombre_Producto";
+            Nombre_Producto.Name = "Nombre_Producto";
+            Nombre_Producto.ReadOnly = true;
+            Nombre_Producto.Width = 128;
             // 
             // Cantidad
             // 
@@ -913,31 +932,212 @@
             Cantidad.ReadOnly = true;
             Cantidad.Width = 78;
             // 
-            // Column2
+            // Precio
             // 
-            Column2.HeaderText = "Precio";
-            Column2.Name = "Column2";
-            Column2.ReadOnly = true;
-            Column2.Width = 63;
+            Precio.HeaderText = "Precio";
+            Precio.Name = "Precio";
+            Precio.ReadOnly = true;
+            Precio.Width = 63;
             // 
-            // Column3
+            // Ptotal
             // 
-            Column3.HeaderText = "PrecioTotal";
-            Column3.Name = "Column3";
-            Column3.ReadOnly = true;
-            Column3.Width = 88;
+            Ptotal.HeaderText = "PrecioTotal";
+            Ptotal.Name = "Ptotal";
+            Ptotal.ReadOnly = true;
+            Ptotal.Width = 88;
+            // 
+            // MotFac
+            // 
+            MotFac.BackColor = SystemColors.ActiveCaption;
+            MotFac.Controls.Add(TextBusca);
+            MotFac.Controls.Add(Reis);
+            MotFac.Controls.Add(dc);
+            MotFac.Controls.Add(mar);
+            MotFac.Controls.Add(button9);
+            MotFac.Controls.Add(textBox1);
+            MotFac.Controls.Add(borr);
+            MotFac.Controls.Add(Factur);
+            MotFac.Controls.Add(NFac);
+            MotFac.Location = new Point(204, 93);
+            MotFac.Name = "MotFac";
+            MotFac.Size = new Size(817, 521);
+            MotFac.TabIndex = 16;
+            // 
+            // TextBusca
+            // 
+            TextBusca.Location = new Point(220, 37);
+            TextBusca.Name = "TextBusca";
+            TextBusca.Size = new Size(389, 23);
+            TextBusca.TabIndex = 18;
+            TextBusca.TextChanged += TextBusca_TextChanged;
+            // 
+            // Reis
+            // 
+            Reis.FlatStyle = FlatStyle.Popup;
+            Reis.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            Reis.ForeColor = Color.MintCream;
+            Reis.Location = new Point(59, 101);
+            Reis.Name = "Reis";
+            Reis.Size = new Size(116, 37);
+            Reis.TabIndex = 17;
+            Reis.Text = "Reintegrar";
+            Reis.UseVisualStyleBackColor = true;
+            Reis.Click += Reis_Click;
+            // 
+            // dc
+            // 
+            dc.FlatStyle = FlatStyle.Popup;
+            dc.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dc.ForeColor = Color.MintCream;
+            dc.Location = new Point(651, 96);
+            dc.Name = "dc";
+            dc.Size = new Size(115, 42);
+            dc.TabIndex = 16;
+            dc.Text = "Datos Comunes";
+            dc.UseVisualStyleBackColor = true;
+            dc.Click += dc_Click;
+            // 
+            // mar
+            // 
+            mar.FlatStyle = FlatStyle.Popup;
+            mar.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            mar.ForeColor = Color.MintCream;
+            mar.Location = new Point(651, 150);
+            mar.Name = "mar";
+            mar.Size = new Size(115, 42);
+            mar.TabIndex = 15;
+            mar.Text = "Datos Eliminados";
+            mar.UseVisualStyleBackColor = true;
+            mar.Click += mar_Click;
+            // 
+            // button9
+            // 
+            button9.FlatStyle = FlatStyle.System;
+            button9.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button9.Location = new Point(11, 34);
+            button9.Name = "button9";
+            button9.Size = new Size(28, 23);
+            button9.TabIndex = 14;
+            button9.Text = "←";
+            button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click_2;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(220, 34);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(389, 23);
+            textBox1.TabIndex = 12;
+            textBox1.TextChanged += textBox1_TextChanged_1;
+            textBox1.KeyPress += textBox1_KeyPress;
+            // 
+            // borr
+            // 
+            borr.FlatStyle = FlatStyle.Popup;
+            borr.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            borr.ForeColor = Color.MintCream;
+            borr.Location = new Point(59, 101);
+            borr.Name = "borr";
+            borr.Size = new Size(116, 37);
+            borr.TabIndex = 5;
+            borr.Text = "Eliminar";
+            borr.UseVisualStyleBackColor = true;
+            borr.Click += borr_Click;
+            // 
+            // Factur
+            // 
+            Factur.AllowUserToAddRows = false;
+            Factur.AllowUserToDeleteRows = false;
+            Factur.AllowUserToOrderColumns = true;
+            Factur.AllowUserToResizeColumns = false;
+            Factur.AllowUserToResizeRows = false;
+            dataGridViewCellStyle7.BackColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle7.Font = new Font("Microsoft YaHei", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle7.NullValue = null;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
+            Factur.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            Factur.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Factur.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            Factur.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            Factur.BackgroundColor = SystemColors.ActiveCaption;
+            Factur.BorderStyle = BorderStyle.None;
+            Factur.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            Factur.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            Factur.ColumnHeadersHeight = 35;
+            Factur.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            Factur.EnableHeadersVisualStyles = false;
+            Factur.GridColor = Color.SteelBlue;
+            Factur.ImeMode = ImeMode.Off;
+            Factur.Location = new Point(236, 86);
+            Factur.MultiSelect = false;
+            Factur.Name = "Factur";
+            Factur.ReadOnly = true;
+            Factur.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            Factur.RowHeadersVisible = false;
+            Factur.RowTemplate.Height = 25;
+            Factur.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            Factur.Size = new Size(296, 395);
+            Factur.StandardTab = true;
+            Factur.TabIndex = 11;
+            Factur.UseWaitCursor = true;
+            Factur.CellClick += Factur_CellClick;
+            Factur.CellDoubleClick += Factur_CellDoubleClick;
+            // 
+            // NFac
+            // 
+            NFac.AllowUserToAddRows = false;
+            NFac.AllowUserToDeleteRows = false;
+            NFac.AllowUserToOrderColumns = true;
+            NFac.AllowUserToResizeColumns = false;
+            NFac.AllowUserToResizeRows = false;
+            dataGridViewCellStyle8.BackColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle8.Font = new Font("Microsoft YaHei", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle8.NullValue = null;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
+            NFac.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
+            NFac.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            NFac.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            NFac.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            NFac.BackgroundColor = SystemColors.ActiveCaption;
+            NFac.BorderStyle = BorderStyle.None;
+            NFac.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            NFac.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            NFac.ColumnHeadersHeight = 35;
+            NFac.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            NFac.EnableHeadersVisualStyles = false;
+            NFac.GridColor = Color.SteelBlue;
+            NFac.ImeMode = ImeMode.Off;
+            NFac.Location = new Point(181, 85);
+            NFac.MultiSelect = false;
+            NFac.Name = "NFac";
+            NFac.ReadOnly = true;
+            NFac.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            NFac.RowHeadersVisible = false;
+            NFac.RowTemplate.Height = 25;
+            NFac.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            NFac.Size = new Size(464, 417);
+            NFac.StandardTab = true;
+            NFac.TabIndex = 13;
+            NFac.UseWaitCursor = true;
             // 
             // Admin
             // 
+            AllowDrop = true;
             AutoScaleMode = AutoScaleMode.None;
-            ClientSize = new Size(1021, 607);
+            ClientSize = new Size(1019, 589);
             ControlBox = false;
-            Controls.Add(Facturacion);
             Controls.Add(panel1);
             Controls.Add(Pancho2);
+            Controls.Add(label1);
             Controls.Add(Pancho);
             Controls.Add(panel2);
-            FormBorderStyle = FormBorderStyle.None;
+            Controls.Add(MotFac);
+            Controls.Add(Facturacion);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MdiChildrenMinimizedAnchorBottom = false;
             MinimizeBox = false;
@@ -949,8 +1149,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             Pancho2.ResumeLayout(false);
             Pancho2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
@@ -959,7 +1159,12 @@
             Facturacion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)Produ).EndInit();
             ((System.ComponentModel.ISupportInitialize)DtFactura).EndInit();
+            MotFac.ResumeLayout(false);
+            MotFac.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)Factur).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NFac).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -968,17 +1173,12 @@
         private Button button1;
         private Panel Pancho;
         private Panel Pancho1;
-        private Button BtInventario;
         private PictureBox pictureBox1;
-        private Button button2;
-        private Button button4;
-        private Button button3;
         private Panel Pancho2;
         private TextBox Busqueda;
         private Button button5;
         private Button button6;
         private Button button7;
-        private Panel Bts;
         private Button Eliminar;
         private Button Agg;
         private Button Modificar;
@@ -986,7 +1186,6 @@
         internal DataGridView dataGridView2;
         private TextBox Busqueda2;
         private Button Reintegrar;
-        private Button Borrar;
         private Button DtC;
         public DataGridView dataGridView1;
         private Panel panel2;
@@ -1001,10 +1200,8 @@
         private Button agm;
         private Button button15;
         private Button ags;
-        private TextBox textBox2;
         internal DataGridView dataGridView3;
         private Button Elin;
-        private Button eliminarp;
         private TextBox Txtbusq;
         private Label label1;
         private Panel Facturacion;
@@ -1013,11 +1210,29 @@
         private TextBox Nep;
         private ComboBox cmbCant;
         private Button AgregarP;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Cantidad;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
         private Button Elimin;
         private Button Venta;
+        private DataGridViewTextBoxColumn Nombre_Producto;
+        private DataGridViewTextBoxColumn Cantidad;
+        private DataGridViewTextBoxColumn Precio;
+        private DataGridViewTextBoxColumn Ptotal;
+        private Panel MotFac;
+        internal DataGridView Factur;
+        private TextBox textBox1;
+        private Button borr;
+        internal DataGridView NFac;
+        private Button button9;
+        private TextBox txtPre;
+        public Button BtInventario;
+        public Button button2;
+        public Button button4;
+        public Button button3;
+        public Button MtFactu;
+        private TextBox Pg;
+        private TextBox TxtDevolucion;
+        private Button dc;
+        private Button mar;
+        private Button Reis;
+        private TextBox TextBusca;
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,6 +17,13 @@ namespace TestingTDP
 
     public partial class Form2 : Form
     {
+    
+        public class MainFunc
+        {
+            public static MySqlConnection? connection;
+            public static string connString = "server=localhost;database=tdp;uid=root;pwd=\"\"";
+
+        }
         string Tipo2;
         string Tipo;
         string Tipo1;
@@ -39,15 +47,7 @@ namespace TestingTDP
 
 
         }
-        public class MainFunc
-        {
-            public static MySqlConnection? connection;
-            public static string connString = "server=localhost;database=tdp;uid=root;pwd=\"\"";
 
-
-
-
-        }
         private void Form2_Load(object sender, EventArgs e)
         {
 
@@ -338,57 +338,7 @@ namespace TestingTDP
 
         }
 
-        private void button7_Click(object sender, EventArgs e)
-        {
 
-            {
-                MySqlConnection connection = new MySqlConnection(MainFunc.connString);
-                string nombre = TextName.Text;
-                string passwd = TextPass.Text;
-                string c1 = textCedula.Text;
-                int Cedula;
-                Cedula = int.Parse(c1);
-
-
-                connection.Open();
-                var checkInfo = new MySqlCommand($"SELECT Cedula FROM usuario WHERE Cedula =\"{Cedula}\"", connection);
-                var reader = checkInfo.ExecuteReader();
-                reader.Read();
-                if (reader.HasRows)
-                {
-                    reader.Close();
-                    MessageBox.Show("El Usuario ya existe", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                }
-                else
-                {
-                    reader.Close();
-                    var registerQuery = new MySqlCommand($"INSERT INTO usuario (Nombre, Cargo, Contraseña, Cedula) VALUES (\"{nombre}\",\"{Cargo}\",SHA(\"{passwd}\"),\"{Cedula}\")", connection);
-                    registerQuery.ExecuteNonQuery();
-                    MessageBox.Show("Usuario registrado correctamente", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    try
-                    {
-
-                        MySqlCommand comando = new MySqlCommand();
-                        comando.Connection = connection;
-                        comando.CommandText = ("select Nombre,Cargo,Cedula from usuario;");
-
-                        MySqlDataAdapter adaptar = new MySqlDataAdapter();
-                        adaptar.SelectCommand = comando;
-                        DataTable tabla = new DataTable();
-                        adaptar.Fill(tabla);
-                        DtUser.DataSource = tabla;
-
-                    }
-                    catch (Exception b)
-                    {
-
-                        MessageBox.Show(b.Message + b.StackTrace);
-                    }
-
-                }
-            }
-        }
 
         private void checkBox6_CheckedChanged(object sender, EventArgs e)
         {
@@ -1366,6 +1316,26 @@ namespace TestingTDP
             }
 
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            try
+            {
+                string nombre = TextName.Text;
+            string cedula = textCedula.Text;
+            string cargo = Cargo;
+            var registerQuery = new MySqlCommand($"INSERT INTO usuario (Nombre,Contraseña,Cedula,cargo) VALUES (\"{nombre}\", \"{Class1.HashString(TextPass.Text)}\", \"{cedula}\", \"{cargo}\")", connection);
+            registerQuery.ExecuteNonQuery();
+        }catch
+            {
+                MessageBox.Show("El Nombre del producto es incorrecto", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            
+        }
+        }
     }
 }
+
 

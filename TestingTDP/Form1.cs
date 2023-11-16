@@ -5,6 +5,7 @@ namespace TestingTDP
 {
     public partial class Form1 : Form
     {
+        
         public Form1()
         {
             InitializeComponent();
@@ -29,11 +30,10 @@ namespace TestingTDP
             connection.Open();
             informacion.correoLogin = textBox1.Text;
             var NombreUsuario_form = textBox1.Text;
-            var passwd_form = textBox2.Text;
-            var loginQuery = new MySqlCommand($"SELECT Cargo FROM usuario WHERE Nombre=\"{NombreUsuario_form}\" AND Contraseña=\"{passwd_form}\"", connection);
+            var loginQuery = new MySqlCommand($"SELECT Cargo FROM usuario WHERE Nombre=\"{NombreUsuario_form}\" AND Contraseña=\"{Class1.HashString(textBox2.Text) }\"", connection);
             var reader = loginQuery.ExecuteReader();
             reader.Read();
-
+            //@password", Encrypt.HashString
             if ((reader.HasRows && reader["Cargo"].ToString() == "Administrador"))
             {
                 Admin paneladmin = new Admin();
@@ -41,7 +41,31 @@ namespace TestingTDP
                 paneladmin.Show();
             }
 
-            else
+            else if ((reader.HasRows && reader["Cargo"].ToString() == "Panadero"))
+            {
+                Admin paneladmin = new Admin();
+
+                AddOwnedForm(paneladmin);
+                paneladmin.BtInventario.Visible = false;
+                paneladmin.button3.Visible = false;
+                paneladmin.button4.Visible = false;
+                paneladmin.button2.Location = new System.Drawing.Point(18,35);
+                this.Hide();
+                paneladmin.Show();
+            }
+            else if ((reader.HasRows && reader["Cargo"].ToString() == "Caja"))
+            {
+                Admin paneladmin = new Admin();
+
+                AddOwnedForm(paneladmin);
+                paneladmin.button3.Visible = false;
+                paneladmin.button2.Visible = false;
+                paneladmin.button4.Location = new System.Drawing.Point(18, 100);
+                paneladmin.MtFactu.Location = new System.Drawing.Point(18, 140);
+                this.Hide();
+                paneladmin.Show();
+            }
+            else 
             {
                 MessageBox.Show("Su usuario/contraseña son invalidos o no se encuentra verificado en este momento", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }

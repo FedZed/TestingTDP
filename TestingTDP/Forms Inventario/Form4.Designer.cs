@@ -61,6 +61,7 @@
             iDd.Name = "iDd";
             iDd.Size = new Size(100, 23);
             iDd.TabIndex = 1;
+            iDd.TextChanged += iDd_TextChanged;
             iDd.KeyPress += iDd_KeyPress;
             // 
             // Precio

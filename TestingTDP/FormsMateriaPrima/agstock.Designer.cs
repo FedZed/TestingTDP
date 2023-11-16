@@ -59,6 +59,7 @@
             txtCant.Name = "txtCant";
             txtCant.Size = new Size(100, 23);
             txtCant.TabIndex = 13;
+            txtCant.TextChanged += txtCant_TextChanged;
             // 
             // comboBox1
             // 

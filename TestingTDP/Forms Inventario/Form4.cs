@@ -56,6 +56,7 @@ namespace TestingTDP
                 Reader.Close();
                 MessageBox.Show("El Distribuidor no existe", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
         }
 
 
@@ -108,6 +109,11 @@ namespace TestingTDP
         }
 
         private void Cantidadtxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void iDd_TextChanged(object sender, EventArgs e)
         {
 
         }

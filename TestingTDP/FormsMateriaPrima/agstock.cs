@@ -57,5 +57,10 @@ namespace TestingTDP
             registerQuery.ExecuteNonQuery();
             MessageBox.Show("Se agrego el stock de forma correcta", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void txtCant_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
