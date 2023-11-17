@@ -90,7 +90,7 @@ namespace TestingTDP
                 adaptar.SelectCommand = comando;
                 DataTable tabla = new DataTable();
                 adaptar.Fill(tabla);
-                dataGridView1.DataSource = tabla;
+                MTT.DataSource = tabla;
 
             }
             catch (Exception b)
@@ -163,7 +163,7 @@ namespace TestingTDP
             {
                 Pancho.Visible = false;
                 this.Close();
-             
+
             }
             else
             {
@@ -173,6 +173,17 @@ namespace TestingTDP
                 registerQuery.ExecuteNonQuery();
                 MessageBox.Show("Se agrego el stock de forma correcta", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Nombretxt.Text = MTT.CurrentRow.Cells[0].Value.ToString();
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

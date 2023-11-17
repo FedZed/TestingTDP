@@ -46,7 +46,7 @@ namespace TestingTDP
             if (Reader.HasRows)
             {
                 Reader.Close();
-                var registerQuery = new MySqlCommand($"INSERT INTO producto (Nombre, tipo , precio2 , precio , cantidad , Id_Distribuidores,integrado) VALUES (\"{nombre}\", \"{Tipo}\", \"{precio}\", \"${precio}\", \"{cantidad}\", \"{IdD}\",\"I\")", connection);
+                var registerQuery = new MySqlCommand($"INSERT INTO producto (Nombre, tipo , precio , cantidad , Id_Distribuidores,integrado) VALUES (\"{nombre}\", \"{Tipo}\", \"{precio}\", \"{cantidad}\", \"{IdD}\",\"I\")", connection);
                 registerQuery.ExecuteNonQuery();
                 MessageBox.Show("El Producto se a registrado correctamente", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -116,6 +116,11 @@ namespace TestingTDP
         private void iDd_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

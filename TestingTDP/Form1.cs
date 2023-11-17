@@ -5,7 +5,7 @@ namespace TestingTDP
 {
     public partial class Form1 : Form
     {
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -30,10 +30,9 @@ namespace TestingTDP
             connection.Open();
             informacion.correoLogin = textBox1.Text;
             var NombreUsuario_form = textBox1.Text;
-            var loginQuery = new MySqlCommand($"SELECT Cargo FROM usuario WHERE Nombre=\"{NombreUsuario_form}\" AND Contraseña=\"{Class1.HashString(textBox2.Text) }\"", connection);
+            var loginQuery = new MySqlCommand($"SELECT Cargo,visible FROM usuario WHERE Nombre=\"{NombreUsuario_form}\" AND Contraseña=\"{Class1.HashString(textBox2.Text)}\" and visible=1", connection);
             var reader = loginQuery.ExecuteReader();
             reader.Read();
-            //@password", Encrypt.HashString
             if ((reader.HasRows && reader["Cargo"].ToString() == "Administrador"))
             {
                 Admin paneladmin = new Admin();
@@ -49,7 +48,7 @@ namespace TestingTDP
                 paneladmin.BtInventario.Visible = false;
                 paneladmin.button3.Visible = false;
                 paneladmin.button4.Visible = false;
-                paneladmin.button2.Location = new System.Drawing.Point(18,35);
+                paneladmin.button2.Location = new System.Drawing.Point(18, 35);
                 this.Hide();
                 paneladmin.Show();
             }
@@ -65,7 +64,7 @@ namespace TestingTDP
                 this.Hide();
                 paneladmin.Show();
             }
-            else 
+            else
             {
                 MessageBox.Show("Su usuario/contraseña son invalidos o no se encuentra verificado en este momento", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -91,6 +90,18 @@ namespace TestingTDP
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             p1.BringToFront();
+        }
+
+        private void OlvideMiContraseña_Click(object sender, EventArgs e)
+        {
+            Register regis = new Register();
+            regis.Show();
+            this.Hide();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

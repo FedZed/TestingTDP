@@ -36,11 +36,18 @@
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin));
             panel1 = new Panel();
             button5 = new Button();
             button1 = new Button();
             Pancho = new Panel();
             Pancho1 = new Panel();
+            VUs = new Button();
+            Usuario = new Button();
             MtFactu = new Button();
             button4 = new Button();
             button3 = new Button();
@@ -56,9 +63,9 @@
             Agg = new Button();
             button7 = new Button();
             button6 = new Button();
-            Busqueda = new TextBox();
             dataGridView2 = new DataGridView();
             dataGridView1 = new DataGridView();
+            Busqueda = new TextBox();
             Busqueda2 = new TextBox();
             panel2 = new Panel();
             Elin = new Button();
@@ -101,6 +108,53 @@
             borr = new Button();
             Factur = new DataGridView();
             NFac = new DataGridView();
+            pandis = new Panel();
+            Rdis = new Button();
+            Didi = new DataGridView();
+            BDIS = new TextBox();
+            Modius = new Button();
+            ElimiDis = new Button();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            Rut = new TextBox();
+            Telr = new TextBox();
+            dirr = new TextBox();
+            Nomdis = new TextBox();
+            button12 = new Button();
+            button14 = new Button();
+            Agregar = new Button();
+            DtDis = new DataGridView();
+            textBox3 = new TextBox();
+            Panu = new Panel();
+            Modus = new Button();
+            Reins = new Button();
+            BusEli = new TextBox();
+            Elius = new Button();
+            Actu = new Button();
+            DtComu = new Button();
+            DtEli = new Button();
+            Busque = new TextBox();
+            Viewus = new DataGridView();
+            Usview = new DataGridView();
+            Pancreu = new Panel();
+            Contravis1 = new PictureBox();
+            Contravis = new PictureBox();
+            AgUs = new Button();
+            label9 = new Label();
+            ContrUs1 = new TextBox();
+            label8 = new Label();
+            label7 = new Label();
+            label6 = new Label();
+            groupBox1 = new GroupBox();
+            CargoP = new RadioButton();
+            CargoC = new RadioButton();
+            ContrUs = new TextBox();
+            EmailUs = new TextBox();
+            NomUs = new TextBox();
+            pb2 = new PictureBox();
+            Pb1 = new PictureBox();
             panel1.SuspendLayout();
             Pancho.SuspendLayout();
             Pancho1.SuspendLayout();
@@ -117,6 +171,18 @@
             MotFac.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Factur).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NFac).BeginInit();
+            pandis.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Didi).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DtDis).BeginInit();
+            Panu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Viewus).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Usview).BeginInit();
+            Pancreu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Contravis1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Contravis).BeginInit();
+            groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pb2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Pb1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -131,9 +197,10 @@
             // 
             // button5
             // 
+            button5.FlatAppearance.BorderColor = Color.FromArgb(0, 0, 64);
             button5.FlatAppearance.MouseDownBackColor = Color.Red;
             button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 0, 0);
-            button5.FlatStyle = FlatStyle.Popup;
+            button5.FlatStyle = FlatStyle.Flat;
             button5.ForeColor = SystemColors.ButtonHighlight;
             button5.Location = new Point(997, 8);
             button5.Name = "button5";
@@ -168,6 +235,8 @@
             // Pancho1
             // 
             Pancho1.BackColor = Color.SteelBlue;
+            Pancho1.Controls.Add(VUs);
+            Pancho1.Controls.Add(Usuario);
             Pancho1.Controls.Add(MtFactu);
             Pancho1.Controls.Add(button4);
             Pancho1.Controls.Add(button3);
@@ -178,12 +247,39 @@
             Pancho1.Size = new Size(208, 521);
             Pancho1.TabIndex = 1;
             // 
+            // VUs
+            // 
+            VUs.FlatStyle = FlatStyle.Popup;
+            VUs.Font = new Font("Tahoma", 8F, FontStyle.Bold, GraphicsUnit.Point);
+            VUs.ForeColor = SystemColors.Control;
+            VUs.Location = new Point(18, 260);
+            VUs.Name = "VUs";
+            VUs.Size = new Size(127, 29);
+            VUs.TabIndex = 6;
+            VUs.Text = "Crear Usuarios";
+            VUs.UseVisualStyleBackColor = true;
+            VUs.Visible = false;
+            VUs.Click += VUs_Click;
+            // 
+            // Usuario
+            // 
+            Usuario.FlatStyle = FlatStyle.Popup;
+            Usuario.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            Usuario.ForeColor = SystemColors.Control;
+            Usuario.Location = new Point(18, 220);
+            Usuario.Name = "Usuario";
+            Usuario.Size = new Size(165, 41);
+            Usuario.TabIndex = 5;
+            Usuario.Text = "Usuarios";
+            Usuario.UseVisualStyleBackColor = true;
+            Usuario.Click += Usuario_Click;
+            // 
             // MtFactu
             // 
             MtFactu.FlatStyle = FlatStyle.Popup;
             MtFactu.Font = new Font("Tahoma", 8F, FontStyle.Bold, GraphicsUnit.Point);
             MtFactu.ForeColor = SystemColors.Control;
-            MtFactu.Location = new Point(18, 268);
+            MtFactu.Location = new Point(18, 346);
             MtFactu.Name = "MtFactu";
             MtFactu.Size = new Size(127, 29);
             MtFactu.TabIndex = 4;
@@ -197,7 +293,7 @@
             button4.FlatStyle = FlatStyle.Popup;
             button4.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button4.ForeColor = SystemColors.Control;
-            button4.Location = new Point(18, 228);
+            button4.Location = new Point(18, 306);
             button4.Name = "button4";
             button4.Size = new Size(165, 41);
             button4.TabIndex = 3;
@@ -267,8 +363,8 @@
             Pancho2.Controls.Add(button6);
             Pancho2.Controls.Add(dataGridView2);
             Pancho2.Controls.Add(dataGridView1);
-            Pancho2.Controls.Add(Busqueda2);
             Pancho2.Controls.Add(Busqueda);
+            Pancho2.Controls.Add(Busqueda2);
             Pancho2.Location = new Point(204, 93);
             Pancho2.Name = "Pancho2";
             Pancho2.Size = new Size(817, 507);
@@ -378,16 +474,6 @@
             button6.UseVisualStyleBackColor = true;
             button6.Click += button6_Click;
             // 
-            // Busqueda
-            // 
-            Busqueda.BackColor = SystemColors.MenuBar;
-            Busqueda.BorderStyle = BorderStyle.FixedSingle;
-            Busqueda.Location = new Point(203, 21);
-            Busqueda.Name = "Busqueda";
-            Busqueda.Size = new Size(423, 23);
-            Busqueda.TabIndex = 1;
-            Busqueda.TextChanged += Busqueda_TextChanged;
-            // 
             // dataGridView2
             // 
             dataGridView2.AllowUserToAddRows = false;
@@ -468,6 +554,16 @@
             dataGridView1.UseWaitCursor = true;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             dataGridView1.MouseClick += dataGridView1_MouseClick;
+            // 
+            // Busqueda
+            // 
+            Busqueda.BackColor = SystemColors.MenuBar;
+            Busqueda.BorderStyle = BorderStyle.FixedSingle;
+            Busqueda.Location = new Point(203, 21);
+            Busqueda.Name = "Busqueda";
+            Busqueda.Size = new Size(423, 23);
+            Busqueda.TabIndex = 1;
+            Busqueda.TextChanged += Busqueda_TextChanged;
             // 
             // Busqueda2
             // 
@@ -1124,6 +1220,647 @@
             NFac.TabIndex = 13;
             NFac.UseWaitCursor = true;
             // 
+            // pandis
+            // 
+            pandis.BackColor = SystemColors.ActiveCaption;
+            pandis.Controls.Add(Rdis);
+            pandis.Controls.Add(Didi);
+            pandis.Controls.Add(BDIS);
+            pandis.Controls.Add(Modius);
+            pandis.Controls.Add(ElimiDis);
+            pandis.Controls.Add(label5);
+            pandis.Controls.Add(label4);
+            pandis.Controls.Add(label3);
+            pandis.Controls.Add(label2);
+            pandis.Controls.Add(Rut);
+            pandis.Controls.Add(Telr);
+            pandis.Controls.Add(dirr);
+            pandis.Controls.Add(Nomdis);
+            pandis.Controls.Add(button12);
+            pandis.Controls.Add(button14);
+            pandis.Controls.Add(Agregar);
+            pandis.Controls.Add(DtDis);
+            pandis.Controls.Add(textBox3);
+            pandis.Location = new Point(204, 93);
+            pandis.Name = "pandis";
+            pandis.Size = new Size(817, 507);
+            pandis.TabIndex = 15;
+            // 
+            // Rdis
+            // 
+            Rdis.FlatStyle = FlatStyle.Popup;
+            Rdis.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            Rdis.ForeColor = Color.MintCream;
+            Rdis.Location = new Point(569, 84);
+            Rdis.Name = "Rdis";
+            Rdis.Size = new Size(98, 37);
+            Rdis.TabIndex = 27;
+            Rdis.Text = "Reintegrar";
+            Rdis.UseVisualStyleBackColor = true;
+            Rdis.Click += Rdis_Click;
+            // 
+            // Didi
+            // 
+            Didi.AllowUserToAddRows = false;
+            Didi.AllowUserToDeleteRows = false;
+            Didi.AllowUserToOrderColumns = true;
+            Didi.AllowUserToResizeColumns = false;
+            Didi.AllowUserToResizeRows = false;
+            dataGridViewCellStyle9.BackColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle9.Font = new Font("Microsoft YaHei", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle9.NullValue = null;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = Color.Black;
+            Didi.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            Didi.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Didi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            Didi.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            Didi.BackgroundColor = SystemColors.ActiveCaption;
+            Didi.BorderStyle = BorderStyle.None;
+            Didi.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            Didi.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            Didi.ColumnHeadersHeight = 35;
+            Didi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            Didi.EnableHeadersVisualStyles = false;
+            Didi.GridColor = Color.SteelBlue;
+            Didi.ImeMode = ImeMode.Off;
+            Didi.Location = new Point(239, 55);
+            Didi.MultiSelect = false;
+            Didi.Name = "Didi";
+            Didi.ReadOnly = true;
+            Didi.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            Didi.RowHeadersVisible = false;
+            Didi.RowTemplate.Height = 25;
+            Didi.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            Didi.Size = new Size(324, 358);
+            Didi.StandardTab = true;
+            Didi.TabIndex = 26;
+            Didi.UseWaitCursor = true;
+            Didi.CellClick += Didi_CellClick;
+            // 
+            // BDIS
+            // 
+            BDIS.BackColor = SystemColors.MenuBar;
+            BDIS.BorderStyle = BorderStyle.FixedSingle;
+            BDIS.Location = new Point(221, 17);
+            BDIS.Name = "BDIS";
+            BDIS.Size = new Size(342, 23);
+            BDIS.TabIndex = 25;
+            BDIS.TextChanged += BDIS_TextChanged;
+            // 
+            // Modius
+            // 
+            Modius.FlatStyle = FlatStyle.Popup;
+            Modius.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            Modius.ForeColor = Color.MintCream;
+            Modius.Location = new Point(61, 376);
+            Modius.Name = "Modius";
+            Modius.Size = new Size(98, 37);
+            Modius.TabIndex = 24;
+            Modius.Text = "Modificar";
+            Modius.UseVisualStyleBackColor = true;
+            Modius.Click += Modius_Click;
+            // 
+            // ElimiDis
+            // 
+            ElimiDis.FlatStyle = FlatStyle.Popup;
+            ElimiDis.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            ElimiDis.ForeColor = Color.MintCream;
+            ElimiDis.Location = new Point(569, 84);
+            ElimiDis.Name = "ElimiDis";
+            ElimiDis.Size = new Size(98, 37);
+            ElimiDis.TabIndex = 23;
+            ElimiDis.Text = "Eliminar";
+            ElimiDis.UseVisualStyleBackColor = true;
+            ElimiDis.Click += ElimiDis_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(40, 261);
+            label5.Name = "label5";
+            label5.Size = new Size(60, 15);
+            label5.TabIndex = 22;
+            label5.Text = "Direccion:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(40, 218);
+            label4.Name = "label4";
+            label4.Size = new Size(55, 15);
+            label4.TabIndex = 21;
+            label4.Text = "Telefono:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(40, 173);
+            label3.Name = "label3";
+            label3.Size = new Size(28, 15);
+            label3.TabIndex = 20;
+            label3.Text = "Rut:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(38, 129);
+            label2.Name = "label2";
+            label2.Size = new Size(54, 15);
+            label2.TabIndex = 19;
+            label2.Text = "Nombre:";
+            // 
+            // Rut
+            // 
+            Rut.Location = new Point(59, 188);
+            Rut.Name = "Rut";
+            Rut.Size = new Size(100, 23);
+            Rut.TabIndex = 18;
+            // 
+            // Telr
+            // 
+            Telr.Location = new Point(59, 234);
+            Telr.Name = "Telr";
+            Telr.Size = new Size(100, 23);
+            Telr.TabIndex = 17;
+            // 
+            // dirr
+            // 
+            dirr.Location = new Point(59, 277);
+            dirr.Name = "dirr";
+            dirr.Size = new Size(100, 23);
+            dirr.TabIndex = 16;
+            // 
+            // Nomdis
+            // 
+            Nomdis.Location = new Point(59, 145);
+            Nomdis.Name = "Nomdis";
+            Nomdis.Size = new Size(100, 23);
+            Nomdis.TabIndex = 15;
+            // 
+            // button12
+            // 
+            button12.FlatStyle = FlatStyle.Popup;
+            button12.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button12.ForeColor = Color.MintCream;
+            button12.Location = new Point(569, 7);
+            button12.Name = "button12";
+            button12.Size = new Size(115, 38);
+            button12.TabIndex = 14;
+            button12.Text = "Datos Comunes";
+            button12.UseVisualStyleBackColor = true;
+            button12.Click += button12_Click_1;
+            // 
+            // button14
+            // 
+            button14.FlatStyle = FlatStyle.Popup;
+            button14.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button14.ForeColor = Color.MintCream;
+            button14.Location = new Point(688, 7);
+            button14.Name = "button14";
+            button14.Size = new Size(126, 37);
+            button14.TabIndex = 9;
+            button14.Text = "Datos Eliminados";
+            button14.UseVisualStyleBackColor = true;
+            button14.Click += button14_Click_1;
+            // 
+            // Agregar
+            // 
+            Agregar.FlatStyle = FlatStyle.Popup;
+            Agregar.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            Agregar.ForeColor = Color.MintCream;
+            Agregar.Location = new Point(61, 320);
+            Agregar.Name = "Agregar";
+            Agregar.Size = new Size(98, 37);
+            Agregar.TabIndex = 5;
+            Agregar.Text = "Agregar";
+            Agregar.UseVisualStyleBackColor = true;
+            Agregar.Click += Agregar_Click;
+            // 
+            // DtDis
+            // 
+            DtDis.AllowUserToAddRows = false;
+            DtDis.AllowUserToDeleteRows = false;
+            DtDis.AllowUserToOrderColumns = true;
+            DtDis.AllowUserToResizeColumns = false;
+            DtDis.AllowUserToResizeRows = false;
+            dataGridViewCellStyle10.BackColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle10.Font = new Font("Microsoft YaHei", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle10.NullValue = null;
+            dataGridViewCellStyle10.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = Color.Black;
+            DtDis.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            DtDis.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            DtDis.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            DtDis.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            DtDis.BackgroundColor = SystemColors.ActiveCaption;
+            DtDis.BorderStyle = BorderStyle.None;
+            DtDis.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            DtDis.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            DtDis.ColumnHeadersHeight = 35;
+            DtDis.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            DtDis.EnableHeadersVisualStyles = false;
+            DtDis.GridColor = Color.SteelBlue;
+            DtDis.ImeMode = ImeMode.Off;
+            DtDis.Location = new Point(239, 55);
+            DtDis.MultiSelect = false;
+            DtDis.Name = "DtDis";
+            DtDis.ReadOnly = true;
+            DtDis.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            DtDis.RowHeadersVisible = false;
+            DtDis.RowTemplate.Height = 25;
+            DtDis.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DtDis.Size = new Size(324, 358);
+            DtDis.StandardTab = true;
+            DtDis.TabIndex = 10;
+            DtDis.UseWaitCursor = true;
+            DtDis.CellClick += DtDis_CellClick;
+            DtDis.CellContentClick += DtDis_CellContentClick;
+            // 
+            // textBox3
+            // 
+            textBox3.BackColor = SystemColors.MenuBar;
+            textBox3.BorderStyle = BorderStyle.FixedSingle;
+            textBox3.Location = new Point(221, 17);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(342, 23);
+            textBox3.TabIndex = 1;
+            textBox3.TextChanged += textBox3_TextChanged;
+            // 
+            // Panu
+            // 
+            Panu.BackColor = SystemColors.ActiveCaption;
+            Panu.Controls.Add(Modus);
+            Panu.Controls.Add(Reins);
+            Panu.Controls.Add(BusEli);
+            Panu.Controls.Add(Elius);
+            Panu.Controls.Add(Actu);
+            Panu.Controls.Add(DtComu);
+            Panu.Controls.Add(DtEli);
+            Panu.Controls.Add(Busque);
+            Panu.Controls.Add(Viewus);
+            Panu.Controls.Add(Usview);
+            Panu.Location = new Point(204, 93);
+            Panu.Name = "Panu";
+            Panu.Size = new Size(817, 507);
+            Panu.TabIndex = 20;
+            // 
+            // Modus
+            // 
+            Modus.FlatStyle = FlatStyle.Popup;
+            Modus.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            Modus.ForeColor = Color.MintCream;
+            Modus.Location = new Point(59, 169);
+            Modus.Name = "Modus";
+            Modus.Size = new Size(115, 42);
+            Modus.TabIndex = 22;
+            Modus.Text = "Modificar";
+            Modus.UseVisualStyleBackColor = true;
+            Modus.Click += Modus_Click;
+            // 
+            // Reins
+            // 
+            Reins.FlatStyle = FlatStyle.Popup;
+            Reins.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            Reins.ForeColor = Color.MintCream;
+            Reins.Location = new Point(59, 115);
+            Reins.Name = "Reins";
+            Reins.Size = new Size(115, 42);
+            Reins.TabIndex = 21;
+            Reins.Text = "Reintegrar";
+            Reins.UseVisualStyleBackColor = true;
+            Reins.Click += Reins_Click;
+            // 
+            // BusEli
+            // 
+            BusEli.BackColor = SystemColors.MenuBar;
+            BusEli.BorderStyle = BorderStyle.FixedSingle;
+            BusEli.Location = new Point(203, 16);
+            BusEli.Name = "BusEli";
+            BusEli.Size = new Size(479, 23);
+            BusEli.TabIndex = 20;
+            BusEli.TextChanged += BusEli_TextChanged;
+            // 
+            // Elius
+            // 
+            Elius.FlatStyle = FlatStyle.Popup;
+            Elius.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            Elius.ForeColor = Color.MintCream;
+            Elius.Location = new Point(59, 115);
+            Elius.Name = "Elius";
+            Elius.Size = new Size(115, 42);
+            Elius.TabIndex = 18;
+            Elius.Text = "Eliminar";
+            Elius.UseVisualStyleBackColor = true;
+            Elius.Click += Elius_Click;
+            // 
+            // Actu
+            // 
+            Actu.FlatStyle = FlatStyle.Popup;
+            Actu.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            Actu.ForeColor = Color.MintCream;
+            Actu.Location = new Point(60, 64);
+            Actu.Name = "Actu";
+            Actu.Size = new Size(115, 42);
+            Actu.TabIndex = 17;
+            Actu.Text = "Actualizar";
+            Actu.UseVisualStyleBackColor = true;
+            Actu.Click += Actu_Click;
+            // 
+            // DtComu
+            // 
+            DtComu.FlatStyle = FlatStyle.Popup;
+            DtComu.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            DtComu.ForeColor = Color.MintCream;
+            DtComu.Location = new Point(690, 64);
+            DtComu.Name = "DtComu";
+            DtComu.Size = new Size(115, 42);
+            DtComu.TabIndex = 16;
+            DtComu.Text = "Datos Comunes";
+            DtComu.UseVisualStyleBackColor = true;
+            DtComu.Click += DtComu_Click;
+            // 
+            // DtEli
+            // 
+            DtEli.FlatStyle = FlatStyle.Popup;
+            DtEli.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            DtEli.ForeColor = Color.MintCream;
+            DtEli.Location = new Point(690, 116);
+            DtEli.Name = "DtEli";
+            DtEli.Size = new Size(115, 42);
+            DtEli.TabIndex = 15;
+            DtEli.Text = "Datos Eliminados";
+            DtEli.UseVisualStyleBackColor = true;
+            DtEli.Click += DtEli_Click;
+            // 
+            // Busque
+            // 
+            Busque.BackColor = SystemColors.MenuBar;
+            Busque.BorderStyle = BorderStyle.FixedSingle;
+            Busque.Location = new Point(203, 17);
+            Busque.Name = "Busque";
+            Busque.Size = new Size(479, 23);
+            Busque.TabIndex = 1;
+            Busque.TextChanged += Busque_TextChanged;
+            // 
+            // Viewus
+            // 
+            Viewus.AllowUserToAddRows = false;
+            Viewus.AllowUserToDeleteRows = false;
+            Viewus.AllowUserToOrderColumns = true;
+            Viewus.AllowUserToResizeColumns = false;
+            Viewus.AllowUserToResizeRows = false;
+            dataGridViewCellStyle11.BackColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle11.Font = new Font("Microsoft YaHei", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle11.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle11.NullValue = null;
+            dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = Color.Black;
+            Viewus.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            Viewus.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Viewus.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            Viewus.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            Viewus.BackgroundColor = SystemColors.ActiveCaption;
+            Viewus.BorderStyle = BorderStyle.None;
+            Viewus.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            Viewus.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            Viewus.ColumnHeadersHeight = 35;
+            Viewus.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            Viewus.EnableHeadersVisualStyles = false;
+            Viewus.GridColor = Color.SteelBlue;
+            Viewus.ImeMode = ImeMode.Off;
+            Viewus.Location = new Point(203, 55);
+            Viewus.MultiSelect = false;
+            Viewus.Name = "Viewus";
+            Viewus.ReadOnly = true;
+            Viewus.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            Viewus.RowHeadersVisible = false;
+            Viewus.RowTemplate.Height = 25;
+            Viewus.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            Viewus.Size = new Size(479, 396);
+            Viewus.StandardTab = true;
+            Viewus.TabIndex = 19;
+            Viewus.UseWaitCursor = true;
+            Viewus.CellClick += Viewus_CellClick;
+            // 
+            // Usview
+            // 
+            Usview.AllowUserToAddRows = false;
+            Usview.AllowUserToDeleteRows = false;
+            Usview.AllowUserToOrderColumns = true;
+            Usview.AllowUserToResizeColumns = false;
+            Usview.AllowUserToResizeRows = false;
+            dataGridViewCellStyle12.BackColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle12.Font = new Font("Microsoft YaHei", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle12.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle12.NullValue = null;
+            dataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = Color.Black;
+            Usview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle12;
+            Usview.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Usview.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            Usview.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            Usview.BackgroundColor = SystemColors.ActiveCaption;
+            Usview.BorderStyle = BorderStyle.None;
+            Usview.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            Usview.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            Usview.ColumnHeadersHeight = 35;
+            Usview.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            Usview.EnableHeadersVisualStyles = false;
+            Usview.GridColor = Color.SteelBlue;
+            Usview.ImeMode = ImeMode.Off;
+            Usview.Location = new Point(203, 61);
+            Usview.MultiSelect = false;
+            Usview.Name = "Usview";
+            Usview.ReadOnly = true;
+            Usview.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            Usview.RowHeadersVisible = false;
+            Usview.RowTemplate.Height = 25;
+            Usview.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            Usview.Size = new Size(479, 396);
+            Usview.StandardTab = true;
+            Usview.TabIndex = 10;
+            Usview.UseWaitCursor = true;
+            Usview.CellClick += Usview_CellClick;
+            // 
+            // Pancreu
+            // 
+            Pancreu.BackColor = SystemColors.ActiveCaption;
+            Pancreu.Controls.Add(Contravis1);
+            Pancreu.Controls.Add(Contravis);
+            Pancreu.Controls.Add(AgUs);
+            Pancreu.Controls.Add(label9);
+            Pancreu.Controls.Add(ContrUs1);
+            Pancreu.Controls.Add(label8);
+            Pancreu.Controls.Add(label7);
+            Pancreu.Controls.Add(label6);
+            Pancreu.Controls.Add(groupBox1);
+            Pancreu.Controls.Add(ContrUs);
+            Pancreu.Controls.Add(EmailUs);
+            Pancreu.Controls.Add(NomUs);
+            Pancreu.Controls.Add(pb2);
+            Pancreu.Controls.Add(Pb1);
+            Pancreu.Location = new Point(204, 93);
+            Pancreu.Name = "Pancreu";
+            Pancreu.Size = new Size(817, 507);
+            Pancreu.TabIndex = 23;
+            // 
+            // Contravis1
+            // 
+            Contravis1.Image = (Image)resources.GetObject("Contravis1.Image");
+            Contravis1.Location = new Point(530, 378);
+            Contravis1.Name = "Contravis1";
+            Contravis1.Size = new Size(17, 17);
+            Contravis1.SizeMode = PictureBoxSizeMode.StretchImage;
+            Contravis1.TabIndex = 20;
+            Contravis1.TabStop = false;
+            Contravis1.Click += Contravis1_Click;
+            // 
+            // Contravis
+            // 
+            Contravis.Image = (Image)resources.GetObject("Contravis.Image");
+            Contravis.Location = new Point(530, 311);
+            Contravis.Name = "Contravis";
+            Contravis.Size = new Size(17, 17);
+            Contravis.SizeMode = PictureBoxSizeMode.StretchImage;
+            Contravis.TabIndex = 19;
+            Contravis.TabStop = false;
+            Contravis.Click += pictureBox2_Click;
+            // 
+            // AgUs
+            // 
+            AgUs.FlatStyle = FlatStyle.Popup;
+            AgUs.Location = new Point(297, 431);
+            AgUs.Name = "AgUs";
+            AgUs.Size = new Size(108, 37);
+            AgUs.TabIndex = 18;
+            AgUs.Text = "Agregar Usuario";
+            AgUs.UseVisualStyleBackColor = true;
+            AgUs.Click += AgUs_Click;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(186, 354);
+            label9.Name = "label9";
+            label9.Size = new Size(73, 15);
+            label9.TabIndex = 17;
+            label9.Text = "Contraseña :";
+            // 
+            // ContrUs1
+            // 
+            ContrUs1.Location = new Point(209, 372);
+            ContrUs1.Name = "ContrUs1";
+            ContrUs1.Size = new Size(315, 23);
+            ContrUs1.TabIndex = 16;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(191, 286);
+            label8.Name = "label8";
+            label8.Size = new Size(73, 15);
+            label8.TabIndex = 15;
+            label8.Text = "Contraseña :";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(186, 217);
+            label7.Name = "label7";
+            label7.Size = new Size(39, 15);
+            label7.TabIndex = 14;
+            label7.Text = "Email:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(191, 53);
+            label6.Name = "label6";
+            label6.Size = new Size(54, 15);
+            label6.TabIndex = 13;
+            label6.Text = "Nombre:";
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(CargoP);
+            groupBox1.Controls.Add(CargoC);
+            groupBox1.Location = new Point(209, 115);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(296, 93);
+            groupBox1.TabIndex = 12;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Cargo";
+            // 
+            // CargoP
+            // 
+            CargoP.AutoSize = true;
+            CargoP.Location = new Point(14, 58);
+            CargoP.Name = "CargoP";
+            CargoP.Size = new Size(75, 19);
+            CargoP.TabIndex = 1;
+            CargoP.TabStop = true;
+            CargoP.Text = "Panadero";
+            CargoP.UseVisualStyleBackColor = true;
+            CargoP.CheckedChanged += CargoP_CheckedChanged;
+            // 
+            // CargoC
+            // 
+            CargoC.AutoSize = true;
+            CargoC.Location = new Point(14, 33);
+            CargoC.Name = "CargoC";
+            CargoC.Size = new Size(48, 19);
+            CargoC.TabIndex = 0;
+            CargoC.TabStop = true;
+            CargoC.Text = "Caja";
+            CargoC.UseVisualStyleBackColor = true;
+            CargoC.CheckedChanged += CargoC_CheckedChanged;
+            // 
+            // ContrUs
+            // 
+            ContrUs.Location = new Point(209, 307);
+            ContrUs.Name = "ContrUs";
+            ContrUs.Size = new Size(315, 23);
+            ContrUs.TabIndex = 3;
+            // 
+            // EmailUs
+            // 
+            EmailUs.Location = new Point(209, 234);
+            EmailUs.Name = "EmailUs";
+            EmailUs.Size = new Size(315, 23);
+            EmailUs.TabIndex = 2;
+            // 
+            // NomUs
+            // 
+            NomUs.Location = new Point(209, 77);
+            NomUs.Name = "NomUs";
+            NomUs.Size = new Size(315, 23);
+            NomUs.TabIndex = 0;
+            // 
+            // pb2
+            // 
+            pb2.Image = (Image)resources.GetObject("pb2.Image");
+            pb2.Location = new Point(530, 378);
+            pb2.Name = "pb2";
+            pb2.Size = new Size(17, 17);
+            pb2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pb2.TabIndex = 22;
+            pb2.TabStop = false;
+            pb2.Click += pb2_Click;
+            // 
+            // Pb1
+            // 
+            Pb1.Image = (Image)resources.GetObject("Pb1.Image");
+            Pb1.Location = new Point(530, 311);
+            Pb1.Name = "Pb1";
+            Pb1.Size = new Size(17, 17);
+            Pb1.SizeMode = PictureBoxSizeMode.StretchImage;
+            Pb1.TabIndex = 21;
+            Pb1.TabStop = false;
+            Pb1.Click += Pb1_Click;
+            // 
             // Admin
             // 
             AllowDrop = true;
@@ -1131,12 +1868,15 @@
             ClientSize = new Size(1019, 589);
             ControlBox = false;
             Controls.Add(panel1);
+            Controls.Add(Panu);
+            Controls.Add(pandis);
             Controls.Add(Pancho2);
-            Controls.Add(label1);
             Controls.Add(Pancho);
             Controls.Add(panel2);
             Controls.Add(MotFac);
             Controls.Add(Facturacion);
+            Controls.Add(label1);
+            Controls.Add(Pancreu);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MdiChildrenMinimizedAnchorBottom = false;
@@ -1163,6 +1903,22 @@
             MotFac.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)Factur).EndInit();
             ((System.ComponentModel.ISupportInitialize)NFac).EndInit();
+            pandis.ResumeLayout(false);
+            pandis.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)Didi).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DtDis).EndInit();
+            Panu.ResumeLayout(false);
+            Panu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)Viewus).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Usview).EndInit();
+            Pancreu.ResumeLayout(false);
+            Pancreu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)Contravis1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Contravis).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pb2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Pb1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1234,5 +1990,54 @@
         private Button mar;
         private Button Reis;
         private TextBox TextBusca;
+        private Panel pandis;
+        private Button button12;
+        private Button button14;
+        private Button Agregar;
+        internal DataGridView DtDis;
+        private TextBox textBox3;
+        private TextBox Rut;
+        private TextBox Telr;
+        private TextBox dirr;
+        private TextBox Nomdis;
+        private Label label2;
+        private Label label5;
+        private Label label4;
+        private Label label3;
+        private Button ElimiDis;
+        private Button Modius;
+        private TextBox BDIS;
+        internal DataGridView Didi;
+        private Button Rdis;
+        public Button VUs;
+        public Button Usuario;
+        private Panel Panu;
+        private TextBox Busque;
+        private Button Actu;
+        private Button DtComu;
+        private Button DtEli;
+        private Button Elius;
+        internal DataGridView Viewus;
+        private TextBox BusEli;
+        private Button Reins;
+        private Button Modus;
+        public DataGridView Usview;
+        private Panel Pancreu;
+        private TextBox ContrUs;
+        private TextBox EmailUs;
+        private TextBox NomUs;
+        private GroupBox groupBox1;
+        private RadioButton CargoP;
+        private RadioButton CargoC;
+        private Label label8;
+        private Label label7;
+        private Label label6;
+        private Button AgUs;
+        private Label label9;
+        private TextBox ContrUs1;
+        private PictureBox Contravis1;
+        private PictureBox Contravis;
+        private PictureBox pb2;
+        private PictureBox Pb1;
     }
 }

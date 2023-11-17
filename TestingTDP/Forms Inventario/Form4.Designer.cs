@@ -45,19 +45,26 @@
             label3 = new Label();
             Cantidadtxt = new TextBox();
             button1 = new Button();
+            p1 = new Panel();
+            panel1 = new Panel();
+            pictureBox1 = new PictureBox();
+            button4 = new Button();
             groupBox1.SuspendLayout();
+            p1.SuspendLayout();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // Nombretxt
             // 
-            Nombretxt.Location = new Point(66, 57);
+            Nombretxt.Location = new Point(81, 119);
             Nombretxt.Name = "Nombretxt";
             Nombretxt.Size = new Size(100, 23);
             Nombretxt.TabIndex = 0;
             // 
             // iDd
             // 
-            iDd.Location = new Point(66, 110);
+            iDd.Location = new Point(81, 172);
             iDd.Name = "iDd";
             iDd.Size = new Size(100, 23);
             iDd.TabIndex = 1;
@@ -66,7 +73,7 @@
             // 
             // Precio
             // 
-            Precio.Location = new Point(66, 263);
+            Precio.Location = new Point(81, 325);
             Precio.Name = "Precio";
             Precio.Size = new Size(100, 23);
             Precio.TabIndex = 3;
@@ -76,7 +83,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(39, 39);
+            label1.Location = new Point(54, 101);
             label1.Name = "label1";
             label1.Size = new Size(57, 15);
             label1.TabIndex = 4;
@@ -85,7 +92,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(39, 92);
+            label2.Location = new Point(54, 154);
             label2.Name = "label2";
             label2.Size = new Size(82, 15);
             label2.TabIndex = 5;
@@ -94,7 +101,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(39, 245);
+            label4.Location = new Point(54, 307);
             label4.Name = "label4";
             label4.Size = new Size(46, 15);
             label4.TabIndex = 7;
@@ -123,7 +130,7 @@
             groupBox1.Controls.Add(radioButton2);
             groupBox1.Controls.Add(radioButton1);
             groupBox1.Controls.Add(Tipotxt);
-            groupBox1.Location = new Point(28, 142);
+            groupBox1.Location = new Point(43, 204);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(200, 100);
             groupBox1.TabIndex = 12;
@@ -169,7 +176,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(39, 289);
+            label3.Location = new Point(54, 351);
             label3.Name = "label3";
             label3.Size = new Size(61, 15);
             label3.TabIndex = 14;
@@ -177,7 +184,7 @@
             // 
             // Cantidadtxt
             // 
-            Cantidadtxt.Location = new Point(66, 307);
+            Cantidadtxt.Location = new Point(81, 369);
             Cantidadtxt.Name = "Cantidadtxt";
             Cantidadtxt.Size = new Size(100, 23);
             Cantidadtxt.TabIndex = 13;
@@ -186,35 +193,82 @@
             // 
             // button1
             // 
-            button1.Location = new Point(66, 347);
+            button1.Location = new Point(81, 409);
             button1.Name = "button1";
             button1.Size = new Size(100, 30);
             button1.TabIndex = 15;
-            button1.Text = "button1";
+            button1.Text = "Agregar";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
+            // 
+            // p1
+            // 
+            p1.BackColor = SystemColors.ActiveCaption;
+            p1.Controls.Add(panel1);
+            p1.Controls.Add(button4);
+            p1.Controls.Add(label1);
+            p1.Controls.Add(button1);
+            p1.Controls.Add(Nombretxt);
+            p1.Controls.Add(label3);
+            p1.Controls.Add(iDd);
+            p1.Controls.Add(Cantidadtxt);
+            p1.Controls.Add(Precio);
+            p1.Controls.Add(groupBox1);
+            p1.Controls.Add(label2);
+            p1.Controls.Add(label4);
+            p1.Location = new Point(0, -4);
+            p1.Name = "p1";
+            p1.Size = new Size(314, 476);
+            p1.TabIndex = 29;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.SteelBlue;
+            panel1.Controls.Add(pictureBox1);
+            panel1.Location = new Point(-7, -12);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(346, 97);
+            panel1.TabIndex = 5;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.ErrorImage = Properties.Resources.logo_of_bakery_loaf_of_bread_kitchen_utensils_rolling_pin_vector_removebg_preview;
+            pictureBox1.Image = Properties.Resources.logo_of_bakery_loaf_of_bread_kitchen_utensils_rolling_pin_vector_removebg_preview;
+            pictureBox1.Location = new Point(3, 25);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(77, 69);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 10;
+            pictureBox1.TabStop = false;
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.Transparent;
+            button4.FlatStyle = FlatStyle.Popup;
+            button4.Location = new Point(3, 81);
+            button4.Name = "button4";
+            button4.Size = new Size(26, 23);
+            button4.TabIndex = 10;
+            button4.Text = "←";
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // Form4
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(242, 389);
-            Controls.Add(button1);
-            Controls.Add(label3);
-            Controls.Add(Cantidadtxt);
-            Controls.Add(groupBox1);
-            Controls.Add(label4);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(Precio);
-            Controls.Add(iDd);
-            Controls.Add(Nombretxt);
+            ClientSize = new Size(290, 448);
+            ControlBox = false;
+            Controls.Add(p1);
             Name = "Form4";
-            Text = "Form4";
+            Text = "Nuevo Producto";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            p1.ResumeLayout(false);
+            p1.PerformLayout();
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -235,5 +289,9 @@
         private RadioButton radioButton3;
         private RadioButton radioButton2;
         private RadioButton radioButton1;
+        private Panel p1;
+        private Panel panel1;
+        private PictureBox pictureBox1;
+        private Button button4;
     }
 }

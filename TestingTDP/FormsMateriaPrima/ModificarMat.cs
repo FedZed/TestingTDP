@@ -108,5 +108,10 @@ namespace TestingTDP
             iDd.Text = dataGridView2.CurrentRow.Cells[3].Value.ToString();
             Tipotxt.Text = dataGridView2.CurrentRow.Cells[1].Value.ToString();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

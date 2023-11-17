@@ -36,10 +36,12 @@
             label2 = new Label();
             panel1 = new Panel();
             panel2 = new Panel();
+            button5 = new Button();
             pictureBox1 = new PictureBox();
             Pb1 = new PictureBox();
             pictureBox2 = new PictureBox();
             p1 = new Panel();
+            OlvideMiContraseña = new Label();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Pb1).BeginInit();
@@ -59,8 +61,9 @@
             // 
             // textBox1
             // 
-            textBox1.BackColor = Color.CornflowerBlue;
-            textBox1.ForeColor = SystemColors.InactiveCaption;
+            textBox1.BackColor = SystemColors.ActiveCaption;
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.ForeColor = SystemColors.InactiveBorder;
             textBox1.Location = new Point(179, 152);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(100, 23);
@@ -68,8 +71,9 @@
             // 
             // textBox2
             // 
-            textBox2.BackColor = Color.CornflowerBlue;
-            textBox2.ForeColor = SystemColors.InactiveCaption;
+            textBox2.BackColor = SystemColors.ActiveCaption;
+            textBox2.BorderStyle = BorderStyle.FixedSingle;
+            textBox2.ForeColor = SystemColors.InactiveBorder;
             textBox2.Location = new Point(179, 205);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(100, 23);
@@ -95,7 +99,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.MidnightBlue;
+            panel1.BackColor = Color.SteelBlue;
             panel1.Location = new Point(0, 83);
             panel1.Name = "panel1";
             panel1.Size = new Size(113, 441);
@@ -103,7 +107,8 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.DarkBlue;
+            panel2.BackColor = Color.FromArgb(0, 0, 64);
+            panel2.Controls.Add(button5);
             panel2.Controls.Add(pictureBox1);
             panel2.ForeColor = SystemColors.ControlLight;
             panel2.Location = new Point(3, 3);
@@ -111,12 +116,28 @@
             panel2.Size = new Size(462, 87);
             panel2.TabIndex = 6;
             // 
+            // button5
+            // 
+            button5.FlatAppearance.BorderColor = Color.MidnightBlue;
+            button5.FlatAppearance.MouseDownBackColor = Color.Red;
+            button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 0, 0);
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.ForeColor = SystemColors.ControlLightLight;
+            button5.Location = new Point(375, 0);
+            button5.Name = "button5";
+            button5.Size = new Size(22, 22);
+            button5.TabIndex = 10;
+            button5.Text = "X";
+            button5.TextAlign = ContentAlignment.BottomRight;
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            // 
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox1.ErrorImage = (Image)resources.GetObject("pictureBox1.ErrorImage");
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(23, 18);
+            pictureBox1.Location = new Point(17, 8);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(68, 66);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -147,20 +168,32 @@
             // 
             // p1
             // 
-            p1.BackColor = Color.CornflowerBlue;
+            p1.BackColor = SystemColors.ActiveCaption;
+            p1.Controls.Add(OlvideMiContraseña);
             p1.Controls.Add(panel2);
             p1.Controls.Add(panel1);
-            p1.Controls.Add(pictureBox2);
             p1.Controls.Add(button1);
             p1.Controls.Add(Pb1);
             p1.Controls.Add(textBox1);
             p1.Controls.Add(textBox2);
             p1.Controls.Add(label1);
             p1.Controls.Add(label2);
+            p1.Controls.Add(pictureBox2);
             p1.Location = new Point(-8, -5);
             p1.Name = "p1";
             p1.Size = new Size(567, 340);
             p1.TabIndex = 9;
+            // 
+            // OlvideMiContraseña
+            // 
+            OlvideMiContraseña.AutoSize = true;
+            OlvideMiContraseña.ForeColor = Color.DodgerBlue;
+            OlvideMiContraseña.Location = new Point(271, 313);
+            OlvideMiContraseña.Name = "OlvideMiContraseña";
+            OlvideMiContraseña.Size = new Size(124, 15);
+            OlvideMiContraseña.TabIndex = 9;
+            OlvideMiContraseña.Text = "Olvide mi contraseña?";
+            OlvideMiContraseña.Click += OlvideMiContraseña_Click;
             // 
             // Form1
             // 
@@ -168,6 +201,7 @@
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.LightCyan;
             ClientSize = new Size(394, 332);
+            ControlBox = false;
             Controls.Add(p1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -196,9 +230,11 @@
         private Label label2;
         private Panel panel1;
         private Panel panel2;
-        private PictureBox pictureBox1;
         private PictureBox Pb1;
         private PictureBox pictureBox2;
         private Panel p1;
+        private Label OlvideMiContraseña;
+        private PictureBox pictureBox1;
+        private Button button5;
     }
 }

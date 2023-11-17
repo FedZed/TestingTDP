@@ -15,11 +15,15 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Reflection.PortableExecutable;
 using System.Security.Policy;
 using MySqlX.XDevAPI.Relational;
+using static TestingTDP.Form1;
+using System.Runtime.Serialization;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace TestingTDP
 {
     public partial class Admin : Form
     {
+        string CargoU;
         public Admin()
         {
             InitializeComponent();
@@ -45,6 +49,7 @@ namespace TestingTDP
 
         private void BtInventario_Click(object sender, EventArgs e)
         {
+            VUs.Visible = false;
             MtFactu.Visible = false;
             Pancho2.BringToFront();
             dataGridView1.Visible = true;
@@ -95,7 +100,25 @@ namespace TestingTDP
             {
                 dataGridView1.Visible = true;
                 label1.Visible = false;
+                try
+                {
 
+                    MySqlCommand comando = new MySqlCommand();
+                    comando.Connection = connection;
+                    comando.CommandText = ("select nombre,cantidad,precio,tipo, Id_Distribuidores from producto where integrado !=\"X\";");
+
+                    MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                    adaptar.SelectCommand = comando;
+                    DataTable tabla = new DataTable();
+                    adaptar.Fill(tabla);
+                    dataGridView1.DataSource = tabla;
+
+                }
+                catch (Exception b)
+                {
+
+                    MessageBox.Show(b.Message + b.StackTrace);
+                }
             }
             else if (Busqueda.Text != "")
             {
@@ -207,13 +230,13 @@ namespace TestingTDP
             FF2.iDd.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
             FF2.Tipotxt.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
 
-            var checkInfo = new MySqlCommand($"select Id_Producto,precio2 from producto WHERE nombre= \"{Datos}\"", connection);
+            var checkInfo = new MySqlCommand($"select Id_Producto from producto WHERE nombre= \"{Datos}\"", connection);
             MySqlDataReader reade;
             reade = checkInfo.ExecuteReader();
             if (reade.Read())
             {
                 FF2.ll.Text = reade["Id_Producto"].ToString();
-                FF2.Precio.Text = reade["precio2"].ToString();
+
             }
             reade.Read();
 
@@ -422,7 +445,7 @@ namespace TestingTDP
 
             var registerQuery = new MySqlCommand($"UPDATE materia_prima SET visible=1 WHERE nombre=\"{Datos}\";", connection);
             registerQuery.ExecuteNonQuery();
-            MessageBox.Show("El Producto sea a Eliminado correctamente", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("La Materia prima sea a Eliminado correctamente", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             try
             {
 
@@ -447,11 +470,12 @@ namespace TestingTDP
 
         private void button2_Click(object sender, EventArgs e)
         {
+            VUs.Visible = false;
             MtFactu.Visible = false;
             Txtbusq.Visible = false;
             ags.Visible = false;
             Elin.Visible = false;
-
+            button6.Visible = true;
             np.Visible = false;
             mod.Visible = false;
             eli.Visible = false;
@@ -630,6 +654,25 @@ namespace TestingTDP
             {
                 label1.Visible = false;
                 MateriaPrima.Visible = true;
+                try
+                {
+
+                    MySqlCommand comando = new MySqlCommand();
+                    comando.Connection = connection;
+                    comando.CommandText = ("select Nombre,Cantidad,tipo,IdD from materia_prima where visible = 0 ;");
+
+                    MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                    adaptar.SelectCommand = comando;
+                    DataTable tabla = new DataTable();
+                    adaptar.Fill(tabla);
+                    dataGridView3.DataSource = tabla;
+
+                }
+                catch (Exception b)
+                {
+
+                    MessageBox.Show(b.Message + b.StackTrace);
+                }
             }
             else
             if (txtbus.Text != "")
@@ -672,6 +715,25 @@ namespace TestingTDP
             {
                 label1.Visible = false;
                 dataGridView3.Visible = true;
+                try
+                {
+
+                    MySqlCommand comando = new MySqlCommand();
+                    comando.Connection = connection;
+                    comando.CommandText = ("select Nombre,Cantidad,tipo,IdD from materia_prima where visible != 0 ;");
+
+                    MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                    adaptar.SelectCommand = comando;
+                    DataTable tabla = new DataTable();
+                    adaptar.Fill(tabla);
+                    dataGridView3.DataSource = tabla;
+
+                }
+                catch (Exception b)
+                {
+
+                    MessageBox.Show(b.Message + b.StackTrace);
+                }
             }
             else
             if (Txtbusq.Text != "")
@@ -707,6 +769,7 @@ namespace TestingTDP
 
         private void button4_Click(object sender, EventArgs e)
         {
+            VUs.Visible = false;
             TextBusca.Visible = false;
             MtFactu.Visible = true;
             Facturacion.BringToFront();
@@ -755,7 +818,7 @@ namespace TestingTDP
             connection.Open();
             string Nom = Nep.Text;
             int cant = int.Parse(cmbCant.Text);
-            var checkInfo = new MySqlCommand($"select precio2 from producto WHERE nombre= \"{Nom}\"", connection);
+            var checkInfo = new MySqlCommand($"select precio from producto WHERE nombre= \"{Nom}\"", connection);
             MySqlDataReader reade;
             reade = checkInfo.ExecuteReader();
             bool productoExistente = false;
@@ -788,9 +851,9 @@ namespace TestingTDP
 
                 if (reade.Read())
                 {
-                    int Precio = int.Parse(reade["precio2"].ToString());
+                    int Precio = int.Parse(reade["precio"].ToString());
                     int PrecioTotal = Precio * cant;
-                    DtFactura.Rows[n].Cells[2].Value = reade["precio2"].ToString();
+                    DtFactura.Rows[n].Cells[2].Value = reade["precio"].ToString();
                     DtFactura.Rows[n].Cells[3].Value = PrecioTotal;
                 }
             }
@@ -946,7 +1009,35 @@ namespace TestingTDP
 
         private void button3_Click(object sender, EventArgs e)
         {
-            MtFactu.Visible = false;
+            VUs.Visible = false;
+            textBox3.Visible = true;
+            Rdis.Visible = false;
+            Didi.Visible = false;
+            BDIS.Visible = false;
+            Modius.Visible = false;
+            pandis.BringToFront();
+            ElimiDis.Visible = false;
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            try
+            {
+
+                MySqlCommand comando = new MySqlCommand();
+                comando.Connection = connection;
+                comando.CommandText = ("SELECT rut,nombre,telefono,direccion FROM `distribuidor` where visible!=0;");
+
+                MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                adaptar.SelectCommand = comando;
+                DataTable tabla = new DataTable();
+                adaptar.Fill(tabla);
+                DtDis.DataSource = tabla;
+
+            }
+            catch (Exception b)
+            {
+
+                MessageBox.Show(b.Message + b.StackTrace);
+            }
         }
 
         private void MtFactu_Click(object sender, EventArgs e)
@@ -1282,9 +1373,731 @@ namespace TestingTDP
         {
 
         }
+
+        private void Agregar_Click(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            string nombre = Nomdis.Text;
+            string telefono = Telr.Text;
+            string dir = dirr.Text;
+            string rut = Rut.Text;
+            var loginQuery = new MySqlCommand($"SELECT Rut FROM distribuidor WHERE rut=\"{rut}\"", connection);
+            var reader = loginQuery.ExecuteReader();
+            reader.Read();
+            if ((reader.HasRows))
+            {
+                MessageBox.Show("Ya existe un usuario con ese numero rut", "Registro Fallido");
+            }
+
+            else
+            {
+                reader.Close();
+
+
+                if (telefono.Length == 9)
+                {
+
+                    var registerQuery = new MySqlCommand($"INSERT INTO distribuidor (Nombre, Telefono , rut , direccion,visible) VALUES (\"{nombre}\", \"{telefono}\", \"{rut}\", \"{dir}\",1)", connection);
+                    registerQuery.ExecuteNonQuery();
+                    MessageBox.Show("El Producto se a registrado correctamente", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    try
+                    {
+
+                        MySqlCommand comando = new MySqlCommand();
+                        comando.Connection = connection;
+                        comando.CommandText = ("SELECT rut,nombre,telefono,direccion FROM `distribuidor` where visible!=0;");
+
+                        MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                        adaptar.SelectCommand = comando;
+                        DataTable tabla = new DataTable();
+                        adaptar.Fill(tabla);
+                        DtDis.DataSource = tabla;
+
+                    }
+                    catch (Exception b)
+                    {
+
+                        MessageBox.Show(b.Message + b.StackTrace);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El numero telefonico tiene la cantidad erronea de digitos", "Registro Fallido");
+                }
+
+            }
+        }
+
+        private void DtDis_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ElimiDis.Visible = true;
+            Modius.Visible = true;
+            Nomdis.Text = DtDis.CurrentRow.Cells[1].Value.ToString();
+        }
+
+        private void DtDis_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Modius.Visible = true;
+            ElimiDis.Visible = true;
+            Nomdis.Text = DtDis.CurrentRow.Cells[1].Value.ToString();
+            dirr.Text = DtDis.CurrentRow.Cells[3].Value.ToString();
+            Telr.Text = DtDis.CurrentRow.Cells[2].Value.ToString();
+            Rut.Text = DtDis.CurrentRow.Cells[0].Value.ToString();
+        }
+
+        private void ElimiDis_Click(object sender, EventArgs e)
+        {
+            string rut = DtDis.CurrentRow.Cells[0].Value.ToString();
+            string name = DtDis.CurrentRow.Cells[1].Value.ToString();
+            DialogResult resultado = MessageBox.Show($"Estas seguro de que quieres eliminarlo  \"{name}\"", "Eliminacion de Distribuidor", MessageBoxButtons.YesNo);
+            if (resultado == DialogResult.Yes)
+            {
+
+                MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+                connection.Open();
+
+                var registerQuery = new MySqlCommand($"UPDATE distribuidor SET visible = 0 WHERE rut=\"{rut}\";", connection);
+                registerQuery.ExecuteNonQuery();
+                MessageBox.Show($"ELiminacion de distribuidor  \"{name}\"", "Distribuidor Eliminado");
+                try
+                {
+
+                    MySqlCommand comando = new MySqlCommand();
+                    comando.Connection = connection;
+                    comando.CommandText = ("SELECT rut,nombre,telefono,direccion FROM `distribuidor` where visible!=1;");
+
+                    MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                    adaptar.SelectCommand = comando;
+                    DataTable tabla = new DataTable();
+                    adaptar.Fill(tabla);
+                    Didi.DataSource = tabla;
+
+                }
+                catch (Exception b)
+                {
+
+                    MessageBox.Show(b.Message + b.StackTrace);
+                }
+            }
+            else
+            {
+                MessageBox.Show($"El distribuidor no ah sido eliminado  \"{name}\"", "Se a cancelado la eliminacion");
+            }
+
+        }
+
+        private void Modius_Click(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            string Nombre = DtDis.CurrentRow.Cells[1].Value.ToString();
+            string dir = DtDis.CurrentRow.Cells[3].Value.ToString();
+            string tel = DtDis.CurrentRow.Cells[2].Value.ToString();
+            string rut = DtDis.CurrentRow.Cells[0].Value.ToString();
+            var loginQuery = new MySqlCommand($"SELECT Rut FROM distribuidor WHERE rut=\"{rut}\"", connection);
+            var reader = loginQuery.ExecuteReader();
+            reader.Read();
+            if ((reader.HasRows))
+            {
+                reader.Close();
+                var registerQuery = new MySqlCommand($"UPDATE distribuidor SET Nombre=\"{Nombre}\",direccion=\"{dir}\",telefono=\"{tel}\"  where rut=\"{rut}\";", connection);
+                registerQuery.ExecuteNonQuery();
+                MessageBox.Show("Se modifico el distribuidor con exito", "Registro Fallido");
+                try
+                {
+
+                    MySqlCommand comando = new MySqlCommand();
+                    comando.Connection = connection;
+                    comando.CommandText = ("SELECT rut,nombre,telefono,direccion FROM `distribuidor` where visible!=0;");
+
+                    MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                    adaptar.SelectCommand = comando;
+                    DataTable tabla = new DataTable();
+                    adaptar.Fill(tabla);
+                    DtDis.DataSource = tabla;
+
+                }
+                catch (Exception b)
+                {
+
+                    MessageBox.Show(b.Message + b.StackTrace);
+                }
+            }
+
+            else
+            {
+
+                MessageBox.Show("No existe un rut con ese numero", "Registro Fallido");
+            }
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            if (textBox3.Text == "")
+            {
+                label1.Visible = false;
+                DtDis.Visible = true;
+            }
+            else
+            if (textBox3.Text != "")
+            {
+                label1.Visible = false;
+                DtDis.Visible = true;
+                string nombre2 = textBox3.Text;
+                var checkInfo = new MySqlCommand($"SELECT rut,nombre,telefono,direccion FROM `distribuidor` where visible!=0 and nombre LIKE \"%{nombre2}%\"", connection);
+                var reade = checkInfo.ExecuteReader();
+                reade.Read();
+                if (reade.HasRows)
+                {
+                    reade.Close();
+
+
+                    var registerQuery = new MySqlCommand($"SELECT rut,nombre,telefono,direccion FROM `distribuidor` where visible!=0  and nombre LIKE \"%{nombre2}%\" ", connection);
+                    registerQuery.ExecuteNonQuery();
+                    MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                    adaptar.SelectCommand = registerQuery;
+                    DataTable tabla = new DataTable();
+                    adaptar.Fill(tabla);
+                    DtDis.DataSource = tabla;
+
+                }
+                else
+                {
+                    DtDis.Visible = false;
+                    label1.Visible = true;
+                    label1.BringToFront();
+                }
+
+            }
+        }
+
+        private void button14_Click_1(object sender, EventArgs e)
+        {
+            BDIS.Visible = true;
+            textBox3.Visible = false;
+            Didi.Visible = true;
+            Modius.Visible = false;
+            ElimiDis.Visible = false;
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            try
+            {
+
+                MySqlCommand comando = new MySqlCommand();
+                comando.Connection = connection;
+                comando.CommandText = ("SELECT rut,nombre,telefono,direccion FROM `distribuidor` where visible!=1;");
+
+                MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                adaptar.SelectCommand = comando;
+                DataTable tabla = new DataTable();
+                adaptar.Fill(tabla);
+                Didi.DataSource = tabla;
+
+            }
+            catch (Exception b)
+            {
+
+                MessageBox.Show(b.Message + b.StackTrace);
+            }
+        }
+
+        private void Didi_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Rdis.Visible = true;
+        }
+
+        private void BDIS_TextChanged(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            if (BDIS.Text == "")
+            {
+                label1.Visible = false;
+                Didi.Visible = true;
+            }
+            else
+            if (BDIS.Text != "")
+            {
+                label1.Visible = false;
+                Didi.Visible = true;
+                string nombre2 = BDIS.Text;
+                var checkInfo = new MySqlCommand($"SELECT rut,nombre,telefono,direccion FROM `distribuidor` where visible!=1 and nombre LIKE \"%{nombre2}%\"", connection);
+                var reade = checkInfo.ExecuteReader();
+                reade.Read();
+                if (reade.HasRows)
+                {
+                    reade.Close();
+
+
+                    var registerQuery = new MySqlCommand($"SELECT rut,nombre,telefono,direccion FROM `distribuidor` where visible!=1  and nombre LIKE \"%{nombre2}%\" ", connection);
+                    registerQuery.ExecuteNonQuery();
+                    MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                    adaptar.SelectCommand = registerQuery;
+                    DataTable tabla = new DataTable();
+                    adaptar.Fill(tabla);
+                    Didi.DataSource = tabla;
+
+                }
+                else
+                {
+                    Didi.Visible = false;
+                    label1.Visible = true;
+                    label1.BringToFront();
+                }
+            }
+        }
+
+        private void Rdis_Click(object sender, EventArgs e)
+        {
+
+            string rut = Didi.CurrentRow.Cells[0].Value.ToString();
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+
+            var registerQuery = new MySqlCommand($"UPDATE distribuidor SET visible=1 WHERE rut=\"{rut}\";", connection);
+            registerQuery.ExecuteNonQuery();
+
+            MessageBox.Show("Distribuidor Reintegrado", "Reintegro Exitoso");
+        }
+
+        private void button12_Click_1(object sender, EventArgs e)
+        {
+            textBox3.Visible = true;
+            Rdis.Visible = false;
+            Didi.Visible = false;
+            BDIS.Visible = false;
+            Modius.Visible = false;
+            ElimiDis.Visible = false;
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+
+            try
+            {
+
+                MySqlCommand comando = new MySqlCommand();
+                comando.Connection = connection;
+                comando.CommandText = ("SELECT rut,nombre,telefono,direccion FROM `distribuidor` where visible!=0;");
+
+                MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                adaptar.SelectCommand = comando;
+                DataTable tabla = new DataTable();
+                adaptar.Fill(tabla);
+                DtDis.DataSource = tabla;
+
+            }
+            catch (Exception b)
+            {
+
+                MessageBox.Show(b.Message + b.StackTrace);
+            }
+        }
+
+        private void Usuario_Click(object sender, EventArgs e)
+        {
+            Reins.Visible = false;
+            Modus.Visible = false;
+            Elius.Visible = false;
+            BusEli.Visible = false;
+            Viewus.Visible = false;
+            VUs.Visible = true;
+            MtFactu.Visible = false;
+            Panu.BringToFront();
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+
+            try
+            {
+
+                MySqlCommand comando = new MySqlCommand();
+                comando.Connection = connection;
+                comando.CommandText = ("SELECT Nombre,email,cargo FROM `usuario` where visible=1;");
+
+                MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                adaptar.SelectCommand = comando;
+                DataTable tabla = new DataTable();
+                adaptar.Fill(tabla);
+                Usview.DataSource = tabla;
+
+            }
+            catch (Exception b)
+            {
+
+                MessageBox.Show(b.Message + b.StackTrace);
+            }
+        }
+
+        private void Busque_TextChanged(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            if (Busque.Text == "")
+            {
+                label1.Visible = false;
+                Usview.Visible = true;
+
+                try
+                {
+
+                    MySqlCommand comando = new MySqlCommand();
+                    comando.Connection = connection;
+                    comando.CommandText = ("SELECT Nombre,email,cargo FROM `usuario` where visible=1;");
+
+                    MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                    adaptar.SelectCommand = comando;
+                    DataTable tabla = new DataTable();
+                    adaptar.Fill(tabla);
+                    Usview.DataSource = tabla;
+
+                }
+                catch (Exception b)
+                {
+
+                    MessageBox.Show(b.Message + b.StackTrace);
+                }
+            }
+            else
+            if (Busque.Text != "")
+            {
+                label1.Visible = false;
+                Usview.Visible = true;
+                string nombre2 = Busque.Text;
+                var checkInfo = new MySqlCommand($"SELECT Nombre,email,cargo FROM `usuario` where visible=1 and nombre LIKE \"%{nombre2}%\"", connection);
+                var reade = checkInfo.ExecuteReader();
+                reade.Read();
+                if (reade.HasRows)
+                {
+                    reade.Close();
+
+
+                    var registerQuery = new MySqlCommand($"SELECT Nombre,email,cargo FROM `usuario` where visible=1 and nombre LIKE \"%{nombre2}%\" ", connection);
+                    registerQuery.ExecuteNonQuery();
+                    MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                    adaptar.SelectCommand = registerQuery;
+                    DataTable tabla = new DataTable();
+                    adaptar.Fill(tabla);
+                    Usview.DataSource = tabla;
+
+                }
+                else
+                {
+                    Usview.Visible = false;
+                    label1.Visible = true;
+                    label1.BringToFront();
+                }
+            }
+        }
+
+        private void Actu_Click(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            try
+            {
+
+                MySqlCommand comando = new MySqlCommand();
+                comando.Connection = connection;
+                comando.CommandText = ("SELECT Nombre,email,cargo FROM `usuario` where visible=1;");
+
+                MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                adaptar.SelectCommand = comando;
+                DataTable tabla = new DataTable();
+                adaptar.Fill(tabla);
+                Usview.DataSource = tabla;
+
+            }
+            catch (Exception b)
+            {
+
+                MessageBox.Show(b.Message + b.StackTrace);
+            }
+        }
+
+        private void Usview_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Elius.Visible = true;
+            Modus.Visible = true;
+        }
+
+        private void Elius_Click(object sender, EventArgs e)
+        {
+            string Nombre = Usview.CurrentRow.Cells[0].Value.ToString();
+            string Mail = Usview.CurrentRow.Cells[1].Value.ToString();
+            DialogResult resultado = MessageBox.Show($"Estas seguro de que quieres eliminar el usuario:  \"{Nombre}\"  , con el mail \"{Mail}\"", "Eliminacion de Usuario", MessageBoxButtons.YesNo);
+            if (resultado == DialogResult.Yes)
+            {
+
+                MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+                connection.Open();
+
+                var registerQuery = new MySqlCommand($"UPDATE usuario SET visible = 0 WHERE email=\"{Mail}\";", connection);
+                registerQuery.ExecuteNonQuery();
+                MessageBox.Show($"ELiminacion de Usuario : \"{Nombre}\" se ah realizado con exito", "Usuario Eliminado");
+                try
+                {
+
+                    MySqlCommand comando = new MySqlCommand();
+                    comando.Connection = connection;
+                    comando.CommandText = ("SELECT Nombre,email,cargo FROM `usuario` where visible=1;");
+
+                    MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                    adaptar.SelectCommand = comando;
+                    DataTable tabla = new DataTable();
+                    adaptar.Fill(tabla);
+                    Usview.DataSource = tabla;
+
+                }
+                catch (Exception b)
+                {
+
+                    MessageBox.Show(b.Message + b.StackTrace);
+                }
+            }
+            else
+            {
+                MessageBox.Show($"Se cancelo la eliminacion del usuario : \"{Nombre}\"", "Se a cancelado la eliminacion");
+            }
+        }
+
+        private void DtComu_Click(object sender, EventArgs e)
+        {
+            Modus.Visible = false;
+            Reins.Visible = false;
+            Viewus.Visible = false;
+            Busque.Visible = true;
+            BusEli.Visible = false;
+            Usview.Visible = true;
+        }
+
+        private void DtEli_Click(object sender, EventArgs e)
+        {
+            Modus.Visible = false;
+            Busque.Visible = false;
+            BusEli.Visible = true;
+            Viewus.Visible = true;
+            Usview.Visible = false;
+            Elius.Visible = false;
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            try
+            {
+
+                MySqlCommand comando = new MySqlCommand();
+                comando.Connection = connection;
+                comando.CommandText = ("SELECT Nombre,email,cargo FROM `usuario` where visible!=1;");
+
+                MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                adaptar.SelectCommand = comando;
+                DataTable tabla = new DataTable();
+                adaptar.Fill(tabla);
+                Viewus.DataSource = tabla;
+
+            }
+            catch (Exception b)
+            {
+
+                MessageBox.Show(b.Message + b.StackTrace);
+            }
+        }
+
+        private void BusEli_TextChanged(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            if (BusEli.Text == "")
+            {
+                label1.Visible = false;
+                Viewus.Visible = true;
+
+                try
+                {
+
+                    MySqlCommand comando = new MySqlCommand();
+                    comando.Connection = connection;
+                    comando.CommandText = ("SELECT Nombre,email,cargo FROM `usuario` where visible!=1;");
+
+                    MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                    adaptar.SelectCommand = comando;
+                    DataTable tabla = new DataTable();
+                    adaptar.Fill(tabla);
+                    Viewus.DataSource = tabla;
+
+                }
+                catch (Exception b)
+                {
+
+                    MessageBox.Show(b.Message + b.StackTrace);
+                }
+            }
+            else
+            if (BusEli.Text != "")
+            {
+                label1.Visible = false;
+                Viewus.Visible = true;
+                string nombre2 = BusEli.Text;
+                var checkInfo = new MySqlCommand($"SELECT Nombre,email,cargo FROM `usuario` where visible!=1 and nombre LIKE \"%{nombre2}%\"", connection);
+                var reade = checkInfo.ExecuteReader();
+                reade.Read();
+                if (reade.HasRows)
+                {
+                    reade.Close();
+
+
+                    var registerQuery = new MySqlCommand($"SELECT Nombre,email,cargo FROM `usuario` where visible!=1 and nombre LIKE \"%{nombre2}%\" ", connection);
+                    registerQuery.ExecuteNonQuery();
+                    MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                    adaptar.SelectCommand = registerQuery;
+                    DataTable tabla = new DataTable();
+                    adaptar.Fill(tabla);
+                    Viewus.DataSource = tabla;
+
+                }
+                else
+                {
+                    Viewus.Visible = false;
+                    label1.Visible = true;
+                    label1.BringToFront();
+                }
+            }
+        }
+
+        private void Reins_Click(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            string Nombre = Viewus.CurrentRow.Cells[0].Value.ToString();
+            string Mail = Viewus.CurrentRow.Cells[1].Value.ToString();
+            var registerQuery = new MySqlCommand($"UPDATE usuario SET visible = 1 WHERE email=\"{Mail}\";", connection);
+            registerQuery.ExecuteNonQuery();
+            MessageBox.Show($"Reintegro de Usuario : \"{Nombre}\" se ah realizado con exito", "Usuario Reintegrado");
+            try
+            {
+
+                MySqlCommand comando = new MySqlCommand();
+                comando.Connection = connection;
+                comando.CommandText = ("SELECT Nombre,email,cargo FROM `usuario` where visible!=1;");
+
+                MySqlDataAdapter adaptar = new MySqlDataAdapter();
+                adaptar.SelectCommand = comando;
+                DataTable tabla = new DataTable();
+                adaptar.Fill(tabla);
+                Viewus.DataSource = tabla;
+
+            }
+            catch (Exception b)
+            {
+
+                MessageBox.Show(b.Message + b.StackTrace);
+            }
+        }
+
+        private void Modus_Click(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            Modificar_Usuario ModUsu = new Modificar_Usuario();
+            AddOwnedForm(ModUsu);
+            ModUsu.Correo.Text = Usview.CurrentRow.Cells[1].Value.ToString();
+            ModUsu.Nombre.Text = Usview.CurrentRow.Cells[0].Value.ToString();
+            ModUsu.DandD = Usview.CurrentRow.Cells[0].Value.ToString();
+            ModUsu.Show();
+
+        }
+
+        private void CargoC_CheckedChanged(object sender, EventArgs e)
+        {
+            CargoU = "Caja";
+        }
+
+        private void CargoP_CheckedChanged(object sender, EventArgs e)
+        {
+            CargoU = "Panadero";
+        }
+
+        private void AgUs_Click(object sender, EventArgs e)
+        {
+            string Cor = EmailUs.Text;
+            string Nom = NomUs.Text;
+            string contra1 = ContrUs.Text;
+            string contra2 = ContrUs.Text;
+            MySqlConnection connection = new MySqlConnection(MainFunc.connString);
+            connection.Open();
+            var checkInfo = new MySqlCommand($"SELECT Nombre,email,cargo FROM `usuario` where Email=\"{Nom}\"", connection);
+            var reade = checkInfo.ExecuteReader();
+            reade.Read();
+            if (reade.HasRows)
+            {
+
+                reade.Close();
+                MessageBox.Show("Ya existe un usuario con ese email", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                reade.Close();
+                if (contra1 == contra2)
+                {
+                    try
+                    {
+                        var registerQuery = new MySqlCommand($"INSERT INTO usuario (Nombre,Contraseña,Email,cargo,visible) VALUES (\"{Nom}\", \"{Class1.HashString(contra1)}\", \"{Cor}\", \"{CargoU}\",1)", connection);
+                        registerQuery.ExecuteNonQuery();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Hubo un error al intentar cargar el usuario intentelo nuevamente", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    }
+                    Correo.Email(Cor, "Registro de Usuario - JO-NA Panaderia",
+              $"Se ah registrado su Usuario<br>La contraseña de su usuario es \"{contra1}\"<br><br>Saludos cordiales,<br>TDP<br>Para alguna consulta inserte email de asesor");
+                    MessageBox.Show("Registro de Usuario Exitoso", "JO-NA - Panaderia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Las contraseña no son compatibles ", "Error de consulta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Pb1.BringToFront();
+            ContrUs.PasswordChar = '\0';
+        }
+
+        private void VUs_Click(object sender, EventArgs e)
+        {
+            Pancreu.BringToFront();
+            ContrUs.PasswordChar = '*';
+            ContrUs1.PasswordChar = '*';
+        }
+
+        private void Contravis1_Click(object sender, EventArgs e)
+        {
+            pb2.BringToFront();
+            ContrUs1.PasswordChar = '\0';
+        }
+
+        private void Pb1_Click(object sender, EventArgs e)
+        {
+            Contravis.BringToFront();
+            ContrUs.PasswordChar = '*';
+        }
+
+        private void pb2_Click(object sender, EventArgs e)
+        {
+            Contravis1.BringToFront();
+            ContrUs1.PasswordChar = '*';
+        }
+
+        private void Viewus_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Reis.Visible = true;
+        }
     }
 }
-
 
 
 

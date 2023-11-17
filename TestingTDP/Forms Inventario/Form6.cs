@@ -68,7 +68,7 @@ namespace TestingTDP
             if (Reader.HasRows)
             {
                 Reader.Close();
-                var registerQuery = new MySqlCommand($"UPDATE producto SET Nombre=\"{nombre}\",tipo=\"{Tipo}\",precio2=\"{precio}\",Precio=\"${precio}\",cantidad=\"{cantidad}\",id_Distribuidores=\"{IdD}\" WHERE id_producto=\"{datos}\"", connection);
+                var registerQuery = new MySqlCommand($"UPDATE producto SET Nombre=\"{nombre}\",tipo=\"{Tipo}\",Precio=\"{precio}\",cantidad=\"{cantidad}\",id_Distribuidores=\"{IdD}\" WHERE id_producto=\"{datos}\"", connection);
 
                 registerQuery.ExecuteNonQuery();
                 MessageBox.Show("El Producto se a Modificado correctamente", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -174,13 +174,12 @@ namespace TestingTDP
             iDd.Text = dataGridView2.CurrentRow.Cells[4].Value.ToString();
             Tipotxt.Text = dataGridView2.CurrentRow.Cells[3].Value.ToString();
             string iD = Nombretxt.Text;
-            var checkInfo = new MySqlCommand($"select Id_Producto,precio2 from producto WHERE nombre= \"{iD}\"", connection);
+            var checkInfo = new MySqlCommand($"select Id_Producto from producto WHERE nombre= \"{iD}\"", connection);
             MySqlDataReader reade;
             reade = checkInfo.ExecuteReader();
             if (reade.Read())
             {
                 ll.Text = reade["Id_Producto"].ToString();
-                Precio.Text = reade["precio2"].ToString();
             }
             reade.Read();
         }
@@ -193,6 +192,11 @@ namespace TestingTDP
         private void ll_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

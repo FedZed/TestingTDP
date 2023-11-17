@@ -14,7 +14,7 @@ namespace TestingTDP
 {
     public partial class agregarmatcs : Form
     {
-        
+
         public agregarmatcs()
         {
             InitializeComponent();
@@ -69,7 +69,7 @@ namespace TestingTDP
                 Reader.Close();
                 var registerQuery = new MySqlCommand($"INSERT INTO materia_prima (Nombre, tipo , cantidad , IdD,visible) VALUES (\"{nombre}\", \"{Tipo}\", \"{cantidad}\", \"{IdD}\",0)", connection);
                 registerQuery.ExecuteNonQuery();
-                MessageBox.Show("El Producto se a registrado correctamente", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("La materia prima se a registrado correctamente", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             else
@@ -90,6 +90,11 @@ namespace TestingTDP
         private void MateriaPrima_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

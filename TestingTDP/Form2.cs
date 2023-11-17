@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Google.Protobuf;
+using Microsoft.VisualBasic;
 using MySql.Data.MySqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -838,7 +839,22 @@ namespace TestingTDP
 
         private void button28_Click(object sender, EventArgs e)
         {
+            string correo;
+            Random random = new Random();
+            int codigo = random.Next(100000, 999999);
+            correo = Interaction.InputBox("Correo a resetear: ", "Clinica Imagen - Admin");
 
+            using (MySqlConnection connection = new MySqlConnection(MainFunc.connString))
+            {
+                using (MySqlCommand verificarQuery = new MySqlCommand($"UPDATE usuario SET Contraseña=\"CICliente\" WHERE email=\"{correo}\";", connection))
+                {
+                    connection.Open();
+                    MySqlDataReader reader = verificarQuery.ExecuteReader();
+                    Correo.Email(correo, "Reseteo de contraseña - JO-NA Panaderia",
+                        $"Su contrseña fue restablecida.<br>Contraseña nueva:\"{codigo}\"<br><br>Saludos cordiales,<br>FZALA<br>Para alguna otra consulta inserte email de asesor");
+                    MessageBox.Show("codigo para resablecer contraseña", "Clinica Imagen - Admin", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
 
             PanNC.BringToFront();
         }
